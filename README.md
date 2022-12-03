@@ -1,6 +1,6 @@
-# ac
+# charitable aid
 
-A new Flutter project.
+App para diseñada para ONG's con la finalidad de extender la ayuda humanitaria a todos los rincones del perú, ya se con trabajos social o con ayuda monetaria.
 
 ## APP
 
