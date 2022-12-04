@@ -1,17 +1,143 @@
 import 'package:flutter/material.dart';
+import 'package:page_indicator/page_indicator.dart';
 
-class HomeScrean extends StatelessWidget {
+class HomeScrean extends StatefulWidget {
   const HomeScrean({super.key});
+
+  @override
+  State<HomeScrean> createState() => _HomeScreanState();
+}
+
+class _HomeScreanState extends State<HomeScrean> {
+  late PageController controller;
+
+  GlobalKey<PageContainerState> key = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    controller = PageController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
       body: Container(
         color: Colors.greenAccent,
-        child: Center(
-          child: const Text('Screen home'),
+        child: ListView(
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 28, bottom: 10, right: 15, left: 15),
+              child: Center(child: Text('Hola agente de cambio',style: TextStyle(fontSize: 20),)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
+              child: Center(child: Text('Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',style: TextStyle(fontSize: 16),)),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20.0),
+                  height: 320.0,
+                  child: ListView(
+                    // This next line does the trick.
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Container(
+                        width:280.0,
+                        color: Colors.red,
+                      ),
+                      SizedBox(width: 20,),
+                      Container(
+                        width: 280.0,
+                        color: Colors.blue,
+                      ),
+                      SizedBox(width: 20,),
+                      Container(
+                        width: 280.0,
+                        color: Colors.green,
+                      ),
+                      SizedBox(width: 20,),
+                      Container(
+                        width: 280.0,
+                        color: Colors.yellow,
+                      ),
+                      SizedBox(width: 20,),
+                      Container(
+                        width: 280.0,
+                        color: Colors.orange,
+                      ),
+                    ],
+                  ),
+                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 250,
+                color: Colors.amber[500],
+                child: const Center(child: Text('Entry B')),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 250,
+                color: Colors.amber[500],
+                child: const Center(child: Text('Entry B')),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20, right: 15, left: 15),
+              child: Container(
+                color: Colors.pink,
+                child: Container(
+                  height: 200.0,
+                  child: PageIndicatorContainer(
+                    key: key,
+                    child: PageView(
+                      children: <Widget>[
+                        Center(child: Text('1',style: TextStyle(fontSize: 20),)),
+                        Center(child: Text('2',style: TextStyle(fontSize: 20),)),
+                        Center(child: Text('3',style: TextStyle(fontSize: 20),)),
+                        Center(child: Text('4',style: TextStyle(fontSize: 20),)),
+                      ],
+                      controller: controller,
+                    ),
+                    align: IndicatorAlign.bottom,
+                    length: 4,
+                    indicatorSpace: 10.0,
+                    indicatorColor: Colors.white,
+                    indicatorSelectorColor: Colors.blue,
+              ),
+          ),
         ),
-      ),
+            ),
+            
+            
+          ],
+        ),
+      )
     );
   }
 }
+Widget buildPage(String text, Color color) {
+    return Padding(
+      padding: EdgeInsets.all(12),
+      child: Container(
+        color: color,
+        child: Center(child: Text(text, style: TextStyle(fontSize: 42, color: Colors.white),),),
+      ),
+    );
+  }
