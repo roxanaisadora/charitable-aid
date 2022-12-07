@@ -1,3 +1,4 @@
+import 'package:ac/widgets/home/card1.dart';
 import 'package:flutter/material.dart';
 import 'package:page_indicator/page_indicator.dart';
 
@@ -35,47 +36,42 @@ class _HomeScreanState extends State<HomeScrean> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 28, bottom: 10, right: 15, left: 15),
+            const Padding(
+              padding: EdgeInsets.only(top: 28, bottom: 10, right: 15, left: 15),
               child: Center(child: Text('Hola agente de cambio',style: TextStyle(fontSize: 20),)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
+            const Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
               child: Center(child: Text('Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',style: TextStyle(fontSize: 16),)),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 20.0),
-                  height: 320.0,
+                  height: 340.0,
                   child: ListView(
                     // This next line does the trick.
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
+                      Card1(
+                        image:'https://justgive.files.wordpress.com/2012/08/helpkids1.png',
+                        title: '',
+                        onTap: (){},
+                      ),
+                      const SizedBox(width: 10,),
+                      Card1(
+                        image:'https://justgive.files.wordpress.com/2012/08/helpkids1.png',
+                        title: '',
+                        onTap: (){},
+                      ),
+                      const SizedBox(width: 10,),
                       Container(
                         width:280.0,
-                        color: Colors.red,
+                        decoration:  BoxDecoration(
+                          color: Colors.blue,
+                                borderRadius: BorderRadius.circular(25)),
                       ),
-                      SizedBox(width: 20,),
-                      Container(
-                        width: 280.0,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(width: 20,),
-                      Container(
-                        width: 280.0,
-                        color: Colors.green,
-                      ),
-                      SizedBox(width: 20,),
-                      Container(
-                        width: 280.0,
-                        color: Colors.yellow,
-                      ),
-                      SizedBox(width: 20,),
-                      Container(
-                        width: 280.0,
-                        color: Colors.orange,
-                      ),
+                     
                     ],
                   ),
                 ),
@@ -84,24 +80,30 @@ class _HomeScreanState extends State<HomeScrean> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 height: 250,
-                color: Colors.amber[500],
+                decoration:  BoxDecoration(
+                          color: Colors.blue,
+                                borderRadius: BorderRadius.circular(25)),
                 child: const Center(child: Text('Entry B')),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 height: 250,
-                color: Colors.amber[500],
+                decoration:  BoxDecoration(
+                          color: Colors.red,
+                                borderRadius: BorderRadius.circular(25)),
                 child: const Center(child: Text('Entry B')),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.only(bottom: 20, right: 15, left: 15),
               child: Container(
-                color: Colors.pink,
+                decoration:  BoxDecoration(
+                          color: Colors.blue,
+                                borderRadius: BorderRadius.circular(25)),
                 child: Container(
                   height: 200.0,
                   child: PageIndicatorContainer(
@@ -124,8 +126,6 @@ class _HomeScreanState extends State<HomeScrean> {
           ),
         ),
             ),
-            
-            
           ],
         ),
       )
