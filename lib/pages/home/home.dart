@@ -10,6 +10,21 @@ class HomeScrean extends StatefulWidget {
 }
 
 class _HomeScreanState extends State<HomeScrean> {
+  // ignore: prefer_final_fields
+  List<dynamic> _data = [
+    {
+      'image':'https://justgive.files.wordpress.com/2012/08/helpkids1.png',
+      'title':'title1',
+      'colaboradores':327.0,
+      'meta':500.0,
+    },
+    {
+      'image':'https://justgive.files.wordpress.com/2012/08/helpkids1.png',
+      'title':'title2',
+      'colaboradores':250.0,
+      'meta':520.0,
+      }
+  ];
   late PageController controller;
 
   GlobalKey<PageContainerState> key = GlobalKey();
@@ -37,7 +52,7 @@ class _HomeScreanState extends State<HomeScrean> {
           padding: const EdgeInsets.all(8),
           children: <Widget>[
             const Padding(
-              padding: EdgeInsets.only(top: 28, bottom: 10, right: 15, left: 15),
+              padding: EdgeInsets.only(top: 35, bottom: 10, right: 15, left: 15),
               child: Center(child: Text('Hola agente de cambio',style: TextStyle(fontSize: 20),)),
             ),
             const Padding(
@@ -47,54 +62,100 @@ class _HomeScreanState extends State<HomeScrean> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20.0),
-                  height: 340.0,
-                  child: ListView(
-                    // This next line does the trick.
+                  margin: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 420.0,
+                  child: ListView.builder(
+                    itemCount: _data.length,
                     scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Card1(
-                        image:'https://justgive.files.wordpress.com/2012/08/helpkids1.png',
-                        title: '',
-                        onTap: (){},
-                      ),
-                      const SizedBox(width: 10,),
-                      Card1(
-                        image:'https://justgive.files.wordpress.com/2012/08/helpkids1.png',
-                        title: '',
-                        onTap: (){},
-                      ),
-                      const SizedBox(width: 10,),
-                      Container(
-                        width:280.0,
-                        decoration:  BoxDecoration(
+                    itemBuilder: (BuildContext context, int index) {  
+                      final dato = _data[index];
+                        return Card1(
+                          image: dato['image'],
+                          title: dato['title'],
+                          colaboradores: dato['colaboradores'],
+                          meta: dato['meta'],
+                          onTap: (){},
+                        );
+                    },
+                    )
+                ),
+            ),
+             const SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 180,
+                decoration:  BoxDecoration(
                           color: Colors.blue,
                                 borderRadius: BorderRadius.circular(25)),
-                      ),
-                     
-                    ],
-                  ),
-                ),
+                child: const Center(child: Text('Envia regalo a de la comida')),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+              child: Text('¿No estas seguro de como ayudar?',style: TextStyle(fontSize: 16),),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 250,
+                height: 520,
                 decoration:  BoxDecoration(
-                          color: Colors.blue,
+                          color: Colors.red,
                                 borderRadius: BorderRadius.circular(25)),
-                child: const Center(child: Text('Entry B')),
+                child: const Center(child: Text('Informe de ayuda')),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+              child: Text('Juntos podemos ayudar a mas familias en necesidad',style: TextStyle(fontSize: 16),),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 520,
+                decoration:  BoxDecoration(
+                          color: Colors.amber,
+                                borderRadius: BorderRadius.circular(25)),
+                child: const Center(child: Text('Indice de ayuda')),
               ),
             ),
             const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 250,
+                height: 180,
+                decoration:  BoxDecoration(
+                          color: Colors.blue,
+                                borderRadius: BorderRadius.circular(25)),
+                child: const Center(child: Text('Invita a tus amigos')),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 520,
                 decoration:  BoxDecoration(
                           color: Colors.red,
                                 borderRadius: BorderRadius.circular(25)),
-                child: const Center(child: Text('Entry B')),
+                child: const Center(child: Text('Conocenos')),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+              child: Text('Desglose de la ayuda',style: TextStyle(fontSize: 16),),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                height: 180,
+                decoration:  BoxDecoration(
+                          color: Colors.blue,
+                                borderRadius: BorderRadius.circular(25)),
+                child: const Center(child: Text('Desgloce donacion')),
               ),
             ),
             const SizedBox(height: 20,),
