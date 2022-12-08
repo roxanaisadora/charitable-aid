@@ -4,7 +4,6 @@ import 'package:ac/services/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -30,32 +29,27 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: double.infinity,
-                  height: 380,
-                  decoration:const  BoxDecoration(
-                  image: DecorationImage(
-                    alignment: Alignment.center,
-                    image: AssetImage("assets/image/logo.jpg")
-                  )),
-                  child:Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          'Bienvenidos',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          )
+                    width: double.infinity,
+                    height: 380,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/image/logo.jpg"))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 30),
+                          child: Text('Bienvenidos',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
                         ),
-                      ),
-                    ],
-                  )
-                ),
+                      ],
+                    )),
                 const SizedBox(
-                  height: 20,
+                  height: 0,
                 ),
                 ChangeNotifierProvider(
                   create: (context) => ProviderLogin(),
@@ -206,7 +200,7 @@ class __LoginFormState extends State<_LoginForm> {
                 ),
               ),
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pushReplacementNamed(context, MyRoutes.rHome);
                 },
                 child: const Text('Ingresar sin contraseña'),
