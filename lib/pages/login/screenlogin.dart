@@ -29,19 +29,33 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 350,
-                  child: Image.asset('assets/image/logo.jpg'),
+                Container(
+                  width: double.infinity,
+                  height: 380,
+                  decoration:const  BoxDecoration(
+                  image: DecorationImage(
+                    alignment: Alignment.center,
+                    image: AssetImage("assets/image/logo.jpg")
+                  )),
+                  child:Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          'Bienvenidos',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          )
+                        ),
+                      ),
+                    ],
+                  )
                 ),
                 const SizedBox(
-                  height: 30,
-                ),
-                const Text(
-                  'Bienvenidos',
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  height: 20,
                 ),
                 ChangeNotifierProvider(
                   create: (context) => ProviderLogin(),
