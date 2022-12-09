@@ -9,8 +9,10 @@ class Card1 extends StatefulWidget {
   final String? title;
   final double? colaboradores;
   final double? meta;
+  final int? personas;
+  final int? donadores;
   final Function? onTap;
-  const Card1({super.key, this.image, this.title, this.onTap, this.colaboradores, this.meta});
+  const Card1({super.key, this.image, this.title, this.onTap, this.colaboradores, this.meta, this.personas, this.donadores});
 
   @override
   State<Card1> createState() => _Card1State();
@@ -74,7 +76,7 @@ class _Card1State extends State<Card1> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
+                    padding: const EdgeInsets.only(top: 3, bottom: 6),
                     child: Text(widget.title!, style: const TextStyle(fontSize: 23),),
                   )),
                   Row(
@@ -96,7 +98,11 @@ class _Card1State extends State<Card1> {
                       height: 15,
                       percent: percent,
                       theme: RoundedProgressBarTheme.purple),
-                  )
+                  ),
+                  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('${widget.donadores} donadores y ${widget.personas} colaboradores', style: const TextStyle(fontSize: 15),),
+                      ),
                 ],
               )
               )),
