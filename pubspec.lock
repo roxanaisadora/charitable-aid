@@ -83,6 +83,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+
+  flutter_rounded_progress_bar:
+    dependency: "direct main"
+    description:
+      name: flutter_rounded_progress_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
+
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -184,6 +193,22 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+
+  page_indicator:
+    dependency: "direct main"
+    description:
+      name: page_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1"
+  page_view_indicators:
+    dependency: "direct main"
+    description:
+      name: page_view_indicators
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+
   nested:
     dependency: transitive
     description:
@@ -191,6 +216,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+
   path:
     dependency: transitive
     description:
@@ -444,3 +470,4 @@ packages:
 sdks:
   dart: ">=2.18.4 <3.0.0"
   flutter: ">=3.0.0"
+

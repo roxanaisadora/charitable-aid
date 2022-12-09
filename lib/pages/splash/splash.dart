@@ -12,10 +12,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
    @override
    void initState(){
-    Future.delayed(const Duration(milliseconds: 7500), 
+    Future.delayed(const Duration(milliseconds: 5500), 
       ()=>Navigator.pushReplacementNamed(context, MyRoutes.rLogin)
       );
-
     super.initState();
    }
 
