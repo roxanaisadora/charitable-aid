@@ -1,4 +1,5 @@
 
+import 'package:ac/widget/custom_drawer.dart';
 import 'package:ac/widgets/home/card4.dart';
 import 'package:ac/widgets/home/index_widget_home.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,12 @@ class _HomeScreanState extends State<HomeScrean> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
+    return Scaffold(
+      appBar: AppBar( backgroundColor: Colors.greenAccent,
+        elevation: 0,
+
+      ),
+       drawer: const CustomDrawerWidget(),
       body: Container(
         color: Colors.greenAccent,
         child: ListView(

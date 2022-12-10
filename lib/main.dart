@@ -1,11 +1,15 @@
 
 import 'package:ac/route/route.dart';
 import 'package:ac/services/index.dart';
+import 'package:ac/share_preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/provider_login.dart';
 
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Preferences.init();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(providers: [
