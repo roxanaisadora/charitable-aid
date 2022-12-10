@@ -1,20 +1,18 @@
 
-import 'package:ac/providers/provider_theme.dart';
-import 'package:ac/route/index_page.dart';
-import 'package:ac/share_preferences/preferences.dart';
+import 'package:ac/route/route.dart';
+import 'package:ac/services/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'providers/provider_login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Preferences.init();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(
-        create: (_) => ProviderTheme(isDarkMode: Preferences.theme),
+        create: (_) => ProviderLogin(),
       ),
-    
-      
+      ChangeNotifierProvider(create: (_) => AuthService())
     ], child: const MyApp()),
   );
 }
@@ -28,8 +26,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme:  Provider.of<ProviderTheme>(context).currentTheme,
-      home: const SplashScreen(),
+      scaffoldMessengerKey: CustomSnackbbar.msgkey,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      onGenerateRoute: MyRoutes.generateRoute,
+      initialRoute: MyRoutes.rSplash,
     );
   }
 }
