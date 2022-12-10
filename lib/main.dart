@@ -1,9 +1,22 @@
 
+import 'package:ac/providers/provider_theme.dart';
 import 'package:ac/route/index_page.dart';
+import 'package:ac/share_preferences/preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+   await Preferences.init();
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(
+        create: (_) => ProviderTheme(isDarkMode: Preferences.theme),
+      ),
+    
+      
+    ], child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme:  Provider.of<ProviderTheme>(context).currentTheme,
       home: const SplashScreen(),
     );
   }

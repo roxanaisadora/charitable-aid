@@ -1,3 +1,4 @@
+import 'package:ac/widget/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScrean extends StatelessWidget {
@@ -5,11 +6,16 @@ class HomeScrean extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
+    return Scaffold(
+      appBar: AppBar( backgroundColor: Colors.greenAccent,
+        elevation: 0,
+
+      ),
+       drawer: const CustomDrawerWidget(),
       body: Container(
         color: Colors.greenAccent,
-        child: Center(
-          child: const Text('Screen home'),
+        child: const Center(
+          child: Text('Screen home'),
         ),
       ),
     );
