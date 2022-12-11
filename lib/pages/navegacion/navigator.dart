@@ -11,14 +11,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   final List<dynamic> _page = [
     const HomeScrean(),
-    const CategoryScrean(),
+    const CategoryScreen(),
     const ProfileScrean()
-    
   ];
   int _activePage = 0;
-  final screens =[
-    
-  ];
+  final screens = [];
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +46,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           child: Center(
             child: _page[_activePage],
           ),
-        )
-        );
+        ));
   }
 }
