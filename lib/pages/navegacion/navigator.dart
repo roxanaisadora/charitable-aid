@@ -1,4 +1,5 @@
 import 'package:ac/route/index_page.dart';
+import 'package:ac/screen/perfil_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -12,7 +13,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<dynamic> _page = [
     const HomeScrean(),
     const CategoryScreen(),
-    const ProfileScrean()
+    const PerfilScreen()
   ];
   int _activePage = 0;
   final screens = [];
