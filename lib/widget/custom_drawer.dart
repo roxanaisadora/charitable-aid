@@ -1,5 +1,3 @@
-
-
 import 'package:ac/pages/home/home.dart';
 import 'package:ac/pages/navegacion/navigator.dart';
 import 'package:ac/screen/ajustes_screen.dart';
@@ -11,7 +9,7 @@ class CustomDrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return Drawer( backgroundColor:  const Color.fromARGB(255, 235, 192, 128),
       child: Column(
         children: [
           const DrawerHeader(
@@ -19,7 +17,7 @@ class CustomDrawerWidget extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: NetworkImage(
-                    'https://acegif.com/wp-content/uploads/gif/fnepanespx-20.gif'),
+                    'https://vistiendosonrisas.com/wp-content/uploads/2020/01/Vistiendo-Sonrisas-Logo-2.png'),
               ),
             ),
             child: SizedBox(
@@ -32,28 +30,48 @@ class CustomDrawerWidget extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
           ListTile(
-            leading: const Icon(Icons.home),
             title: const Text('Home'),
+            trailing: const Icon(
+              Icons.home,
+              color: Colors.pinkAccent,
+            ),
             onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBar()),);
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BottomNavBar()),
+              );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Registration'),
+            trailing: const Icon(
+              Icons.settings,
+              color: Colors.pinkAccent,
+            ),
+            title: const Text(
+              'Registration',
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> const AjusteScreen()),);
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AjusteScreen()),
+              );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.person),
+            trailing: const Icon(
+              Icons.person,
+              color: Colors.pinkAccent,
+            ),
             title: const Text('Profile'),
             onTap: () {
-
-             Navigator.push(context, MaterialPageRoute(builder: (context)=> const PerfilScreen()),);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PerfilScreen()),
+              );
             },
           ),
         ],

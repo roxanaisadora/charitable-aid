@@ -39,15 +39,15 @@ class _AjusteScreenState extends State<AjusteScreen> {
         title: const Text('Settings'),
         centerTitle: true,
         actions: [
-          Switch.adaptive(
-            value: Preferences.theme,
-            onChanged: (value) {
-              Preferences.theme = value;
-              final themeP = Provider.of<ProviderTheme>(context, listen: false);
-              value ? themeP.setOscuro() : themeP.setClaro();
-              setState(() {});
-            },
-          )
+          // Switch.adaptive(
+          //   value: Preferences.theme,
+          //   onChanged: (value) {
+          //     Preferences.theme = value;
+          //     final themeP = Provider.of<ProviderTheme>(context, listen: false);
+          //     value ? themeP.setOscuro() : themeP.setClaro();
+          //     setState(() {});
+          //   },
+          // )
         ],
       ),
       drawer: const CustomDrawerWidget(),
