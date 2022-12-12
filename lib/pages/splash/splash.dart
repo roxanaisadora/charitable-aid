@@ -34,11 +34,13 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: const [
                 Padding(
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: EdgeInsets.only(bottom: 50),
                   child: SizedBox(
-                    height: 60,
-                    width: 60,
-                    child: CircularProgressIndicator(),
+                    height: 40,
+                    width: 40,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

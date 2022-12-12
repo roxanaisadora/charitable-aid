@@ -8,6 +8,17 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title:const Text(
+              'Categorías',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.black,
+              ),
+            ),
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(
           vertical: 25,
@@ -19,14 +30,6 @@ class CategoryScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Categorías',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
             const SizedBox(
               height: 20,
             ),

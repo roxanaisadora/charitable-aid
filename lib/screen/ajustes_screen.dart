@@ -50,7 +50,6 @@ class _AjusteScreenState extends State<AjusteScreen> {
           )
         ],
       ),
-      drawer: const CustomDrawerWidget(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
