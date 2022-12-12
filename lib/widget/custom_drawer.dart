@@ -1,4 +1,5 @@
 import 'package:ac/pages/home/home.dart';
+import 'package:ac/pages/login/screenlogin.dart';
 import 'package:ac/pages/navegacion/navigator.dart';
 import 'package:ac/screen/ajustes_screen.dart';
 import 'package:ac/screen/perfil_screen.dart';
@@ -47,13 +48,8 @@ class CustomDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            trailing: const Icon(
-              Icons.settings,
-              color: Colors.pinkAccent,
-            ),
-            title: const Text(
-              'Registration',
-            ),
+            leading: const Icon(Icons.settings),
+            title: const Text('Configuración'),
             onTap: () {
               Navigator.push(
                 context,
@@ -61,16 +57,24 @@ class CustomDrawerWidget extends StatelessWidget {
               );
             },
           ),
+          // ListTile(
+          //   leading: const Icon(Icons.person),
+          //   title: const Text('Profile'),
+          //   onTap: () {
+          //    Navigator.push(context, MaterialPageRoute(builder: (context)=> const PerfilScreen()),);
+          //   },
+          // ),
           ListTile(
-            trailing: const Icon(
-              Icons.person,
-              color: Colors.pinkAccent,
-            ),
-            title: const Text('Profile'),
+            leading:  const Icon(Icons.highlight_off),
+            title: const Text('cerrar sesion'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const PerfilScreen()),
+              Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const LoginScreen();
+                  },
+                ),
+                (route) => false,
               );
             },
           ),

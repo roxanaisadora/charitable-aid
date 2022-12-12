@@ -19,7 +19,7 @@ class _Card2State extends State<Card2> {
     return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                height: 180,
+                height: 200,
                 decoration:  BoxDecoration(
                   color: Colors.white,
                    borderRadius: BorderRadius.circular(25)),

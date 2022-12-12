@@ -27,12 +27,12 @@ class _Card4State extends State<Card4> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
           ),
-          height: 560,
+          height: 590,
           width: 340,
           child:Column(
             children: [
               Container(
-                height: 360,
+                height: 350,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(15),

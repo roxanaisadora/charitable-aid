@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'index_page.dart';
 
-
 class MyRoutes {
   static const String rHome = '/Home';
   static const String rLogin = '/login';

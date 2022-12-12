@@ -105,10 +105,11 @@ class __LoginFormState extends State<_LoginForm> {
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
                 decoration: _buildDecoration(
-                  hintText: 'correo@shineclothes.com',
+                  hintText: 'correo@xxx.com',
+                  labeltext: 'E-mail',
                   prefixIcon: const Icon(
                     Icons.email_outlined,
-                    color: Colors.blue,
+                    color: Colors.black,
                   ),
                 ),
                 onChanged: (value) => loginProvider.email = value,
@@ -124,7 +125,7 @@ class __LoginFormState extends State<_LoginForm> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               TextFormField(
                 style: const TextStyle(color: Colors.black),
@@ -133,13 +134,15 @@ class __LoginFormState extends State<_LoginForm> {
                 keyboardType: TextInputType.text,
                 decoration: _buildDecoration(
                   hintText: '********',
+                  labeltext: 'Password',
                   prefixIcon: const Icon(
                     Icons.key_outlined,
-                    color: Colors.blue,
+                    color: Colors.black,
                   ),
                   suffixIcon: InkWell(
                     onTap: _viewPassword,
                     child: Icon(
+                      color: Colors.black,
                         _ispassword ? Icons.visibility : Icons.visibility_off),
                   ),
                 ),
@@ -151,7 +154,7 @@ class __LoginFormState extends State<_LoginForm> {
                 },
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               SizedBox(
                 height: 50,
@@ -160,9 +163,9 @@ class __LoginFormState extends State<_LoginForm> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  disabledColor: Colors.green,
+                  disabledColor: Colors.black,
                   elevation: 10,
-                  color: Colors.purple,
+                  color: Colors.green,
                   onPressed: loginProvider.isLoading
                       ? null
                       : () async {
@@ -191,13 +194,16 @@ class __LoginFormState extends State<_LoginForm> {
                         },
                   child: (loginProvider.isLoading)
                       ? const CircularProgressIndicator(
-                          color: Colors.blue,
+                          color: Colors.white,
                         )
                       : const Text(
                           'INGRESAR',
                           style: TextStyle(color: Colors.white),
                         ),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               InkWell(
                 onTap: () {
@@ -215,29 +221,35 @@ class __LoginFormState extends State<_LoginForm> {
 
 InputDecoration _buildDecoration({
   final String? hintText,
+  final String? labeltext,
   final Widget? prefixIcon,
   final Widget? suffixIcon,
 }) {
   return InputDecoration(
     enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.white),
+      borderSide: const BorderSide(width: 2, color: Colors.black),
       borderRadius: BorderRadius.circular(15),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.green),
+      borderSide: const BorderSide(width: 2, color: Colors.black),
       borderRadius: BorderRadius.circular(15),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.green),
+      borderSide: const BorderSide(width: 2, color: Colors.black),
       borderRadius: BorderRadius.circular(15),
     ),
     border: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.green),
+      borderSide: const BorderSide(width: 2, color: Colors.black),
       borderRadius: BorderRadius.circular(15),
+    ),
+    floatingLabelStyle: const TextStyle(
+      color: Colors.black,
+      fontSize: 20,
     ),
     filled: true,
     fillColor: Colors.white,
     hintText: hintText,
+    labelText: labeltext,
     hintStyle: const TextStyle(color: Colors.grey),
     prefixIcon: prefixIcon,
     suffixIcon: suffixIcon,

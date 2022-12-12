@@ -95,7 +95,7 @@ class _Card1State extends State<Card1> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: RoundedProgressBar(
-                      height: 15,
+                      height: 10,
                       percent: percent,
                       theme: RoundedProgressBarTheme.purple),
                   ),

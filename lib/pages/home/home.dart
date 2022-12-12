@@ -1,6 +1,4 @@
 
-import 'package:ac/widget/custom_drawer.dart';
-import 'package:ac/widgets/home/card4.dart';
 import 'package:ac/widgets/home/index_widget_home.dart';
 import 'package:flutter/material.dart';
 import 'package:page_indicator/page_indicator.dart';
@@ -52,20 +50,18 @@ class _HomeScreanState extends State<HomeScrean> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( backgroundColor: Colors.greenAccent,
+      appBar: AppBar( 
         elevation: 0,
-
+        title: const Text('Hola agente de cambio',style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-       drawer: const CustomDrawerWidget(),
       body: Container(
         color: Colors.greenAccent,
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 40, bottom: 10, right: 15, left: 15),
-              child: Center(child: Text('Hola agente de cambio',style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)),
-            ),
+           
             const Padding(
               padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
               child: Center(child: Text('Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',style: TextStyle(fontSize: 16),)),
@@ -74,7 +70,7 @@ class _HomeScreanState extends State<HomeScrean> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 10.0),
-                  height: 470.0,
+                  height: 500.0,
                   child: ListView.builder(
                     itemCount: _data.length,
                     scrollDirection: Axis.horizontal,

@@ -1,4 +1,4 @@
-
+import 'package:ac/providers/provider_donation.dart';
 import 'package:ac/route/route.dart';
 import 'package:ac/services/index.dart';
 import 'package:ac/share_preferences/preferences.dart';
@@ -6,17 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/provider_login.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Preferences.init();
-  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     MultiProvider(providers: [
-      ChangeNotifierProvider(
-        create: (_) => ProviderLogin(),
-      ),
-      ChangeNotifierProvider(create: (_) => AuthService())
+      ChangeNotifierProvider(create: (_) => ProviderLogin()),
+      ChangeNotifierProvider(create: (_) => AuthService()),
+      ChangeNotifierProvider(create: (_) => ProductoProvider())
     ], child: const MyApp()),
   );
 }
@@ -32,6 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       scaffoldMessengerKey: CustomSnackbbar.msgkey,
       theme: ThemeData(
+        useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: MyRoutes.generateRoute,

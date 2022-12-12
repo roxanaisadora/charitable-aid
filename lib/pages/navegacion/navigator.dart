@@ -1,3 +1,4 @@
+import 'package:ac/pages/donation/mylistdonation.dart';
 import 'package:ac/route/index_page.dart';
 import 'package:ac/screen/perfil_screen.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +13,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   final List<dynamic> _page = [
     const HomeScrean(),
-    const CategoryScrean(),
+    const CategoryScreen(),
+    const PrductoHome(),
     const PerfilScreen()
-    
   ];
   int _activePage = 0;
-  final screens =[
-    
-  ];
+  final screens = [];
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +30,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           items: const <Widget>[
             Icon(Icons.house, size: 30),
             Icon(Icons.list, size: 30),
+            Icon(Icons.help, size: 30),
             Icon(Icons.perm_identity, size: 30),
           ],
           color: Colors.white,
@@ -50,7 +50,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           child: Center(
             child: _page[_activePage],
           ),
-        )
-        );
+        ));
   }
 }

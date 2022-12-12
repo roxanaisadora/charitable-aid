@@ -10,8 +10,8 @@ class PerfilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( backgroundColor: Colors.greenAccent,
-        title: const Text('MY PROFILE'),
+      appBar: AppBar( 
+        title: const Text('Mi Perfil'),
         centerTitle: true,
         
       ),
@@ -33,7 +33,7 @@ class PerfilScreen extends StatelessWidget {
                 child: Padding(padding:const EdgeInsets.symmetric( horizontal: 10) ,
                 child: Column(
                   children: [
-                    Padding(padding:const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
+                    Padding(padding:const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
                     child: Container(
                       height: 120,
                             width: 120,
@@ -69,6 +69,7 @@ class PerfilScreen extends StatelessWidget {
                 )
                 )
               ),
+              
               SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -180,11 +181,6 @@ class PerfilScreen extends StatelessWidget {
                     //       ),);
                     //     },
                     //   ),
-                    const Divider(
-                      height:5,
-                      thickness:3,
-                      color:Color.fromARGB(255, 224, 217, 217)
-                    ),
                   ],
                 )
               )
