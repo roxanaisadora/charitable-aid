@@ -5,18 +5,22 @@ import 'package:provider/provider.dart';
 
 
 class RoundedButton extends StatelessWidget {
+  final String ? postTitle;
+  final String ? category;
+  final double ? donationAmount;
   const RoundedButton({
     Key? key,
-    required this.onPressed,
+    required this.onPressed, this.postTitle, this.category, this.donationAmount,
   }) : super(key: key);
+  
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     final productoProvider = Provider.of<ProductoProvider>(context);
-    const nombreController = 'ayuda puno';
-    const categoriaController = 'ayuda social';
-    const precioController = '2.85';
+    final nombreController = postTitle;
+    final categoriaController = category;
+    final precioController = '$donationAmount';
     return MaterialButton(
       minWidth: double.infinity,
       padding: const EdgeInsets.symmetric(

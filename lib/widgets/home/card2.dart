@@ -7,7 +7,8 @@ class Card2 extends StatefulWidget {
   final String? title;
   final String? subtitle;
   final String? titleb;
-  const Card2({super.key, this.image, this.title, this.subtitle, this.titleb});
+  final Function? onTap;
+  const Card2({super.key, this.image, this.title, this.subtitle, this.titleb, this.onTap});
 
   @override
   State<Card2> createState() => _Card2State();
@@ -45,7 +46,7 @@ class _Card2State extends State<Card2> {
                           const SizedBox(height: 8,),
                           SizedBox(height: 50, child: Text(widget.subtitle!,style: const TextStyle(fontSize: 16))),
                           InkWell(
-                            onTap:() {},
+                            onTap: ()=> widget.onTap!(),
                             child:Padding(
                               padding: const EdgeInsets.only(top:10),
                               child: Padding(

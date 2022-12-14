@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: unnecessary_new
+
 import 'package:ac/providers/provider_donation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,13 +27,19 @@ class PrductoHome extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        color: Colors.greenAccent,
-        child: ListView.builder(
+      body: Center(
+        child: Container(
+          color: Colors.greenAccent,
+          child:  productoData.product.isEmpty ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Ven y comienza a ayudar', style: TextStyle(fontSize: 30),),
+              Image.network('https://www.organdonor.gov/sites/default/files/organ-donor/learn/statistics/stat-04.png'),
+            ],
+          ) : ListView.builder(
           itemCount: productoData.product.length,
           itemBuilder: (BuildContext context, int index) {
             final data = productoData.product[index];
-
             return Padding(
               padding: const EdgeInsets.only(top:10),
               child: Container(
@@ -53,6 +61,7 @@ class PrductoHome extends StatelessWidget {
               ),
             );
           },
+          )
         ),
       ),
     );
