@@ -1,4 +1,4 @@
-import 'package:ac/pages/donation/mylistdonation.dart';
+
 import 'package:ac/route/index_page.dart';
 import 'package:ac/screen/perfil_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<dynamic> _page = [
     const HomeScrean(),
     const CategoryScreen(),
-    const PrductoHome(),
+    const NavigationDonatio(),
     const PerfilScreen()
   ];
   int _activePage = 0;

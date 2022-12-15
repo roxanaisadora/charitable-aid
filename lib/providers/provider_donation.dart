@@ -9,6 +9,13 @@ class ProductoProvider extends ChangeNotifier{
   final dbProducto = DBProducto.instance;
 
   List<Producto> product = [];
+  bool dato1 = false;
+
+  btncambiar(){
+    (dato1 == false)?(dato1 = true):(dato1 = false);
+    print(dato1);
+    notifyListeners();
+  }
   
   //crear producto
   void insertProduct(nombre, categoria, precio) async{
