@@ -1,4 +1,6 @@
 
+
+import 'package:ac/pages/home/index_home.dart';
 import 'package:ac/widgets/home/index_widget_home.dart';
 import 'package:flutter/material.dart';
 import 'package:page_indicator/page_indicator.dart';
@@ -83,18 +85,37 @@ class _HomeScreanState extends State<HomeScrean> {
                           meta: dato['meta'],
                           personas: dato['personas'],
                           donadores: dato['donadores'],
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context)=> SocialScreenHome(
+                                postAsset:dato['image'],
+                                postTitle:dato['title'],
+                                postDescript:dato['description'],
+                                donationAmount:dato['donation'],
+                                donorsNumber:dato['colaboradores'].toInt(),
+                                category:dato['category'],
+                              ),
+                              ),
+                            );
+                          },
                         );
                     },
                     )
                 ),
             ),
              const SizedBox(height: 20,),
-            const Card2(
+            Card2(
               image: 'assets/image/regalo_1.png',
               title: 'Envia regalo a de la comida',
               subtitle: 'En nombre de tus seres queridos',
               titleb: 'Enviar regalo',
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=> const Secreen2(
+                  ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 20,),
             const Padding(
@@ -110,6 +131,13 @@ class _HomeScreanState extends State<HomeScrean> {
                         return Card3(
                           image: dato['image'],
                           title: dato['title'],
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                            builder: (context)=> const SecreenHelp(
+                            ),
+                            ),
+                          );
+                          }
                         );
                     },
                     )
@@ -133,16 +161,30 @@ class _HomeScreanState extends State<HomeScrean> {
                           num4: dato['num4'],
                           num5: dato['num5'],
                           num6: dato['num6'],
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                            builder: (context)=> const SecreenMore(
+                            ),
+                            ),
+                          );
+                          }
                         );
                     },
                     )
               ),
             const SizedBox(height: 30,),
-            const Card2(
+            Card2(
               image: 'assets/image/amigos.jpg',
               title: 'Invita a tus amigos',
               subtitle: 'Y luchen juntos contra el hambre',
               titleb: 'Invita a amigos',
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=> const Secreen2(
+                  ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 30,),
             SizedBox(height: 530, 
@@ -154,6 +196,13 @@ class _HomeScreanState extends State<HomeScrean> {
                         return Card3(
                           image: dato['image'],
                           title: dato['title'],
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                            builder: (context)=> const SecreenHelp(
+                            ),
+                            ),
+                          );
+                          }
                         );
                     },
                     )
@@ -163,11 +212,18 @@ class _HomeScreanState extends State<HomeScrean> {
               padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
               child: Text('Desglose de la ayuda',style: TextStyle(fontSize: 16),),
             ),
-            const Card2(
+            Card2(
               image: 'assets/image/estadistica.png',
               title: 'Como se Utiliza mi donación',
               subtitle: 'Conoce hacerca del uso de tu ayuda',
               titleb: 'Aprende mas',
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=> const Secreen2(
+                  ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 20,),
             Padding(
@@ -238,7 +294,13 @@ class _HomeScreanState extends State<HomeScrean> {
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 5, left: 15),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                            builder: (context)=> const SecreenHelp(
+                            ),
+                            ),
+                          );
+                          },
                           child: Container(
                             height: 30,
                             width: 100,

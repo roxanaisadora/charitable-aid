@@ -28,28 +28,19 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    width: double.infinity,
-                    height: 380,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            alignment: Alignment.center,
-                            image: AssetImage("assets/image/logo.jpg"))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 30),
-                          child: Text('Bienvenidos',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white)),
-                        ),
-                      ],
-                    )),
+                SizedBox(
+                  width: 240,
+                  child: Image.asset('assets/image/logo_login.png'),
+                ),
                 const SizedBox(
-                  height: 0,
+                  height: 18,
+                ),
+                const Text(
+                  'Bienvenido',
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 ChangeNotifierProvider(
                   create: (context) => ProviderLogin(),
@@ -205,12 +196,6 @@ class __LoginFormState extends State<_LoginForm> {
               const SizedBox(
                 height: 20,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushReplacementNamed(context, MyRoutes.rHome);
-                },
-                child: const Text('Ingresar sin contraseña'),
-              )
             ],
           ),
         ),

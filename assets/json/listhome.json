@@ -5,7 +5,10 @@
       "colaboradores":327.0,
       "meta":500.0,
       "personas":117,
-      "donadores":200
+      "donadores":200,
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "donation":3.80,
+      "category":"ayuda social"
     },
     {
       "image":"https://peru21.pe/resizer/F07FteffelvBAuzX0yvzaQhqIuA=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/35RYFAO4DRBPFI47K47E76LWJQ.jpg",
@@ -13,7 +16,10 @@
       "colaboradores":536.0,
       "meta":1000.0,
       "personas":189,
-      "donadores":300
+      "donadores":300,
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "donation":10.80,
+      "category":"voluntariado"
       }
       ,
     {
@@ -22,7 +28,10 @@
       "colaboradores":425.0,
       "meta":800.0,
       "personas":360,
-      "donadores":265
+      "donadores":265,
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "donation":30.80,
+      "category":"ayuda social"
       }
       ,
     {
@@ -31,7 +40,10 @@
       "colaboradores":520.0,
       "meta":700.0,
       "personas":183,
-      "donadores":182
+      "donadores":182,
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "donation":26.80,
+      "category":"donaciones"
       }
     ],
     "items_1" : [{
