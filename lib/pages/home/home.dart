@@ -1,8 +1,7 @@
-
-
+import 'package:flutter/material.dart';
 import 'package:ac/pages/home/index_home.dart';
 import 'package:ac/widgets/home/index_widget_home.dart';
-import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:page_indicator/page_indicator.dart';
 import 'package:page_view_indicators/arrow_page_indicator.dart';
 import 'dart:convert';
@@ -178,12 +177,10 @@ class _HomeScreanState extends State<HomeScrean> {
               title: 'Invita a tus amigos',
               subtitle: 'Y luchen juntos contra el hambre',
               titleb: 'Invita a amigos',
-              onTap:(){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=> const Secreen2(
-                  ),
-                  ),
-                );
+              onTap:()async{
+                final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
+
+                await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
               },
             ),
             const SizedBox(height: 30,),
