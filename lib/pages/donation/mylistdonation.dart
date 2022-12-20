@@ -1,45 +1,40 @@
 
-
-// ignore_for_file: unnecessary_new
-
-import 'package:ac/providers/provider_donation.dart';
+import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/pages/category/social_aid/page_form/card.dart';
+import 'package:ac/pages/category/social_aid/page_form/card2.dart';
+import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 class PrductoHome extends StatelessWidget {
   const PrductoHome({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
-    final productoData = Provider.of<ProductoProvider>(context);
-    productoData.queryAll();
-    return Container(
-        color: Colors.greenAccent,
-        child: Container(
-          child:  productoData.product.isEmpty ? Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Ven y comienza a ayudar', style: TextStyle(fontSize: 30),),
-            Image.network('https://www.organdonor.gov/sites/default/files/organ-donor/learn/statistics/stat-04.png'),
-          ],
-        ) : ListView.builder(
-        itemCount: productoData.product.length,
-        itemBuilder: (BuildContext context, int index) {
-          final data = productoData.product[index];
-          return Padding(
-            padding: const EdgeInsets.only(top:10),
-            child: Container(
-              color: Colors.white,
-              child: ListTile(
-                title: Text('${data.nombre} | ${data.categoria} '),
-                subtitle: Text('S/. ${data.precio} '),
-                onTap: () {},
-              ),
-            ),
-          );
-        },
-        )
-          ),
+    final DonationService = Provider.of<DonationesService>(context);
+
+    if (DonationService.isLoading) {
+      return const Material(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
       );
+    }
+    return Scaffold(
+      body: Container(
+        color: Colors.greenAccent,
+        child: ListView.builder(
+          itemCount: DonationService.donationes.length,
+          itemBuilder: (BuildContext context, int index) {
+            final dato = DonationService.donationes[index];
+            return CardCustom2(
+              title: Text('${dato.nombre} | ${dato.categoria} '),
+              subtitle: Text('s/. ${dato.precio}'),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
