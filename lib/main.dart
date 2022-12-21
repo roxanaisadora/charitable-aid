@@ -1,6 +1,10 @@
 
+import 'package:ac/pages/category/social_aid/page_form/page_pago.dart';
+import 'package:ac/pages/donation/update.dart';
 import 'package:ac/providers/provider_donation.dart';
+import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/route/route.dart';
+import 'package:ac/services/dato_supabase.dart';
 import 'package:ac/services/index.dart';
 import 'package:ac/share_preferences/preferences.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +20,10 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProviderLogin()),
       ChangeNotifierProvider(create: (_) => AuthService()),
       ChangeNotifierProvider(create: (_) => ProductoProvider()),
+      ChangeNotifierProvider(
+          create: (_) => DonationesService(),
+        ),
+        ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
     ], child: const MyApp()),
   );
 }
@@ -28,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Charitable Aid',
       scaffoldMessengerKey: CustomSnackbbar.msgkey,
       theme: ThemeData(
         useMaterial3: true,
@@ -36,6 +44,10 @@ class MyApp extends StatelessWidget {
       ),
       onGenerateRoute: MyRoutes.generateRoute,
       initialRoute: MyRoutes.rSplash,
+      routes: {
+        'page_pago': (_) => const DonationPage(),
+        'page_update': (_) => const LugarPage(),
+      },
     );
   }
 }

@@ -1,14 +1,56 @@
 
 
+import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/share_preferences/preferences.dart';
 import 'package:ac/widget/custom_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final storageprovider =Provider.of<StorageHomeProvider>(context);
+    
+_onAlertButtonsPressed(context) {
+    Alert(
+      context: context,
+      type: AlertType.warning,
+      title: "Elige",
+      desc: "Como quieres cambiar tu foto?",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Camera",
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          onPressed: (){
+            storageprovider.activecamera();
+            Navigator.pop(context);
+          },
+          color: Color.fromRGBO(0, 179, 134, 1.0),
+        ),
+        DialogButton(
+          child: Text(
+            "Gallery",
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          onPressed: (){
+            storageprovider.activegallery();
+            Navigator.pop(context);
+          },
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(116, 116, 191, 1.0),
+            Color.fromRGBO(52, 138, 199, 1.0),
+          ]),
+        )
+      ],
+    ).show();
+  }
+
+
     return Scaffold(
       appBar: AppBar( 
         title: const Text('Mi Perfil'),
@@ -24,11 +66,6 @@ class PerfilScreen extends StatelessWidget {
                 width: double.infinity,
                  decoration: const BoxDecoration(
                   color:  Colors.greenAccent,
-                    // borderRadius: BorderRadius.only(
-                    //   bottomRight: Radius.circular(17),
-                    //   bottomLeft: Radius.circular(17),
-                    // ),
-                    
                   ),
                 child: Padding(padding:const EdgeInsets.symmetric( horizontal: 10) ,
                 child: Column(
@@ -42,17 +79,46 @@ class PerfilScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(100.0),
                                 color: Colors.white,
                                 ),
-                      child:(Preferences.img == '')
-                  ? const CircleAvatar(
-                      radius: 60,
-                      child: Icon(Icons.photo, size: 50),
+                      child:(storageprovider.image == null)
+                      ? Stack(
+                        clipBehavior:Clip.none,
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          const CircleAvatar(
+                          radius: 60,
+                          child: Icon(Icons.photo, size: 50),
+                        ),
+                        Positioned(
+                           bottom: -25,
+                          child: IconButton(
+                            onPressed:  () => _onAlertButtonsPressed(context), 
+                            icon: Icon(Icons.camera_alt, 
+                            size: 36,color: Colors.white,
+                            shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
+                        )
+                      ],
                     )
-                  : CircleAvatar(
-                      radius: 60,
-                      backgroundImage: NetworkImage(Preferences.img),
+                      : Stack(
+                        clipBehavior:Clip.none,
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          CircleAvatar(
+                              radius: 60,
+                              backgroundImage: FileImage(storageprovider.image!),
+                            ),
+                          Positioned(
+                            bottom: -25,
+                            child: IconButton(
+                              onPressed: () => _onAlertButtonsPressed(context),
+                              icon: Icon(Icons.camera_alt, size: 36,
+                              color: Colors.white,
+                              shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
+                          )
+                        ],
+                      ),
+                      )
                     ),
-                    )
-                    ),
+
                     Padding(padding: const EdgeInsets.only(top:3),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -141,46 +207,6 @@ class PerfilScreen extends StatelessWidget {
                       thickness:3,
                       color:Color.fromARGB(255, 224, 217, 217)
                     ),
-                   
-                    
-                    
-                    // CardProfile(
-                    //   icon:const Icon(Icons.card_giftcard),
-                    //   title:'Metodo de pago',
-                    //   onTap: () {
-                    //       Navigator.push(context, MaterialPageRoute(
-                    //       builder: (context)=> const PayProfile(),
-                    //       ),);
-                    //     },
-                    //   ),
-                    // const Divider(
-                    //   height:5,
-                    //   thickness:3,
-                    //   color:Color.fromARGB(255, 224, 217, 217)
-                    // ),
-                    // CardProfile(
-                    //   icon:const Icon(Icons.contact_mail),
-                    //   title:'Mis direcciones de envio',
-                    //   onTap: () {
-                    //       Navigator.push(context, MaterialPageRoute(
-                    //       builder: (context)=> const DirectionProfile(),
-                    //       ),);
-                    //     },
-                    //   ),
-                    // const Divider(
-                    //   height:5,
-                    //   thickness:3,
-                    //   color:Color.fromARGB(255, 224, 217, 217)
-                    // ),
-                    // CardProfile(
-                    //   icon:const Icon(Icons.money),
-                    //   title:'Mis datos fiscales',
-                    //   onTap: () {
-                    //       Navigator.push(context, MaterialPageRoute(
-                    //       builder: (context)=> const FiscalProfile(),
-                    //       ),);
-                    //     },
-                    //   ),
                   ],
                 )
               )
