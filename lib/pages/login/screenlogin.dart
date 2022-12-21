@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Crear nueva cuenta',
                     style: TextStyle(color: Colors.blue),
                   ),
-                )
+                ),
               ],
             ),
           ),

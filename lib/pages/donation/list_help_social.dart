@@ -1,72 +1,55 @@
 
-
-// ignore_for_file: unnecessary_new
-
-import 'package:ac/providers/provider_donation.dart';
+import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/pages/category/social_aid/page_form/card.dart';
+import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 class HelpSocial extends StatelessWidget {
   const HelpSocial({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
-    final productoData = Provider.of<ProductoProvider>(context);
-    productoData.queryAll();
-    return Container(
-        color: Colors.greenAccent,
-        child: Container(
-          child:  productoData.product.isEmpty ? Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Ven y comienza a ayudar', style: TextStyle(fontSize: 30),),
-            Image.network('https://www.pngkit.com/png/detail/237-2376444_donate-png-hd-donation.png'),
-          ],
-        ) : Stack(
-          alignment: Alignment.topRight,
-          children: [
-            InkWell(onTap: () {  },child: Container(width: 140, height: 50,child: Row(
-              children: [
-                const Text('Eliminar todo'),
-                IconButton(
-            onPressed: () {
-              productoData.deleteAll();
-            },
-            icon: const Icon(Icons.delete),
-          ),
-              ],
-            ),),),
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: ListView.builder(
-          itemCount: productoData.product.length,
-          itemBuilder: (BuildContext context, int index) {
-              final data = productoData.product[index];
-              return Padding(
-                padding: const EdgeInsets.only(top:10),
-                child: Container(
-                  color: Colors.white,
-                  child: ListTile(
-                    title: Text('${data.nombre} | ${data.categoria} '),
-                    subtitle: Text('S/. ${data.precio} '),
-                      trailing: IconButton(
-                        onPressed: () {
-                          productoData.delete(data.id);
-                        },
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        ),
-                      ),
-                      onTap: () {},
-                  ),
-                ),
-              );
-          },
-          ),
-            ),]
-        )
-          ),
+    final DonationService = Provider.of<DonationesService>(context);
+
+    if (DonationService.isLoading) {
+      return const Material(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
       );
+    }
+    return Scaffold(
+      body: Container(
+        color: Colors.greenAccent,
+        child: ListView.builder(
+          itemCount: DonationService.donationes.length,
+          itemBuilder: (BuildContext context, int index) {
+            final dato = DonationService.donationes[index];
+            return CardCustom(
+              onPressed:(){
+                DonationService.borrarDonation(dato);
+              },
+              onTap: () {
+                DonationService.seleccionarLugar =
+                    DonationService.donationes[index].copyWith();
+
+                Navigator.pushNamed(context, 'lugar_page');
+              },
+              title: Text('${dato.nombre} | ${dato.categoria} '),
+              subtitle: Text('s/. ${dato.precio}'),
+            );
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          DonationService.seleccionarLugar = Donation(categoria: '', nombre: '', precio:'');
+          Navigator.pushNamed(context, 'lugar_page');
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 }

@@ -26,14 +26,14 @@ class NavigationDonatio extends StatelessWidget {
             ],
             tabBarProperties: TabBarProperties(
             height: 32.0,
-            indicatorColor: Colors.white,
-            indicatorWeight: 2.0,
+            indicatorColor: Colors.blue,
+            indicatorWeight: 4.0,
             labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey[400],
+            unselectedLabelColor: Colors.white,
           ),
             views: const [
               PrductoHome(),
-              HelpSocial (),
+              HelpSocial(),
             ],
             onChange: (index) => print(index),
           ),

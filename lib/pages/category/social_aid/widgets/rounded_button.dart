@@ -1,7 +1,8 @@
-import 'package:ac/providers/provider_donation.dart';
+
+import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 
 class RoundedButton extends StatelessWidget {
@@ -10,17 +11,18 @@ class RoundedButton extends StatelessWidget {
   final double ? donationAmount;
   const RoundedButton({
     Key? key,
-    required this.onPressed, this.postTitle, this.category, this.donationAmount,
+    required this.onPressed, 
+    this.postTitle, 
+    this.category, 
+    this.donationAmount,
   }) : super(key: key);
   
   final VoidCallback onPressed;
+  
 
   @override
   Widget build(BuildContext context) {
-    final productoProvider = Provider.of<ProductoProvider>(context);
-    final nombreController = postTitle;
-    final categoriaController = category;
-    final precioController = '$donationAmount';
+    final donationService = Provider.of<DonationesService>(context);
     return MaterialButton(
       minWidth: double.infinity,
       padding: const EdgeInsets.symmetric(
@@ -31,12 +33,9 @@ class RoundedButton extends StatelessWidget {
       ),
       color: Colors.greenAccent.shade700,
       onPressed: (){
-        productoProvider.insertProduct(
-                    nombreController,
-                    categoriaController,
-                    precioController,
-                    );
-
+          donationService.seleccionarLugar = Donation(categoria: '$category', nombre: '$postTitle', precio:'$donationAmount');
+          Navigator.pushNamed(context, 'page_pago');
+        
       },
       child: const Text(
         'Donar Ahora',
