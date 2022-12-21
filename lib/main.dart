@@ -2,6 +2,7 @@
 import 'package:ac/pages/category/social_aid/page_form/page_pago.dart';
 import 'package:ac/pages/donation/update.dart';
 import 'package:ac/providers/provider_donation.dart';
+import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/route/route.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:ac/services/index.dart';
@@ -22,6 +23,7 @@ void main() async {
       ChangeNotifierProvider(
           create: (_) => DonationesService(),
         ),
+        ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
     ], child: const MyApp()),
   );
 }
