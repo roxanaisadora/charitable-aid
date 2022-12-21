@@ -1,4 +1,5 @@
 
+import 'package:ac/pages/category/social_aid/donation_screen.dart';
 import 'package:ac/providers/provider_supabase.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
@@ -34,14 +35,7 @@ class donationFormPage extends StatelessWidget {
       ),
       body: Form(
         key: donationForm.formkey,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-
-            ],
-          ),
-        ),
+        child: DonationScreen()
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

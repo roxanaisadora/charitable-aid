@@ -6,11 +6,7 @@ class DonationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-        ),
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -74,7 +70,7 @@ class DonationScreen extends StatelessWidget {
               ),
             ),
           ),
-        ));
+        );
   }
 }
 
