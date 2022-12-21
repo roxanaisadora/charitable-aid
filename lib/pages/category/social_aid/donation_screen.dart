@@ -1,76 +1,118 @@
+import 'package:ac/providers/provider_supabase.dart';
+import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DonationScreen extends StatelessWidget {
-  const DonationScreen({super.key});
+class DonationPage extends StatelessWidget {
+
+  const DonationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ).copyWith(
-                bottom: 0,
+    final donationService = Provider.of<DonationesService>(context);
+    return ChangeNotifierProvider(
+      create: (_) => DonationFormProvider(donationService.seleccionarLugar),
+      child: DonationScreen(donationService: donationService),
+    );
+  }
+}
+
+
+class DonationScreen extends StatelessWidget {
+  final DonationesService donationService;
+  const DonationScreen({super.key, required this.donationService});
+
+  @override
+
+  Widget build(BuildContext context) {
+    final donationForm = Provider.of<DonationFormProvider>(context);
+    final dato = donationForm.donation;
+  
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Confirmar Donacion'),
+      ),
+      body:Form(
+        key: donationForm.formkey,
+        child: SingleChildScrollView
+        (child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ).copyWith(
+              bottom: 0,
+            ),
+            child: Column(
+              children: [
+                DonationPostCard(
+                  asset:
+                      'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+                  title: dato.nombre,
+                  subtitle: dato.categoria,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const Text(
+                  '¿Cuánto Donarás?',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                DonationTextField(
+                  onChanged: (value) => dato.precio = value,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                PredefinedDonationButton(
+                  donationAmount: 50,
+                  onPressed: () {
+                    dato.precio='50';
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                PredefinedDonationButton(
+                  donationAmount: 20,
+                  onPressed: () {
+                    dato.precio='20';
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                PredefinedDonationButton(
+                  donationAmount: 10,
+                  onPressed: () {
+                    dato.precio='10';
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                MyRoundedButton(
+                label: 'Donar',
+                onPressed: () {
+                  donationService.crearOactualizar(donationForm.donation);
+                  Navigator.pushNamed(context, '/home');
+                },
               ),
-              child: Column(
-                children: [
-                  DonationPostCard(
-                    asset:
-                        'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-                    title: 'Ayuda a Puno',
-                    subtitle: 'Social aid',
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const Text(
-                    '¿Cuánto Donarás?',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const DonationTextField(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  PredefinedDonationButton(
-                    donationAmount: 50,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  PredefinedDonationButton(
-                    donationAmount: 20,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  PredefinedDonationButton(
-                    donationAmount: 10,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MyRoundedButton(
-                    label: 'Donar',
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+              ],
             ),
           ),
-        );
+        ),
+          ),
+      )
+    );
   }
 }
 
@@ -205,8 +247,9 @@ class DonationPostCard extends StatelessWidget {
 }
 
 class DonationTextField extends StatelessWidget {
+  final Function(String)? onChanged;
   const DonationTextField({
-    Key? key,
+    Key? key, this.onChanged,
   }) : super(key: key);
 
   @override
@@ -216,7 +259,9 @@ class DonationTextField extends StatelessWidget {
         maxWidth: 200.0,
         maxHeight: 45.0,
       ),
-      child: TextField(
+      child: TextFormField(
+        onChanged: onChanged!,
+        keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           hintStyle: TextStyle(

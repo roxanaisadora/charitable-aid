@@ -54,7 +54,7 @@ class CategoryScreen extends StatelessWidget {
               label: 'Donaciones',
               onPressed: () {
                 final route = MaterialPageRoute(
-                  builder: (context) => const DonationScreen(),
+                  builder: (context) => const DonationPage(),
                 );
                 Navigator.push(context, route);
               },

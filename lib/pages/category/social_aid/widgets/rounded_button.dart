@@ -31,9 +31,8 @@ class RoundedButton extends StatelessWidget {
       ),
       color: Colors.greenAccent.shade700,
       onPressed: (){
-          donationService.seleccionarLugar = Donation(categoria: '$category', nombre: '$postTitle', precio:'$donationAmount');
+         donationService.seleccionarLugar = Donation(categoria: '$category', nombre: '$postTitle', precio:'$donationAmount');
           Navigator.pushNamed(context, 'page_pago');
-        
       },
       child: const Text(
         'Donar Ahora',
