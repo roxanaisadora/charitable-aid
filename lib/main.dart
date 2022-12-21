@@ -1,6 +1,6 @@
-
 import 'package:ac/pages/category/social_aid/donation_screen.dart';
 import 'package:ac/pages/donation/update.dart';
+import 'package:ac/pages/login/register.dart';
 import 'package:ac/providers/provider_donation.dart';
 import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/route/route.dart';
@@ -21,9 +21,9 @@ void main() async {
       ChangeNotifierProvider(create: (_) => AuthService()),
       ChangeNotifierProvider(create: (_) => ProductoProvider()),
       ChangeNotifierProvider(
-          create: (_) => DonationesService(),
-        ),
-        ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
+        create: (_) => DonationesService(),
+      ),
+      ChangeNotifierProvider(create: (_) => StorageHomeProvider())
     ], child: const MyApp()),
   );
 }
