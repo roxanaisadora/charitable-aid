@@ -35,7 +35,7 @@ class HelpSocial extends StatelessWidget {
                 DonationService.seleccionarLugar =
                     DonationService.donationes[index].copyWith();
 
-                Navigator.pushNamed(context, 'lugar_page');
+                Navigator.pushNamed(context, 'page_update');
               },
               title: Text('${dato.nombre} | ${dato.categoria} '),
               subtitle: Text('s/. ${dato.precio}'),
@@ -43,13 +43,7 @@ class HelpSocial extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          DonationService.seleccionarLugar = Donation(categoria: '', nombre: '', precio:'');
-          Navigator.pushNamed(context, 'lugar_page');
-        },
-        child: const Icon(Icons.add),
-      ),
+      
     );
   }
 }

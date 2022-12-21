@@ -1,5 +1,6 @@
 
 import 'package:ac/pages/category/social_aid/page_form/page_pago.dart';
+import 'package:ac/pages/donation/update.dart';
 import 'package:ac/providers/provider_donation.dart';
 import 'package:ac/route/route.dart';
 import 'package:ac/services/dato_supabase.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
       initialRoute: MyRoutes.rSplash,
       routes: {
         'page_pago': (_) => const DonationPage(),
+        'page_update': (_) => const LugarPage(),
       },
     );
   }
