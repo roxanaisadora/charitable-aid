@@ -1,5 +1,3 @@
-
-
 import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/share_preferences/preferences.dart';
 import 'package:ac/widget/custom_drawer.dart';
@@ -12,44 +10,43 @@ class PerfilScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final storageprovider =Provider.of<StorageHomeProvider>(context);
-    
-_onAlertButtonsPressed(context) {
-    Alert(
-      context: context,
-      type: AlertType.warning,
-      title: "Elige",
-      desc: "Como quieres cambiar tu foto?",
-      buttons: [
-        DialogButton(
-          child: Text(
-            "Camera",
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
-          onPressed: (){
-            storageprovider.activecamera();
-            Navigator.pop(context);
-          },
-          color: Color.fromRGBO(0, 179, 134, 1.0),
-        ),
-        DialogButton(
-          child: Text(
-            "Gallery",
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
-          onPressed: (){
-            storageprovider.activegallery();
-            Navigator.pop(context);
-          },
-          gradient: LinearGradient(colors: [
-            Color.fromRGBO(116, 116, 191, 1.0),
-            Color.fromRGBO(52, 138, 199, 1.0),
-          ]),
-        )
-      ],
-    ).show();
-  }
+    final storageprovider = Provider.of<StorageHomeProvider>(context);
 
+    _onAlertButtonsPressed(context) {
+      Alert(
+        context: context,
+        type: AlertType.warning,
+        title: "Elige",
+        desc: "Como quieres cambiar tu foto?",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Camera",
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            onPressed: () {
+              storageprovider.activecamera();
+              Navigator.pop(context);
+            },
+            color: Color.fromRGBO(0, 179, 134, 1.0),
+          ),
+          DialogButton(
+            child: Text(
+              "Gallery",
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            onPressed: () {
+              storageprovider.activegallery();
+              Navigator.pop(context);
+            },
+            gradient: LinearGradient(colors: [
+              Color.fromRGBO(116, 116, 191, 1.0),
+              Color.fromRGBO(52, 138, 199, 1.0),
+            ]),
+          )
+        ],
+      ).show();
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -63,78 +60,128 @@ _onAlertButtonsPressed(context) {
           child: Column(
             children: [
               Container(
-                width: double.infinity,
-                 decoration: const BoxDecoration(
-                  color:  Colors.greenAccent,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Colors.greenAccent,
                   ),
-                child: Padding(padding:const EdgeInsets.symmetric( horizontal: 10) ,
-                child: Column(
-                  children: [
-                    Padding(padding:const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                    child: Container(
-                      height: 120,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                border: Border.all(width: 2, color: Colors.white),
-                                borderRadius: BorderRadius.circular(100.0),
-                                color: Colors.white,
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 25, horizontal: 10),
+                              child: Container(
+                                height: 120,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  border:
+                                      Border.all(width: 2, color: Colors.white),
+                                  borderRadius: BorderRadius.circular(100.0),
+                                  color: Colors.white,
                                 ),
-                      child:(storageprovider.image == null)
-                      ? Stack(
-                        clipBehavior:Clip.none,
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          const CircleAvatar(
-                          radius: 60,
-                          child: Icon(Icons.photo, size: 50),
-                        ),
-                        Positioned(
-                           bottom: -25,
-                          child: IconButton(
-                            onPressed:  () => _onAlertButtonsPressed(context), 
-                            icon: Icon(Icons.camera_alt, 
-                            size: 36,color: Colors.white,
-                            shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
-                        )
-                      ],
-                    )
-                      : Stack(
-                        clipBehavior:Clip.none,
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          CircleAvatar(
-                              radius: 60,
-                              backgroundImage: FileImage(storageprovider.image!),
-                            ),
-                          Positioned(
-                            bottom: -25,
-                            child: IconButton(
-                              onPressed: () => _onAlertButtonsPressed(context),
-                              icon: Icon(Icons.camera_alt, size: 36,
-                              color: Colors.white,
-                              shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
-                          )
+                                child: (storageprovider.image == null)
+                                    ? Stack(
+                                        clipBehavior: Clip.none,
+                                        alignment: Alignment.bottomCenter,
+                                        children: [
+                                          const CircleAvatar(
+                                            radius: 60,
+                                            child: Icon(Icons.photo, size: 50),
+                                          ),
+                                          Positioned(
+                                            bottom: -25,
+                                            child: IconButton(
+                                                onPressed: () =>
+                                                    _onAlertButtonsPressed(
+                                                        context),
+                                                icon: Icon(
+                                                  Icons.camera_alt,
+                                                  size: 36,
+                                                  color: Colors.white,
+                                                  shadows: <Shadow>[
+                                                    Shadow(
+                                                        color: Colors.black,
+                                                        blurRadius: 15.0)
+                                                  ],
+                                                )),
+                                          )
+                                        ],
+                                      )
+                                    : Stack(
+                                        clipBehavior: Clip.none,
+                                        alignment: Alignment.bottomCenter,
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 60,
+                                            backgroundImage: FileImage(
+                                                storageprovider.image!),
+                                          ),
+                                          Positioned(
+                                            bottom: -25,
+                                            child: IconButton(
+                                                onPressed: () =>
+                                                    _onAlertButtonsPressed(
+                                                        context),
+                                                icon: Icon(
+                                                  Icons.camera_alt,
+                                                  size: 36,
+                                                  color: Colors.white,
+                                                  shadows: <Shadow>[
+                                                    Shadow(
+                                                        color: Colors.black,
+                                                        blurRadius: 15.0)
+                                                  ],
+                                                )),
+                                          )
+                                        ],
+                                      ),
+                              )),
+                          Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  (Preferences.nombre == '')
+                                      ? const Text(
+                                          'Ingrese su nombre',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      : Text(
+                                          Preferences.nombre,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                  const SizedBox(
+                                    width: 2,
+                                  ),
+                                  (Preferences.nombre == '')
+                                      ? const Text(
+                                          '',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      : Text(
+                                          Preferences.apellido,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                ],
+                              )),
+                          const SizedBox(
+                            height: 15,
+                          ),
                         ],
-                      ),
-                      )
-                    ),
-
-                    Padding(padding: const EdgeInsets.only(top:3),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        (Preferences.nombre == '')?const Text('Ingrese su nombre', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),):Text(Preferences.nombre, style: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),),
-                        const SizedBox(width: 2,),
-                        (Preferences.nombre == '')?const Text('', style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),):Text(Preferences.apellido, style: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),)
-                        
-                      ],
-                    )
-                    ),
-                    const SizedBox(height: 15,),
-                  ],
-                )
-                )
-              ),
+                      ))),
               SizedBox(
                   width: double.infinity,
                   child: Column(
@@ -195,7 +242,6 @@ _onAlertButtonsPressed(context) {
                           height: 5,
                           thickness: 3,
                           color: Color.fromARGB(255, 224, 217, 217)),
-
                       SizedBox(
                         height: 65,
                         width: double.infinity,
@@ -243,15 +289,12 @@ _onAlertButtonsPressed(context) {
                           ],
                         ),
                       ),
-                    ),
-                    const Divider(
-                      height:5,
-                      thickness:3,
-                      color:Color.fromARGB(255, 224, 217, 217)
-                    ),
-                  ],
-                )
-              )
+                      const Divider(
+                          height: 5,
+                          thickness: 3,
+                          color: Color.fromARGB(255, 224, 217, 217)),
+                    ],
+                  ))
             ],
           ),
         ),
