@@ -1,3 +1,4 @@
+import 'package:ac/pages/category/social_aid/donation_screen.dart';
 import 'package:ac/pages/category/social_aid/social_aid_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +12,13 @@ class CategoryScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title:const Text(
-              'Categorías',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.black,
-              ),
-            ),
+        title: const Text(
+          'Categorías',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
@@ -36,7 +37,7 @@ class CategoryScreen extends StatelessWidget {
             CategoryCard(
               asset:
                   'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-              label: 'Ayuda Social',
+              label: 'Voluntariado',
               onPressed: () {
                 final route = MaterialPageRoute(
                   builder: (context) => const SocialAidScreen(),
@@ -51,16 +52,12 @@ class CategoryScreen extends StatelessWidget {
               asset:
                   'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
               label: 'Donaciones',
-              onPressed: () {},
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            CategoryCard(
-              asset:
-                  'https://images.unsplash.com/photo-1526976668912-1a811878dd37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-              label: 'Voluntariado',
-              onPressed: () {},
+              onPressed: () {
+                final route = MaterialPageRoute(
+                  builder: (context) => const DonationScreen(),
+                );
+                Navigator.push(context, route);
+              },
             ),
           ],
         ),
