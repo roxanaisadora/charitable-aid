@@ -27,7 +27,7 @@ class donationFormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final donationForm = Provider.of<DonationFormProvider>(context);
     final dato = donationForm.donation;
-
+  
     return Scaffold(
       appBar: AppBar(
         title: const Text('Confirmar Donacion'),

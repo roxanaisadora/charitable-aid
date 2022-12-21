@@ -80,52 +80,43 @@ _onAlertButtonsPressed(context) {
                                 color: Colors.white,
                                 ),
                       child:(storageprovider.image == null)
-                  ? InkWell(
-                    onTap:(){
-                      storageprovider.activegallery();
-                    },
-                    child: Stack(
-                      clipBehavior:Clip.none,
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        const CircleAvatar(
-                        radius: 60,
-                        child: Icon(Icons.photo, size: 50),
-                      ),
-                          Positioned(
-                             bottom: -25,
-                            child: IconButton(
-                              onPressed: (() {
-                                    storageprovider.activecamera();
-                                  }), icon: Icon(Icons.camera_alt, size: 36,color: Colors.white,shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
-                          )
+                      ? Stack(
+                        clipBehavior:Clip.none,
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          const CircleAvatar(
+                          radius: 60,
+                          child: Icon(Icons.photo, size: 50),
+                        ),
+                        Positioned(
+                           bottom: -25,
+                          child: IconButton(
+                            onPressed:  () => _onAlertButtonsPressed(context), 
+                            icon: Icon(Icons.camera_alt, 
+                            size: 36,color: Colors.white,
+                            shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
+                        )
                       ],
-                    ),
-                  )
-                  : InkWell(
-                    onTap:(){
-                      storageprovider.activegallery();
-                    },
-                    child: Stack(
-                      clipBehavior:Clip.none,
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        CircleAvatar(
-                            radius: 60,
-                            backgroundImage: FileImage(storageprovider.image!),
-                          ),
+                    )
+                      : Stack(
+                        clipBehavior:Clip.none,
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          CircleAvatar(
+                              radius: 60,
+                              backgroundImage: FileImage(storageprovider.image!),
+                            ),
                           Positioned(
-                             bottom: -25,
+                            bottom: -25,
                             child: IconButton(
                               onPressed: () => _onAlertButtonsPressed(context),
-                               icon: Icon(Icons.camera_alt, size: 36,
-                               color: Colors.white,
-                               shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
+                              icon: Icon(Icons.camera_alt, size: 36,
+                              color: Colors.white,
+                              shadows:  <Shadow>[Shadow(color: Colors.black, blurRadius: 15.0)],)),
                           )
-                      ],
-                    ),
-                  ),
-                    )
+                        ],
+                      ),
+                      )
                     ),
 
                     Padding(padding: const EdgeInsets.only(top:3),
