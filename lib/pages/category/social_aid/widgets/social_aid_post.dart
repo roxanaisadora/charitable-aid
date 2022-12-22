@@ -82,6 +82,7 @@ class SocialAidPost extends StatelessWidget {
                 category:category!,
                 donationAmount:donationAmount!,
                 postTitle:postTitle!,
+                img:postAsset!,
               )
             ],
           ),

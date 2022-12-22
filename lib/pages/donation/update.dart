@@ -1,7 +1,7 @@
 
 import 'package:ac/pages/category/social_aid/page_form/textfild.dart';
-import 'package:ac/providers/provider_supabase.dart';
-import 'package:ac/services/dato_supabase.dart';
+import 'package:ac/providers/provider_supabase_help.dart';
+import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,23 +11,23 @@ class LugarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final donationService = Provider.of<DonationesService>(context);
+    final helpService = Provider.of<HelpSeresvice>(context);
     return ChangeNotifierProvider(
-      create: (_) => DonationFormProvider(donationService.seleccionarLugar),
-      child: DonationFormPage(donationService: donationService),
+      create: (_) => HelpFormProvider(helpService.seleccionarLugar2),
+      child: DonationFormPage(helpService: helpService),
     );
   }
 }
 
 class DonationFormPage extends StatelessWidget {
-  final DonationesService donationService;
+  final HelpSeresvice helpService;
 
-  const DonationFormPage({super.key, required this.donationService});
+  const DonationFormPage({super.key, required this.helpService});
 
   @override
   Widget build(BuildContext context) {
-    final lugarForm = Provider.of<DonationFormProvider>(context);
-    final dato = lugarForm.donation;
+    final lugarForm = Provider.of<HelpFormProvider>(context);
+    final dato = lugarForm.help;
 
     return Scaffold(
       appBar: AppBar(
@@ -49,9 +49,9 @@ class DonationFormPage extends StatelessWidget {
               ),
               CustomTextFormField(
                 maxLines: 5,
-                initialValue: dato.categoria,
-                hintText: 'categoria',
-                onChanged: (value) => dato.categoria = value,
+                initialValue: dato.hora,
+                hintText: 'hora',
+                onChanged: (value) => dato.hora = value,
               ),
 
               const SizedBox(
@@ -59,9 +59,9 @@ class DonationFormPage extends StatelessWidget {
               ),
               CustomTextFormField(
                 maxLines: 5,
-                initialValue: dato.precio,
-                hintText: 'precio',
-                onChanged: (value) => dato.precio = value,
+                initialValue: dato.fecha,
+                hintText: 'fecha',
+                onChanged: (value) => dato.fecha = value,
               ),
             ],
           ),
@@ -69,7 +69,7 @@ class DonationFormPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          donationService.crearOactualizar(lugarForm.donation);
+          helpService.crearOactualizar(lugarForm.help);
         },
         child: const Icon(Icons.save),
       ),

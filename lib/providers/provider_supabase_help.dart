@@ -1,14 +1,14 @@
-import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/models/model_supabase_ayuda.dart';
 import 'package:flutter/cupertino.dart';
 
 
-class DonationFormProvider extends ChangeNotifier {
+class HelpFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool dato1 = false;
   bool dato2 = false;
   bool dato3 = false;
-  Donation donation;
-  DonationFormProvider(this.donation);
+  Help help;
+  HelpFormProvider(this.help);
 
   bool isValidForm() {
     return formkey.currentState?.validate() ?? false;

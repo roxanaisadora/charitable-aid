@@ -15,6 +15,7 @@ class HomeScrean extends StatefulWidget {
 }
 
 class _HomeScreanState extends State<HomeScrean> {
+
   // ignore: prefer_final_fields
   List<dynamic> _data = [];
   List<dynamic>  _items = [];
@@ -131,11 +132,7 @@ class _HomeScreanState extends State<HomeScrean> {
                           image: dato['image'],
                           title: dato['title'],
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=> const SecreenHelp(
-                            ),
-                            ),
-                          );
+                            Navigator.pushNamed(context, '/help');
                           }
                         );
                     },
@@ -194,11 +191,7 @@ class _HomeScreanState extends State<HomeScrean> {
                           image: dato['image'],
                           title: dato['title'],
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=> const SecreenHelp(
-                            ),
-                            ),
-                          );
+                            Navigator.pushNamed(context, '/help2');
                           }
                         );
                     },
@@ -216,7 +209,7 @@ class _HomeScreanState extends State<HomeScrean> {
               titleb: 'Aprende mas',
               onTap:(){
                 Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=> const Secreen2(
+                  builder: (context)=> const BuySecurity(
                   ),
                   ),
                 );
@@ -293,7 +286,12 @@ class _HomeScreanState extends State<HomeScrean> {
                         child: InkWell(
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=> const SecreenHelp(
+                            builder: (context)=> SecreenMore2(
+                                img:dato2['image'],
+                                title:dato2['title'],
+                                subtitle:dato2['subtitle'],
+                                sub_title:dato2['sub_title'],
+                                data:dato2['items_6']
                             ),
                             ),
                           );

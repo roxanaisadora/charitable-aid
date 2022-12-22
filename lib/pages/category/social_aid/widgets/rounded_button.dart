@@ -1,10 +1,12 @@
 import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/pages/category/social_aid/donation_screen.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class RoundedButton extends StatelessWidget {
   final String ? postTitle;
+  final String ? img;
   final String ? category;
   final double ? donationAmount;
   const RoundedButton({
@@ -12,7 +14,7 @@ class RoundedButton extends StatelessWidget {
     required this.onPressed, 
     this.postTitle, 
     this.category, 
-    this.donationAmount,
+    this.donationAmount, this.img,
   }) : super(key: key);
   
   final VoidCallback onPressed;
@@ -32,7 +34,14 @@ class RoundedButton extends StatelessWidget {
       color: Colors.greenAccent.shade700,
       onPressed: (){
          donationService.seleccionarLugar = Donation(categoria: '$category', nombre: '$postTitle', precio:'$donationAmount');
-          Navigator.pushNamed(context, 'page_pago');
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DonationPage(
+              img:img,
+            ),
+          ),
+        );
       },
       child: const Text(
         'Donar Ahora',

@@ -1,12 +1,4 @@
-
-import 'package:ac/pages/category/social_aid/donation_screen.dart';
-import 'package:ac/pages/donation/update.dart';
-import 'package:ac/providers/provider_donation.dart';
-import 'package:ac/providers/storage-provider.dart';
-import 'package:ac/route/route.dart';
-import 'package:ac/services/dato_supabase.dart';
-import 'package:ac/services/index.dart';
-import 'package:ac/share_preferences/preferences.dart';
+import 'package:ac/route/index_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/provider_login.dart';
@@ -20,10 +12,9 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProviderLogin()),
       ChangeNotifierProvider(create: (_) => AuthService()),
       ChangeNotifierProvider(create: (_) => ProductoProvider()),
-      ChangeNotifierProvider(
-          create: (_) => DonationesService(),
-        ),
-        ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
+      ChangeNotifierProvider(create: (_) => DonationesService(),),
+      ChangeNotifierProvider(create: (_) => HelpSeresvice(),),
+      ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
     ], child: const MyApp()),
   );
 }

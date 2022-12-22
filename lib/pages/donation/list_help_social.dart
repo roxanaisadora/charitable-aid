@@ -1,7 +1,7 @@
 
-import 'package:ac/models/modelo_supabase.dart';
+
 import 'package:ac/pages/category/social_aid/page_form/card.dart';
-import 'package:ac/services/dato_supabase.dart';
+import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,9 +11,9 @@ class HelpSocial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DonationService = Provider.of<DonationesService>(context);
+    final HelpService = Provider.of<HelpSeresvice>(context);
 
-    if (DonationService.isLoading) {
+    if (HelpService.isLoading) {
       return const Material(
         child: Center(
           child: CircularProgressIndicator(),
@@ -24,21 +24,21 @@ class HelpSocial extends StatelessWidget {
       body: Container(
         color: Colors.greenAccent,
         child: ListView.builder(
-          itemCount: DonationService.donationes.length,
+          itemCount: HelpService.helpes.length,
           itemBuilder: (BuildContext context, int index) {
-            final dato = DonationService.donationes[index];
+            final dato = HelpService.helpes[index];
             return CardCustom(
               onPressed:(){
-                DonationService.borrarDonation(dato);
+                HelpService.borrarHelp(dato);
               },
               onTap: () {
-                DonationService.seleccionarLugar =
-                    DonationService.donationes[index].copyWith();
+                HelpService.seleccionarLugar2 =
+                    HelpService.helpes[index].copyWith();
 
                 Navigator.pushNamed(context, 'page_update');
               },
-              title: Text('${dato.nombre} | ${dato.categoria} '),
-              subtitle: Text('s/. ${dato.precio}'),
+              title: Text('${dato.nombre} | ${dato.fecha} '),
+              subtitle: Text('${dato.hora}'),
             );
           },
         ),
