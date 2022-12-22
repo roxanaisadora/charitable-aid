@@ -3,17 +3,20 @@ import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+final myController = TextEditingController();
 
 class DonationPage extends StatelessWidget {
-
-  const DonationPage({super.key});
+  final String? img;
+  const DonationPage({super.key, this.img});
 
   @override
   Widget build(BuildContext context) {
     final donationService = Provider.of<DonationesService>(context);
     return ChangeNotifierProvider(
       create: (_) => DonationFormProvider(donationService.seleccionarLugar),
-      child: DonationScreen(donationService: donationService),
+      child: DonationScreen(donationService: donationService, img:img),
     );
   }
 }
@@ -21,10 +24,32 @@ class DonationPage extends StatelessWidget {
 
 class DonationScreen extends StatelessWidget {
   final DonationesService donationService;
-  const DonationScreen({super.key, required this.donationService});
+  final String? img;
+  const DonationScreen({super.key, required this.donationService, this.img});
+  
+  
+
+
+  _onBasicAlertPressed(context) {
+    Alert(
+      context: context,
+      title: "Muchas Gracias",
+      desc: "Con tu aporte estas ayudando a quien mas lo necesita",
+      image: Image.asset("assets/image/amigos.jpg"),
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Cerrar",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          width: 120,
+        )
+      ],
+    ).show();
+  }
 
   @override
-
   Widget build(BuildContext context) {
     final donationForm = Provider.of<DonationFormProvider>(context);
     final dato = donationForm.donation;
@@ -47,8 +72,7 @@ class DonationScreen extends StatelessWidget {
             child: Column(
               children: [
                 DonationPostCard(
-                  asset:
-                      'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+                  asset:'$img',
                   title: dato.nombre,
                   subtitle: dato.categoria,
                 ),
@@ -67,43 +91,90 @@ class DonationScreen extends StatelessWidget {
                   height: 15,
                 ),
                 DonationTextField(
-                  onChanged: (value) => dato.precio = value,
+                  onChanged: (value) {
+                    dato.precio = value;
+                    },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 PredefinedDonationButton(
-                  donationAmount: 50,
+                  donationAmount: Text(
+                        'S/. 50',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Color(0XFF707089),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                  colores:(donationForm.dato1 ==false)?Colors.white:Colors.amber,
                   onPressed: () {
                     dato.precio='50';
+                    donationForm.btncambiar();
+                    if(donationForm.dato1== true){
+                      donationForm.dato2=false;
+                      donationForm.dato3=false;
+                      myController.text='';
+                    };
+                    print(myController.text);
                   },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 PredefinedDonationButton(
-                  donationAmount: 20,
+                  donationAmount: Text(
+                        'S/. 20',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Color(0XFF707089),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                  colores:(donationForm.dato2 ==false)?Colors.white:Colors.amber,
                   onPressed: () {
                     dato.precio='20';
+                    donationForm.btncambiar2();
+                    if(donationForm.dato2== true){
+                      donationForm.dato3=false;
+                      donationForm.dato1=false;
+                      myController.text='';
+                    }
                   },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 PredefinedDonationButton(
-                  donationAmount: 10,
+                  colores:(donationForm.dato3 ==false)?Colors.white:Colors.amber,
+                  donationAmount:  Text(
+                        'S/. 10',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Color(0XFF707089),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                   onPressed: () {
                     dato.precio='10';
+                    donationForm.btncambiar3();
+                    if(donationForm.dato3== true){
+                      donationForm.dato2=false;
+                      donationForm.dato1=false;
+                      myController.text='';
+                    }
                   },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
+                
                 MyRoundedButton(
                 label: 'Donar',
                 onPressed: () {
                   donationService.crearOactualizar(donationForm.donation);
                   Navigator.pushNamed(context, '/home');
+                  _onBasicAlertPressed(context);
                 },
               ),
               ],
@@ -259,7 +330,8 @@ class DonationTextField extends StatelessWidget {
         maxWidth: 200.0,
         maxHeight: 45.0,
       ),
-      child: TextFormField(
+      child: TextField(
+        controller: myController,
         onChanged: onChanged!,
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
@@ -281,16 +353,18 @@ class DonationTextField extends StatelessWidget {
 }
 
 class PredefinedDonationButton extends StatelessWidget {
+  final Color? colores;
   const PredefinedDonationButton({
     Key? key,
     required this.onPressed,
-    required this.donationAmount,
+    required this.donationAmount, this.colores,
   }) : super(key: key);
   final VoidCallback onPressed;
-  final double donationAmount;
+  final Widget donationAmount;
 
   @override
   Widget build(BuildContext context) {
+    
     return CupertinoButton(
       borderRadius: BorderRadius.circular(16),
       padding: EdgeInsets.zero,
@@ -300,17 +374,11 @@ class PredefinedDonationButton extends StatelessWidget {
         width: 200,
         height: 45,
         decoration: BoxDecoration(
+          color:colores,
           border: Border.all(color: Colors.grey.shade300),
           borderRadius: BorderRadius.circular(16),
         ),
-        child: Text(
-          'S/. $donationAmount',
-          style: const TextStyle(
-            fontSize: 18,
-            color: Color(0XFF707089),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        child:donationAmount
       ),
     );
   }

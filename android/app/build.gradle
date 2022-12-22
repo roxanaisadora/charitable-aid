@@ -53,10 +53,11 @@ android {
         applicationId "com.example.sesion_09"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 18
+        minSdkVersion localProperties.getProperty('flutter.minSdkVersion').toInteger() //TODO: change to this
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 1
-        versionName "1.0.0"
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -81,4 +82,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
 }

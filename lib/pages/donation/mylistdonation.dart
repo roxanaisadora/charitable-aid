@@ -1,6 +1,4 @@
 
-import 'package:ac/models/modelo_supabase.dart';
-import 'package:ac/pages/category/social_aid/page_form/card.dart';
 import 'package:ac/pages/category/social_aid/page_form/card2.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
