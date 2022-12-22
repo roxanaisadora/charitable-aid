@@ -1,4 +1,4 @@
-import 'package:ac/route/index_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/provider_login.dart';
@@ -15,6 +15,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => DonationesService(),),
       ChangeNotifierProvider(create: (_) => HelpSeresvice(),),
       ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
+
     ], child: const MyApp()),
   );
 }

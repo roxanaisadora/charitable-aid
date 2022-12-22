@@ -1,5 +1,5 @@
-
 import 'package:ac/providers/provider_theme.dart';
+import 'package:ac/screen/perfil_screen.dart';
 import 'package:ac/share_preferences/preferences.dart';
 import 'package:ac/widget/custom_drawer.dart';
 import 'package:ac/widget/custom_textfield.dart';
@@ -17,7 +17,7 @@ class _AjusteScreenState extends State<AjusteScreen> {
   final imgController = TextEditingController(text: Preferences.img);
   final nombreController = TextEditingController(text: Preferences.nombre);
   final apellidoController = TextEditingController(text: Preferences.apellido);
- 
+
   final emailController = TextEditingController(text: Preferences.email);
   final mobileController = TextEditingController(text: Preferences.mobile);
   @override
@@ -26,7 +26,7 @@ class _AjusteScreenState extends State<AjusteScreen> {
       Preferences.img = imgController.text;
       Preferences.nombre = nombreController.text;
       Preferences.apellido = apellidoController.text;
-    
+
       Preferences.email = emailController.text;
       Preferences.mobile = mobileController.text;
 
@@ -35,19 +35,21 @@ class _AjusteScreenState extends State<AjusteScreen> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: const Text('Settings'),
+        backgroundColor: Colors.lightGreen,
+        title: const Text('Registrar'),
         centerTitle: true,
         actions: [
-          Switch.adaptive(
-            value: Preferences.theme,
-            onChanged: (value) {
-              Preferences.theme = value;
-              final themeP = Provider.of<ProviderTheme>(context, listen: false);
-              value ? themeP.setOscuro() : themeP.setClaro();
-              setState(() {});
-            },
-          )
+          // Switch.adaptive(
+          //   value: Preferences.theme,
+          //   onChanged: (value) {
+          //     Preferences.theme = value;
+          //     final themeP = Provider.of<ProviderTheme>(context, listen: false);
+          //     value ? themeP.setOscuro() : themeP.setClaro();
+          //     setState(() {});
+          //   },
+          // )
         ],
       ),
       body: SingleChildScrollView(
@@ -58,21 +60,21 @@ class _AjusteScreenState extends State<AjusteScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomTextFieldWidget(
-                  controller: imgController,
-                  // initialValue: Preferences.img,
-                  keyboardType: TextInputType.text,
-                  hintText: 'Imagen',
-                  prefixIcon: const Icon(
-                    Icons.photo,
-                    color: Colors.grey,
-                  ),
-                  // onChanged: (value) {
-                  //   Preferences.img = value;
-                  //   setState(() {});
-                  // },
-                ),
-                
+                // CustomTextFieldWidget(
+                //   controller: imgController,
+                //   // initialValue: Preferences.img,
+                //   keyboardType: TextInputType.text,
+                //   hintText: 'Imagen',
+                //   prefixIcon: const Icon(
+                //     Icons.photo,
+                //     color: Colors.grey,
+                //   ),
+                //   // onChanged: (value) {
+                //   //   Preferences.img = value;
+                //   //   setState(() {});
+                //   // },
+                // ),
+
                 CustomTextFieldWidget(
                   controller: nombreController,
                   // initialValue: Preferences.nombre,
@@ -96,18 +98,17 @@ class _AjusteScreenState extends State<AjusteScreen> {
                     Icons.person,
                     color: Colors.grey,
                   ),
-                 
                 ),
-               
+
                 CustomTextFieldWidget(
-                  controller: emailController,
-                  // initialValue: Preferences.img,
-                  keyboardType: TextInputType.emailAddress,
-                  hintText: 'Email',
-                  prefixIcon: const Icon(
-                    Icons.email_rounded,
-                    color: Colors.grey,
-                  )),
+                    controller: emailController,
+                    // initialValue: Preferences.img,
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Email',
+                    prefixIcon: const Icon(
+                      Icons.email_rounded,
+                      color: Colors.grey,
+                    )),
                 CustomTextFieldWidget(
                   controller: mobileController,
                   // initialValue: Preferences.cargo,
@@ -144,25 +145,23 @@ class _AjusteScreenState extends State<AjusteScreen> {
                 //   },
                 // ),
 
-              
-
                 SizedBox(
                   height: 50,
-                  width: 200,
+                  width: 150,
                   child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      color: Colors.purple,
-                      child: const Text(
-                        'Guardar',
-                        style: TextStyle(color: Colors.white, fontSize: 26),
-                      ),
-                      onPressed: () {
-                        save();
-                        setState(() {});
-                      },
-                      ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: Colors.yellowAccent,
+                    child: const Text(
+                      'Guardar',
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    onPressed: () {
+                      save();
+                      setState(() {});
+                    },
+                  ),
                 ),
               ],
             ),
