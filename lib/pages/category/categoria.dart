@@ -1,5 +1,6 @@
 import 'package:ac/pages/category/social_aid/donation_screen.dart';
 import 'package:ac/pages/category/social_aid/social_aid_screen.dart';
+import 'package:ac/pages/category/social_aid/volunteer_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class CategoryScreen extends StatelessWidget {
               label: 'Voluntariado',
               onPressed: () {
                 final route = MaterialPageRoute(
-                  builder: (context) => const SocialAidScreen(),
+                  builder: (context) => const VolunteerScreen(),
                 );
                 Navigator.push(context, route);
               },
@@ -54,7 +55,7 @@ class CategoryScreen extends StatelessWidget {
               label: 'Donaciones',
               onPressed: () {
                 final route = MaterialPageRoute(
-                  builder: (context) => const DonationPage(),
+                  builder: (context) => const SocialAidScreen(),
                 );
                 Navigator.push(context, route);
               },
