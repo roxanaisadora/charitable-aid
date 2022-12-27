@@ -30,27 +30,28 @@ class _BottomNavBarState extends State<BottomNavBar> {
       "Home",
       Color.fromARGB(255, 21, 103, 99),
       labelStyle: TextStyle(
-        fontWeight: FontWeight.normal,
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
       ),
     ),
     TabItem(
       Icons.search,
       "Category",
-      Colors.greenAccent,
+      Color.fromARGB(255, 21, 103, 99),
       labelStyle: TextStyle(
-        color: Colors.red,
+        color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
     ),
     TabItem(
       Icons.layers,
       "My list",
-      Colors.greenAccent,
+      Color.fromARGB(255, 21, 103, 99),
     ),
     TabItem(
       Icons.perm_identity,
       "Perfil",
-      Colors.greenAccent,
+      Color.fromARGB(255, 21, 103, 99),
     ),
   ]);
 
