@@ -1,6 +1,9 @@
-import 'package:ac/pages/category/social_aid/donation_screen.dart';
+import 'package:ac/models/model_supabase_ayuda.dart';
+import 'package:ac/pages/category/social_aid/time_screen.dart';
+import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 
 class VolunteerScreen extends StatelessWidget {
   const VolunteerScreen({super.key});
@@ -132,7 +135,10 @@ class VolunteerScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomSheet: JoinButton(),
+      bottomSheet: JoinButton(
+        img:'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
+        lugar:'Lugar: Playa Las orillas'
+      ),
     );
   }
 }
@@ -354,12 +360,15 @@ class VolunteerAvatars extends StatelessWidget {
 }
 
 class JoinButton extends StatelessWidget {
+  final String ? img;
+  final String ? lugar;
   const JoinButton({
-    Key? key,
+    Key? key, this.img, this.lugar,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final helpService = Provider.of<HelpSeresvice>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 10,
@@ -367,10 +376,28 @@ class JoinButton extends StatelessWidget {
       ).copyWith(bottom: 25),
       child: SizedBox(
         width: double.infinity,
-        child: MyRoundedButton(
-          label: 'Unirse a la causa ',
+        child: MaterialButton(
           color: Colors.green,
-          onPressed: () {},
+          onPressed: () {
+              helpService.seleccionarLugar2 = Help(fecha: '25/12/2022', nombre: 'Ayuda a limpiar los rios', hora:'09:00');
+              Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TimePage(
+              img:img,
+              lugar:lugar,
+            ),
+          ),
+        );
+          },
+        child: const Text(
+        'Ayudar ahora',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
         ),
       ),
     );
