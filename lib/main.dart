@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       scaffoldMessengerKey: CustomSnackbbar.msgkey,
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: Color.fromARGB(255, 86, 82, 98),
       ),
       onGenerateRoute: MyRoutes.generateRoute,
       initialRoute: MyRoutes.rSplash,

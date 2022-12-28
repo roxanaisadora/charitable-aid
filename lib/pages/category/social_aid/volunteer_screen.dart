@@ -4,9 +4,15 @@ import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class VolunteerScreen extends StatelessWidget {
-  const VolunteerScreen({super.key});
+  final String? title;
+  final String? image;
+  final String? place;
+  final String? dia;
+  final String? hora;
+  const VolunteerScreen({super.key, this.title, this.image, this.place, this.dia, this.hora});
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +48,43 @@ class VolunteerScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15)
                 .copyWith(bottom: 5),
-            child: Column(
+            child: Screen_2(
+              title:title!,
+              lugar:place!,
+              image:image!,
+              dia:dia!,
+              hora:hora!
+            ),
+          ),
+        ),
+      ),
+      bottomSheet: JoinButton(
+        img:image!,
+        lugar:place!,
+        dia:dia!,
+        hora:hora!,
+        title:title!,
+      ),
+    );
+  }
+}
+
+class Screen_2 extends StatelessWidget {
+  final String? title;
+  final String? lugar;
+  final String? image;
+  final String? dia;
+  final String? hora;
+
+  const Screen_2({super.key, this.title, this.lugar, this.image, this.dia, this.hora});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 VolunteersPostImage(
-                  asset:
-                      'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
+                  asset:image!,
                 ),
                 const SizedBox(
                   height: 10,
@@ -68,7 +105,7 @@ class VolunteerScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'Ayuda a limpiar los rios',
+                  title!,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -78,7 +115,7 @@ class VolunteerScreen extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'Lugar: Playa Las orillas',
+                  'Lugar: ${lugar}',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
@@ -95,8 +132,15 @@ class VolunteerScreen extends StatelessWidget {
                   height: 15,
                 ),
                 VolunteersPostDetails(
-                  date: '25 Dic',
-                  journey: ' 7AM -11AM',
+                  date: 'dia:${dia}',
+                  journey: 'hora:${hora}',
+                  sharePressed:(){
+                    ()async{
+                      //final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
+                      await Share.shareFiles(['${image}'], text: 'Ven y unete al cambio por el Perú');
+                      //await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
+                    };
+                  }
                 ),
                 const SizedBox(
                   height: 10,
@@ -131,15 +175,7 @@ class VolunteerScreen extends StatelessWidget {
                   height: 80,
                 ),
               ],
-            ),
-          ),
-        ),
-      ),
-      bottomSheet: JoinButton(
-        img:'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
-        lugar:'Lugar: Playa Las orillas'
-      ),
-    );
+            );
   }
 }
 
@@ -153,7 +189,7 @@ class VolunteersPostDetails extends StatelessWidget {
   }) : super(key: key);
   final String date;
   final String journey;
-  final VoidCallback? sharePressed;
+  final Function? sharePressed;
   final VoidCallback? favouritePressed;
 
   @override
@@ -162,27 +198,17 @@ class VolunteersPostDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         VolunteeringInfoChip(
-          label: //'Dic 25 ',
-              date,
+          label:  date,
         ),
         VolunteeringInfoChip(
-          label: //'7AM-11AM',
-              journey,
+          label: journey,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: ()=>sharePressed!,
           icon: Icon(
             Icons.upload_rounded,
             color: Colors.grey,
-            size: 32.5,
-          ),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.favorite_outline_sharp,
-            color: Colors.grey,
-            size: 32.5,
+            size: 30,
           ),
         ),
       ],
@@ -243,7 +269,6 @@ class VolunteersPostImage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: Image.network(
-          // 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
           asset,
           fit: BoxFit.cover,
         ),
@@ -283,7 +308,6 @@ class FavoriteButton extends StatelessWidget {
               width: 6,
             ),
             Text(
-              // '5444',
               number ?? '0',
               style: TextStyle(
                 fontSize: 13,
@@ -320,7 +344,6 @@ class VolunteerAvatars extends StatelessWidget {
         CircleAvatar(
           radius: 18,
           backgroundImage: NetworkImage(
-            //'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
             firstAvatar,
           ),
         ),
@@ -329,7 +352,6 @@ class VolunteerAvatars extends StatelessWidget {
           child: CircleAvatar(
             radius: 18,
             backgroundImage: NetworkImage(
-              //'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
               secondAvatar,
             ),
           ),
@@ -339,7 +361,6 @@ class VolunteerAvatars extends StatelessWidget {
           child: CircleAvatar(
             radius: 18,
             backgroundImage: NetworkImage(
-              //'https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
               thirdAvatar,
             ),
           ),
@@ -362,8 +383,11 @@ class VolunteerAvatars extends StatelessWidget {
 class JoinButton extends StatelessWidget {
   final String ? img;
   final String ? lugar;
+  final String? dia;
+  final String? hora;
+  final String? title;
   const JoinButton({
-    Key? key, this.img, this.lugar,
+    Key? key, this.img, this.lugar, this.dia, this.hora, this.title,
   }) : super(key: key);
 
   @override
@@ -379,7 +403,7 @@ class JoinButton extends StatelessWidget {
         child: MaterialButton(
           color: Colors.green,
           onPressed: () {
-              helpService.seleccionarLugar2 = Help(fecha: '25/12/2022', nombre: 'Ayuda a limpiar los rios', hora:'09:00');
+              helpService.seleccionarLugar2 = Help(fecha: dia!, nombre: title!, hora:hora!);
               Navigator.push(
           context,
           MaterialPageRoute(

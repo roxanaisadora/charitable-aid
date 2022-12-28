@@ -2,7 +2,6 @@
 import 'package:ac/route/index_page.dart';
 import 'package:ac/screen/perfil_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 
@@ -22,12 +21,12 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int selectedPos = 0;
 
-  double bottomNavBarHeight = 60;
+  double bottomNavBarHeight = 45;
 
   List<TabItem> tabItems = List.of([
     TabItem(
       Icons.home,
-      "Home",
+      "",
       Color.fromARGB(255, 21, 103, 99),
       labelStyle: TextStyle(
         color: Colors.black,
@@ -36,7 +35,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
     TabItem(
       Icons.search,
-      "Category",
+      "",
       Color.fromARGB(255, 21, 103, 99),
       labelStyle: TextStyle(
         color: Colors.black,
@@ -45,12 +44,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
     TabItem(
       Icons.layers,
-      "My list",
+      "",
       Color.fromARGB(255, 21, 103, 99),
     ),
     TabItem(
       Icons.perm_identity,
-      "Perfil",
+      "",
       Color.fromARGB(255, 21, 103, 99),
     ),
   ]);
@@ -70,7 +69,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: <Widget>[
           Padding(
             child: bodyContainer(),
-            padding: EdgeInsets.only(bottom: bottomNavBarHeight),
+            padding: EdgeInsets.only(bottom: 10),
           ),
           Align(alignment: Alignment.bottomCenter, child: bottomNav())
         ],
@@ -135,7 +134,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       backgroundBoxShadow: <BoxShadow>[
         BoxShadow(color: Colors.black45, blurRadius: 10.0),
       ],
-      animationDuration: Duration(milliseconds: 300),
+      animationDuration: Duration(milliseconds: 500),
       selectedCallback: (int? selectedPos) {
         setState(() {
           this.selectedPos = selectedPos ?? 0;

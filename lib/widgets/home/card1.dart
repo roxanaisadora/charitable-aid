@@ -97,7 +97,7 @@ class _Card1State extends State<Card1> {
                     child: RoundedProgressBar(
                       height: 10,
                       percent: percent,
-                      theme: RoundedProgressBarTheme.purple),
+                      theme: RoundedProgressBarTheme.blue),
                   ),
                   Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -113,7 +113,7 @@ class _Card1State extends State<Card1> {
                 child: Container(
                   height: 30,
                   decoration:  BoxDecoration(
-                    color: Color.fromARGB(255, 106, 81, 119),
+                    color: Colors.blue,
                     borderRadius: BorderRadius.circular(8)
                   ),
                   width:double.infinity,

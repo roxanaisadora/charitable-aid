@@ -10,6 +10,10 @@ class SocialAidPost extends StatelessWidget {
   final double? donationAmount;
   final int? donorsNumber;
   final String?category;
+  final String? img1; 
+  final String? img2; 
+  final String? img3; 
+  final Function? shareTap;
   const SocialAidPost({
     Key? key,
     this.postAsset,
@@ -17,7 +21,7 @@ class SocialAidPost extends StatelessWidget {
     this.postDescript,
     this.donationAmount,
     this.donorsNumber, 
-    this.category,
+    this.category, this.img1, this.img2, this.img3, this.shareTap,
   }) : super(key: key);
  
 
@@ -34,21 +38,32 @@ class SocialAidPost extends StatelessWidget {
             bottom: 0,
           ),
           child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               PostImage(
                 asset: postAsset!,
-                // 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
-                onTap: () {
-                  print('on tap');
-                  Navigator.maybePop(context);
-                },
+                sharetap: ()=>shareTap!(),
               ),
               const SizedBox(
                 height: 10,
               ),
+              Center(
+                child: Text(
+                  // 'Ayuda Puno',
+                  postTitle!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 // 'Ayuda Puno',
-                postTitle!,
+                'ONG: ${category}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -59,7 +74,6 @@ class SocialAidPost extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                 postDescript!,
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
@@ -73,6 +87,9 @@ class SocialAidPost extends StatelessWidget {
               SocialAidInformation(
                 donationAmount: donationAmount!,
                 donorsNumber: donorsNumber!,
+                img1:img1!,
+                img2: img2!,
+                img3: img3!,
               ),
               const SizedBox(
                 height: 20,

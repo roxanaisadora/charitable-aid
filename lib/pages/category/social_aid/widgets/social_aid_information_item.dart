@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 class SocialAidInformation extends StatelessWidget {
   const SocialAidInformation({
     Key? key,
-    required this.donorsNumber,
-    required this.donationAmount,
+    this.donorsNumber,
+    this.donationAmount, this.img1, this.img2, this.img3,
   }) : super(key: key);
-  final int donorsNumber;
-  final double donationAmount;
+  final int? donorsNumber;
+  final double? donationAmount;
+  final String? img1; 
+  final String? img2; 
+  final String? img3; 
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +21,32 @@ class SocialAidInformation extends StatelessWidget {
         SocialAidInformationItem(
           title: '$donorsNumber donarón',
           withText: false,
-          widget: CircleAvatar(
-            backgroundColor: Colors.grey.shade300,
-            radius: 10,
-            child: const Text(
-              '+',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black54,
+          widget: Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
+            children: [
+              CircleAvatar(
+                radius: 18,
+                backgroundImage: NetworkImage(img1!),
               ),
-            ),
+              Positioned(
+                left: 25,
+                child: CircleAvatar(
+                  radius: 18,
+                  backgroundImage: NetworkImage(img2!)
+                ),
+              ),
+              Positioned(
+                left: 50,
+                child: CircleAvatar(
+                  radius: 18,
+                  backgroundImage: NetworkImage(img3!),
+                ),
+              ),
+              
+            ],
           ),
-        ),
-        SocialAidInformationItem(
-          title: 'Donación total',
-          text: ' $donationAmount',
-        ),
+        )
       ],
     );
   }

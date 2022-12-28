@@ -93,7 +93,11 @@ class _HomeScreanState extends State<HomeScrean> {
                                 postDescript:dato['description'],
                                 donationAmount:dato['donation'],
                                 donorsNumber:dato['colaboradores'].toInt(),
-                                category:dato['category'],
+                                category:dato['sub_title'],
+                                img1: dato['img_1'],
+                                img2: dato['img_2'],
+                                img3: dato['img_3'],
+                                url_share:dato['url']
                               ),
                               ),
                             );
@@ -176,7 +180,6 @@ class _HomeScreanState extends State<HomeScrean> {
               titleb: 'Invita a amigos',
               onTap:()async{
                 final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
-
                 await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
               },
             ),
