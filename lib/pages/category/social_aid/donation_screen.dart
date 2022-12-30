@@ -242,8 +242,8 @@ class DonationPostCard extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(
         side: BorderSide(
-            color: Theme.of(context).colorScheme.outline,
-          ),
+          color: Theme.of(context).colorScheme.outline,
+        ),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -357,15 +357,16 @@ class PredefinedDonationButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Container(
-          alignment: Alignment.center,
-          width: 200,
-          height: 45,
-          decoration: BoxDecoration(
-            color: colores,
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: donationAmount),
+        alignment: Alignment.center,
+        width: 200,
+        height: 45,
+        decoration: BoxDecoration(
+          color: colores,
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: donationAmount,
+      ),
     );
   }
 }

@@ -55,7 +55,7 @@ dependencies:
   youtube_player_flutter: ^8.1.0
   google_maps_flutter: ^2.2.2
   circular_bottom_navigation: ^2.3.0
-  transparent_image: ^2.0.0
+  transparent_image: ^2.0.0  
 
 
 dev_dependencies:

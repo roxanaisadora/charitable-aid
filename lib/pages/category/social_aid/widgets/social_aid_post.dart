@@ -9,10 +9,10 @@ class SocialAidPost extends StatelessWidget {
   final String? postDescript;
   final double? donationAmount;
   final int? donorsNumber;
-  final String?category;
-  final String? img1; 
-  final String? img2; 
-  final String? img3; 
+  final String? category;
+  final String? img1;
+  final String? img2;
+  final String? img3;
   final Function? shareTap;
   const SocialAidPost({
     Key? key,
@@ -20,10 +20,13 @@ class SocialAidPost extends StatelessWidget {
     this.postTitle,
     this.postDescript,
     this.donationAmount,
-    this.donorsNumber, 
-    this.category, this.img1, this.img2, this.img3, this.shareTap,
+    this.donorsNumber,
+    this.category,
+    this.img1,
+    this.img2,
+    this.img3,
+    this.shareTap,
   }) : super(key: key);
- 
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +41,11 @@ class SocialAidPost extends StatelessWidget {
             bottom: 0,
           ),
           child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               PostImage(
                 asset: postAsset!,
-                sharetap: ()=>shareTap!(),
+                sharetap: () => shareTap!(),
               ),
               const SizedBox(
                 height: 10,
@@ -87,7 +90,7 @@ class SocialAidPost extends StatelessWidget {
               SocialAidInformation(
                 donationAmount: donationAmount!,
                 donorsNumber: donorsNumber!,
-                img1:img1!,
+                img1: img1!,
                 img2: img2!,
                 img3: img3!,
               ),
@@ -96,10 +99,10 @@ class SocialAidPost extends StatelessWidget {
               ),
               RoundedButton(
                 onPressed: () {},
-                category:category!,
-                donationAmount:donationAmount!,
-                postTitle:postTitle!,
-                img:postAsset!,
+                category: category!,
+                donationAmount: donationAmount!,
+                postTitle: postTitle!,
+                img: postAsset!,
               )
             ],
           ),

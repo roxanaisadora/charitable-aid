@@ -1,5 +1,5 @@
-
 import 'package:ac/pages/category/search.dart';
+import 'package:ac/pages/category/social_aid/payment_screen.dart';
 import 'package:ac/pages/category/social_aid/social_aid_screen.dart';
 import 'package:ac/pages/category/social_aid/volunteer_screen.dart';
 import 'package:ac/pages/category/social_aid/widgets/card.dart';
@@ -61,10 +61,20 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
+            CategoryCard(
+              asset:
+                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+              label: 'pagos',
+              onPressed: () {
+                final route = MaterialPageRoute(
+                  builder: (context) => const PaymentScreen(),
+                );
+                Navigator.push(context, route);
+              },
+            ),
           ],
         ),
       ),
     );
   }
 }
-
