@@ -1,4 +1,4 @@
-
+import 'package:ac/providers/donation_verification_provider.dart';
 import 'package:ac/route/index_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +13,14 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProviderLogin()),
       ChangeNotifierProvider(create: (_) => AuthService()),
       ChangeNotifierProvider(create: (_) => ProductoProvider()),
-      ChangeNotifierProvider(create: (_) => DonationesService(),),
-      ChangeNotifierProvider(create: (_) => HelpSeresvice(),),
-      ChangeNotifierProvider(create: (_)=> StorageHomeProvider())
-
+      ChangeNotifierProvider(
+        create: (_) => DonationesService(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => HelpSeresvice(),
+      ),
+      ChangeNotifierProvider(create: (_) => StorageHomeProvider()),
+      ChangeNotifierProvider(create: (_) => DonationVerificationProvider())
     ], child: const MyApp()),
   );
 }
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
       scaffoldMessengerKey: CustomSnackbbar.msgkey,
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: Color.fromARGB(255, 86, 82, 98),
       ),
       onGenerateRoute: MyRoutes.generateRoute,
       initialRoute: MyRoutes.rSplash,

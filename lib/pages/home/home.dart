@@ -92,18 +92,20 @@ class _HomeScreanState extends State<HomeScrean> {
                           meta: dato['meta'],
                           personas: dato['personas'],
                           donadores: dato['donadores'],
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SocialScreenHome(
-                                  postAsset: dato['image'],
-                                  postTitle: dato['title'],
-                                  postDescript: dato['description'],
-                                  donationAmount: dato['donation'],
-                                  donorsNumber: dato['colaboradores'].toInt(),
-                                  category: dato['category'],
-                                ),
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context)=> SocialScreenHome(
+                                postAsset:dato['image'],
+                                postTitle:dato['title'],
+                                postDescript:dato['description'],
+                                donationAmount:dato['donation'],
+                                donorsNumber:dato['colaboradores'].toInt(),
+                                category:dato['sub_title'],
+                                img1: dato['img_1'],
+                                img2: dato['img_2'],
+                                img3: dato['img_3'],
+                                url_share:dato['url']
+                              ),
                               ),
                             );
                           },

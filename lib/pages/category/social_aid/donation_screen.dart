@@ -242,16 +242,18 @@ class DonationPostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outline,
+        ),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(10),
             child: AspectRatio(
               aspectRatio: 2.5,
               child: Image.network(
-                //'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
                 asset,
                 fit: BoxFit.cover,
               ),
@@ -290,23 +292,6 @@ class DonationPostCard extends StatelessWidget {
                           ),
                         )
                       ],
-                    ),
-                  ),
-                ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(8),
-                  onTap: onTap,
-                  child: Container(
-                    height: 36,
-                    width: 36,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0XFFF9FAFE),
-                    ),
-                    child: const Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                      color: Color(0XFF575E7D),
                     ),
                   ),
                 ),
@@ -373,15 +358,16 @@ class PredefinedDonationButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Container(
-          alignment: Alignment.center,
-          width: 200,
-          height: 45,
-          decoration: BoxDecoration(
-            color: colores,
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: donationAmount),
+        alignment: Alignment.center,
+        width: 200,
+        height: 45,
+        decoration: BoxDecoration(
+          color: colores,
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: donationAmount,
+      ),
     );
   }
 }
