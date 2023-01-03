@@ -15,6 +15,7 @@ class HelpSocial extends StatelessWidget {
 
     if (HelpService.isLoading) {
       return const Material(
+        color: Colors.transparent,
         child: Center(
           child: CircularProgressIndicator(),
         ),

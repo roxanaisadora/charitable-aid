@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sqflite/sqlite_api.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -13,6 +14,7 @@ class StorageHomeProvider extends ChangeNotifier{
   String urlbase = 'https://qpjuuyyvbqljmoeojwag.supabase.co/rest/v1/usuarios';
   String apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
   String autorizacion = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
+
 
   //supabase
   final SupabaseClient client = SupabaseClient('https://qpjuuyyvbqljmoeojwag.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o');
@@ -34,6 +36,7 @@ class StorageHomeProvider extends ChangeNotifier{
 
     notifyListeners();
   }
+  //delete 
 
   //************************************************************* 
     //API
@@ -80,6 +83,8 @@ class StorageHomeProvider extends ChangeNotifier{
     notifyListeners();
     guardarDB();
   }
+
+  
 
   //galeria
   Future activegallery()async{

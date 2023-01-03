@@ -1,5 +1,6 @@
 {
-    "items" : [{
+    "items" : [
+      {
       "image":"https://www.colegio-humboldt.edu.pe/img/diversos/proyectos-sociales/puno/puno-3.jpg",
       "title":"Ayuda puno",
       "colaboradores":327.0,
@@ -169,7 +170,7 @@
       }
       ],
       "items_4" : [{
-        "image":"https://www.caritas.org.pe/wp-content/uploads/2020/01/49364186523_cf546b45b2_o-1536x1024.jpg",
+        "image":"Sigue el paso a paso de tu ayuda",
         "title":"Sigue el paso a paso de tu ayuda"
       }
       ],
