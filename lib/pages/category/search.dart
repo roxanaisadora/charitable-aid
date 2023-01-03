@@ -276,13 +276,22 @@ class CardSearch extends StatelessWidget {
                 child: Stack(
                     children: [
                       const Center(child: CircularProgressIndicator()),
-                      FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image: image!,
-                            fit: BoxFit.cover,
-                            height: 190,
-                            width: 250,
-                          ),
+                      PhysicalModel(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: Colors.transparent,
+                        shape: BoxShape.rectangle,
+                        borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+                        child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: image!,
+                              fit: BoxFit.cover,
+                              height: 190,
+                              width: 250,
+                            ),
+                      ),
                     ],
                   ),
                 ),
@@ -290,15 +299,21 @@ class CardSearch extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 45,
-              color:Color.fromARGB(255, 211, 207, 211),
+              color:Color.fromARGB(255, 254, 251, 254),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Center(child: Text(title!, textAlign: TextAlign.center,style: TextStyle(fontSize: 14),)),
               ),
             ),
             Container(
-              color: Color.fromARGB(255, 65, 86, 242),
               height: 30,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 65, 86, 242),
+                borderRadius: const BorderRadius.only(
+                        bottomRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                      ),
+                      ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

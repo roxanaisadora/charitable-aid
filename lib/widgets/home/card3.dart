@@ -21,6 +21,7 @@ class _Card3State extends State<Card3> {
         width: 340,
         child:Stack(
           children: [
+            const Center(child: CircularProgressIndicator()),
             Container(
               height: 520,
               width: 340,

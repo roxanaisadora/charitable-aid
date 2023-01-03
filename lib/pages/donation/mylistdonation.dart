@@ -14,6 +14,7 @@ class PrductoHome extends StatelessWidget {
 
     if (DonationService.isLoading) {
       return const Material(
+        color: Colors.transparent,
         child: Center(
           child: CircularProgressIndicator(),
         ),

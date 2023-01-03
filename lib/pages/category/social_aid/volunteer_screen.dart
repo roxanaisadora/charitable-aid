@@ -206,7 +206,7 @@ class VolunteersPostDetails extends StatelessWidget {
         IconButton(
           onPressed: ()=>sharePressed!,
           icon: Icon(
-            Icons.upload_rounded,
+            Icons.share,
             color: Colors.grey,
             size: 30,
           ),

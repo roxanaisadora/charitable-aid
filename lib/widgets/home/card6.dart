@@ -20,8 +20,13 @@ class CardBuy extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: SizedBox(height: 80,
-                  child: image!
+                child: Stack(
+                  children: [
+                    const Center(child: CircularProgressIndicator()),
+                    SizedBox(height: 80,
+                      child: image!
+                    ),
+                  ],
                 )
               ),
               Expanded(flex:3,

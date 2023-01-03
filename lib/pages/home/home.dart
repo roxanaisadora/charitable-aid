@@ -59,7 +59,7 @@ class _HomeScreanState extends State<HomeScrean> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        color: Colors.greenAccent,
+        color: Color.fromARGB(255, 180, 243, 212),
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
@@ -254,71 +254,84 @@ class _HomeScreanState extends State<HomeScrean> {
           controller: pageController,
           itemBuilder: (BuildContext context, int index) {
             final dato2 = _items[index];
-            return Container(
-              height: _boxHeight,
-              decoration:  BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(dato2['image']),
-                    fit: BoxFit.cover,
-                  ),
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25)),
-              child:Stack(
-               children: [
-                    Container(
-                      decoration:  BoxDecoration(
-                        color: const  Color.fromARGB(255, 23, 23, 23).withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(25)
-                      )
+            return Stack(
+              children: [
+                Container(
+                  height: _boxHeight,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25)
                     ),
-                    Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, top:10),
-                    child: Text(dato2['title'], style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),),
-                  ),
-                ],
-              ),
-              Stack(
-                children: [
-                  Positioned.fill(
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 5, left: 15),
-                        child: InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=> SecreenMore2(
-                                img:dato2['image'],
-                                title:dato2['title'],
-                                subtitle:dato2['subtitle'],
-                                sub_title:dato2['sub_title'],
-                                data:dato2['items_6']
-                            ),
-                            ),
-                          );
-                          },
-                          child: Container(
-                            height: 30,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
-                                color: Colors.white
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Center(child: Text('Leer mas',style: TextStyle(color: Colors.white, fontSize: 17))),
-                          ),
-                        )
+                  child: Stack(children: [
+                    const Center(child: CircularProgressIndicator())
+                  ],),
+                ),
+                Container(
+                  height: _boxHeight,
+                  decoration:  BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(dato2['image']),
+                        fit: BoxFit.cover,
                       ),
-                    ),
+                  borderRadius: BorderRadius.circular(25)),
+                  child:Stack(
+                   children: [
+                        Container(
+                          decoration:  BoxDecoration(
+                            color: const  Color.fromARGB(255, 23, 23, 23).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(25)
+                          )
+                        ),
+                        Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, top:10),
+                        child: Text(dato2['title'], style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),),
+                      ),
+                    ],
                   ),
-                ],
-              )
-               ], 
-              )
+                  Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 5, left: 15),
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(
+                                builder: (context)=> SecreenMore2(
+                                    img:dato2['image'],
+                                    title:dato2['title'],
+                                    subtitle:dato2['subtitle'],
+                                    sub_title:dato2['sub_title'],
+                                    data:dato2['items_6']
+                                ),
+                                ),
+                              );
+                              },
+                              child: Container(
+                                height: 30,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1,
+                                    color: Colors.white
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: const Center(child: Text('Leer mas',style: TextStyle(color: Colors.white, fontSize: 17))),
+                              ),
+                            )
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                   ], 
+                  )
+                ),
+              ],
             );
           },
           onPageChanged: (int index) {
