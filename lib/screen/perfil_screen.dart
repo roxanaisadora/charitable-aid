@@ -1,9 +1,10 @@
-import 'package:ac/pages/login/register.dart';
 import 'package:ac/pages/login/screenlogin.dart';
 import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/screen/ajustes_screen.dart';
+import 'package:ac/screen/indicator_chart.dart';
+import 'package:ac/screen/pie_chart.dart';
 import 'package:ac/share_preferences/preferences.dart';
-import 'package:ac/widget/custom_drawer.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -244,7 +245,7 @@ class PerfilScreen extends StatelessWidget {
                                   width: 200,
                                   child: const Text(
                                     'E-mail',
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 15),
                                   ),
                                 ),
                               ),
@@ -264,7 +265,10 @@ class PerfilScreen extends StatelessWidget {
                                         ),
                                       )
                                     : Text(Preferences.email,
-                                        style: const TextStyle(fontSize: 15))),
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue))),
                           ),
                         ],
                       ),
@@ -294,7 +298,9 @@ class PerfilScreen extends StatelessWidget {
                                   width: 200,
                                   child: const Text(
                                     'Phone',
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -310,24 +316,56 @@ class PerfilScreen extends StatelessWidget {
                                         padding: EdgeInsets.only(left: 10),
                                         child: Text(
                                           '-----',
-                                          style: TextStyle(fontSize: 17),
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                          ),
                                         ),
                                       )
                                     : Text(Preferences.mobile,
-                                        style: const TextStyle(fontSize: 15))),
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue))),
                           ),
                         ],
                       ),
                     ),
                     const Divider(
-                        height: 5,
+                        height: 0,
                         thickness: 3,
                         color: Color.fromARGB(255, 224, 217, 217)),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 200,
+              Text('Estadisticas'),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(70),
+                    child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: Expanded(
+                          child: PieChart(
+                        PieChartData(
+                          borderData: FlBorderData(show: false),
+                          sectionsSpace: 2,
+                          centerSpaceRadius: 30,
+                          sections: getSections(),
+                        ),
+                      )),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(0),
+                        child: IndicatorsWidget(),
+                      )
+                    ],
+                  ),
+                ],
               ),
               Center(
                 child: ListTile(

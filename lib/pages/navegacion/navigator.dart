@@ -1,11 +1,9 @@
 import 'package:ac/route/index_page.dart';
 import 'package:ac/screen/perfil_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
-
-
 
 class BottomNavBar extends StatefulWidget {
   BottomNavBar({
@@ -91,7 +89,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         slogan = const NavigationDonatio();
         break;
       case 3:
-        slogan = const PerfilScreen();
+        slogan = PerfilScreen();
         break;
       default:
         slogan = const HomeScrean();
@@ -100,11 +98,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
     return GestureDetector(
       child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: selectedColor,
-        child: slogan
-      ),
+          width: double.infinity,
+          height: double.infinity,
+          color: selectedColor,
+          child: slogan),
       onTap: () {
         if (_navigationController.value == tabItems.length - 1) {
           _navigationController.value = 0;
