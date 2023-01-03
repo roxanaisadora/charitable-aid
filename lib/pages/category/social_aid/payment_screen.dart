@@ -187,11 +187,29 @@ class _PaymentScreenState extends State<PaymentScreen>
                 SizedBox(
                   height: 15,
                 ),
-                AmountDonationTextField(
+                /* AmountDonationTextField(
                   onChanged: (value) {},
+                ), */
+                Text(
+                  'Monto donado:',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
                 SizedBox(
                   height: 15,
+                ),
+                Center(
+                  child: Text(
+                    'S/. 200',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade500,
+                    ),
+                  ),
                 ),
               ],
             ),
