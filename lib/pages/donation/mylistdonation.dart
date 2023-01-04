@@ -1,56 +1,35 @@
 
-
-import 'package:ac/providers/provider_donation.dart';
+import 'package:ac/pages/category/social_aid/page_form/card2.dart';
+import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 class PrductoHome extends StatelessWidget {
   const PrductoHome({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
-    final productoData = Provider.of<ProductoProvider>(context);
-    productoData.queryAll();
+    final DonationService = Provider.of<DonationesService>(context);
+
+    if (DonationService.isLoading) {
+      return const Material(
+        color: Colors.transparent,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text('Mis donaciones'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              productoData.deleteAll();
-            },
-            icon: const Icon(Icons.delete),
-          ),
-        ],
-      ),
       body: Container(
         color: Colors.greenAccent,
         child: ListView.builder(
-          itemCount: productoData.product.length,
+          itemCount: DonationService.donationes.length,
           itemBuilder: (BuildContext context, int index) {
-            final data = productoData.product[index];
-
-            return Padding(
-              padding: const EdgeInsets.only(top:10),
-              child: Container(
-                color: Colors.white,
-                child: ListTile(
-                  title: Text('${data.nombre} | ${data.categoria} '),
-                  subtitle: Text('S/. ${data.precio} '),
-                  trailing: IconButton(
-                    onPressed: () {
-                      productoData.delete(data.id);
-                    },
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    ),
-                  ),
-                  onTap: () {},
-                ),
-              ),
+            final dato = DonationService.donationes[index];
+            return CardCustom2(
+              title: Text('${dato.nombre} | ${dato.categoria} '),
+              subtitle: Text('s/. ${dato.precio}'),
             );
           },
         ),

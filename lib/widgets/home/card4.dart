@@ -9,7 +9,8 @@ class Card4 extends StatefulWidget {
   final int? num4;
   final int? num5;
   final int? num6;
-  const Card4({super.key, this.image, this.num1, this.num2, this.num3, this.num4, this.num5, this.num6});
+  final Function? onTap;
+  const Card4({super.key, this.image, this.num1, this.num2, this.num3, this.num4, this.num5, this.num6, this.onTap});
 
   @override
   State<Card4> createState() => _Card4State();
@@ -21,7 +22,7 @@ class _Card4State extends State<Card4> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: InkWell(
-        onTap: () { },
+        onTap: ()=> widget.onTap!(),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -31,19 +32,24 @@ class _Card4State extends State<Card4> {
           width: 340,
           child:Column(
             children: [
-              Container(
-                height: 350,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15),
-                  ),
-                  image: DecorationImage(
-                    image: NetworkImage(widget.image!),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                ),
+              Stack(
+                children: [
+                  Container(height: 350,child: const Center(child: CircularProgressIndicator())),
+                  Container(
+                    height: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+                      image: DecorationImage(
+                        image: NetworkImage(widget.image!),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    ),
+                ],
+              ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
                   child: Column(

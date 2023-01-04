@@ -1,8 +1,8 @@
-
-
 import 'package:flutter_rounded_progress_bar/flutter_rounded_progress_bar.dart';
 import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
+
 
 class Card1 extends StatefulWidget {
   final String? image;
@@ -55,18 +55,23 @@ class _Card1State extends State<Card1> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(flex:3,
-              child: Container(
-                width:double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15),
+              child: Stack(
+                children: [
+                  const Center(child: CircularProgressIndicator()),
+                  Container(
+                    width:double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+                      image: DecorationImage(
+                        image: NetworkImage(widget.image!),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  image: DecorationImage(
-                    image: NetworkImage(widget.image!),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                ],
               )
             ),
             Expanded(
@@ -97,7 +102,7 @@ class _Card1State extends State<Card1> {
                     child: RoundedProgressBar(
                       height: 10,
                       percent: percent,
-                      theme: RoundedProgressBarTheme.purple),
+                      theme: RoundedProgressBarTheme.blue),
                   ),
                   Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -113,7 +118,7 @@ class _Card1State extends State<Card1> {
                 child: Container(
                   height: 30,
                   decoration:  BoxDecoration(
-                    color: Color.fromARGB(255, 106, 81, 119),
+                    color: Colors.blue,
                     borderRadius: BorderRadius.circular(8)
                   ),
                   width:double.infinity,

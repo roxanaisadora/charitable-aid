@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/home/index_home.dart';
 import 'index_page.dart';
 
 class MyRoutes {

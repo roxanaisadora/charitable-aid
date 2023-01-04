@@ -1,7 +1,12 @@
-import 'package:ac/providers/provider_donation.dart';
-import 'package:ac/route/route.dart';
-import 'package:ac/services/index.dart';
-import 'package:ac/share_preferences/preferences.dart';
+
+import 'package:ac/providers/donation_verification_provider.dart';
+import 'package:ac/route/index_page.dart';
+import 'package:ac/services/donation_1_supabase.dart';
+import 'package:ac/services/donation_3_supabase.dart';
+import 'package:ac/services/donation_4_supabase.dart';
+import 'package:ac/services/donation_5_supabase.dart';
+import 'package:ac/services/donation_7_supabase.dart';
+import 'package:ac/services/donationpost_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/provider_login.dart';
@@ -14,7 +19,17 @@ void main() async {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => ProviderLogin()),
       ChangeNotifierProvider(create: (_) => AuthService()),
-      ChangeNotifierProvider(create: (_) => ProductoProvider())
+      ChangeNotifierProvider(create: (_) => ProductoProvider()),
+      ChangeNotifierProvider(create: (_) => StorageHomeProvider()),
+      ChangeNotifierProvider(create: (_) => DonationVerificationProvider()),
+      ChangeNotifierProvider(create: (_) => DonationPostSeresvice()),
+      ChangeNotifierProvider(create: (_) => DonationPostSeresvice1()),
+      ChangeNotifierProvider(create: (_) => DonationPostSeresvice3()),
+      ChangeNotifierProvider(create: (_) => DonationPostSeresvice4()),
+      ChangeNotifierProvider(create: (_) => DonationPostSeresvice5()),
+      ChangeNotifierProvider(create: (_) => DonationPostSeresvice7()),
+      ChangeNotifierProvider(create: (_) => DonationesService()),
+      ChangeNotifierProvider(create: (_) => HelpSeresvice())
     ], child: const MyApp()),
   );
 }
@@ -27,14 +42,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Charitable Aid',
       scaffoldMessengerKey: CustomSnackbbar.msgkey,
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: Color.fromARGB(255, 86, 82, 98),
       ),
       onGenerateRoute: MyRoutes.generateRoute,
       initialRoute: MyRoutes.rSplash,
+      routes: {
+        'page_pago': (_) => const DonationPage(),
+        'page_update': (_) => const LugarPage(),
+      },
     );
   }
 }

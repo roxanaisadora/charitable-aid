@@ -30,8 +30,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 300,
-                  child: Image.asset('assets/image/logo.jpg'),
+                  width: 240,
+                  child: Image.asset('assets/image/logo_login.png'),
                 ),
                 const SizedBox(
                   height: 30,
@@ -46,6 +46,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ChangeNotifierProvider(
                   create: (context) => ProviderLogin(),
                   child: _LoginForm(),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 TextButton(
                   onPressed: () {
@@ -117,7 +120,7 @@ class __LoginFormState extends State<_LoginForm> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 18,
               ),
               TextFormField(
                 style: const TextStyle(color: Colors.black),
@@ -146,7 +149,7 @@ class __LoginFormState extends State<_LoginForm> {
                 },
               ),
               const SizedBox(
-                height: 20,
+                height: 28,
               ),
               SizedBox(
                 height: 50,
@@ -157,7 +160,7 @@ class __LoginFormState extends State<_LoginForm> {
                   ),
                   disabledColor: Colors.black,
                   elevation: 10,
-                  color: Colors.red,
+                  color: Color.fromARGB(255, 43, 56, 91),
                   onPressed: loginProvider.isLoading
                       ? null
                       : () async {

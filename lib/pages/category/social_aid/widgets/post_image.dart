@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:transparent_image/transparent_image.dart';
 class PostImage extends StatelessWidget {
   const PostImage({
     Key? key,
-    required this.asset,
-    required this.onTap,
+    this.asset,
+    this.sharetap,
   }) : super(key: key);
-  final String asset;
-  final VoidCallback onTap;
+  final String? asset;
+  final Function? sharetap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,21 @@ class PostImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             30,
           ),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Image.network(
-              // 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
-              asset,
-              fit: BoxFit.cover,
-            ),
+          child: Stack(
+            children: [
+              AspectRatio(
+                aspectRatio: 16 / 12,
+                child: const Center(child: CircularProgressIndicator()),
+              ),
+              AspectRatio(
+                aspectRatio: 16 / 12,
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image:asset!,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -31,41 +39,24 @@ class PostImage extends StatelessWidget {
           right: 15,
           left: 15,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: onTap,
-                /* () {
-                  print('back pressed');
-                }, */
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.arrow_back_ios_new,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.bookmark_rounded,
-                    color: Colors.white,
-                    size: 20,
+                child: InkWell(
+                  onTap:()=>sharetap!(),
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.share,
+                      color: Colors.black,
+                      size: 20,
+                    ),
                   ),
                 ),
               ),

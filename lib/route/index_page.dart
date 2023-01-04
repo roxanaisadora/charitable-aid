@@ -1,9 +1,19 @@
 export 'package:ac/pages/category/categoria.dart';
 export 'package:ac/pages/home/home.dart';
-export 'package:ac/pages/profile/profile.dart';
 export 'package:ac/pages/splash/splash.dart';
 export 'package:ac/pages/navegacion/navigator.dart';
 export 'package:ac/pages/login/register.dart';
 export 'package:ac/pages/login/screenlogin.dart';
 export 'package:ac/pages/login/verify.dart';
-
+export 'package:ac/pages/donation/navigation_donation.dart';
+export 'package:ac/pages/donation/list_help_social.dart';
+export 'package:ac/pages/donation/mylistdonation.dart';
+export 'package:ac/pages/category/social_aid/donation_screen.dart';
+export 'package:ac/pages/donation/update.dart';
+export 'package:ac/providers/provider_donation.dart';
+export 'package:ac/providers/storage-provider.dart';
+export 'package:ac/route/route.dart';
+export 'package:ac/services/dato_supabase.dart';
+export 'package:ac/services/dato_supabase_help.dart';
+export 'package:ac/services/index.dart';
+export 'package:ac/share_preferences/preferences.dart';
