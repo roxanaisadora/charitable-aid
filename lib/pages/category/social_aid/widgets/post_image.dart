@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+
 class PostImage extends StatelessWidget {
   const PostImage({
     Key? key,
@@ -27,7 +28,7 @@ class PostImage extends StatelessWidget {
                 aspectRatio: 16 / 12,
                 child: FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage,
-                  image:asset!,
+                  image: asset!,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -43,7 +44,7 @@ class PostImage extends StatelessWidget {
             children: [
               GestureDetector(
                 child: InkWell(
-                  onTap:()=>sharetap!(),
+                  onTap: () => sharetap!(),
                   child: Container(
                     alignment: Alignment.center,
                     height: 30,

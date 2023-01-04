@@ -29,7 +29,7 @@ class CategoryScreen extends StatelessWidget {
         ).copyWith(
           bottom: 0,
         ),
-        color: Colors.greenAccent,
+        color: Color.fromARGB(126, 105, 240, 175),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

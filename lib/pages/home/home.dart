@@ -19,9 +19,7 @@ class HomeScrean extends StatefulWidget {
 }
 
 class _HomeScreanState extends State<HomeScrean> {
-  
-  // ignore: prefer_final_fields
-  
+
   final _pageController2 = PageController();
   final _currentPageNotifier2 = ValueNotifier<int>(0);
   final _boxHeight = 150.0;
@@ -41,14 +39,20 @@ class _HomeScreanState extends State<HomeScrean> {
     print(DonationPostService4.donationpost4s.length);
     
     return Scaffold(
+
       appBar: AppBar( 
         elevation: 0,
         title: const Text('Hola agente de cambio',style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        backgroundColor: Color.fromARGB(255, 21, 103, 99),
+        leading: Icon(
+            Icons.group,
+            color: Colors.white,
+          ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 180, 243, 212),
+        color: Color.fromARGB(126, 105, 240, 175),
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
@@ -92,9 +96,37 @@ class _HomeScreanState extends State<HomeScrean> {
                             );
                           },
                         );
-                    },
-                    )
+                      },
+                    )),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Card2(
+                image: 'assets/image/regalo_1.png',
+                title: 'Envia regalo a de la comida',
+                subtitle: 'En nombre de tus seres queridos',
+                titleb: 'Enviar regalo',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Secreen2(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+                child: Text(
+                  '¿No estas seguro de como ayudar?',
+                  style: TextStyle(fontSize: 16),
                 ),
+
             ),
              const SizedBox(height: 20,),
             Card2(
@@ -164,11 +196,14 @@ class _HomeScreanState extends State<HomeScrean> {
                             ),
                             ),
                           );
-                          }
-                        );
-                    },
-                    )
+                        });
+                  },
+                ),
               ),
+              const SizedBox(
+                height: 30,
+              ),
+
             const SizedBox(height: 30,),
             Card2(
               image: 'assets/image/amigos.jpg',
@@ -203,29 +238,37 @@ class _HomeScreanState extends State<HomeScrean> {
                           }
                         );
                     },
-                    )
+                  )),
+              const SizedBox(
+                height: 20,
               ),
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
-              child: Text('Desglose de la ayuda',style: TextStyle(fontSize: 16),),
-            ),
-            Card2(
-              image: 'assets/image/estadistica.png',
-              title: 'Como se Utiliza mi donación',
-              subtitle: 'Conoce hacerca del uso de tu ayuda',
-              titleb: 'Aprende mas',
-              onTap:(){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=> const BuySecurity(
-                  ),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+                child: Text(
+                  'Desglose de la ayuda',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+              Card2(
+                image: 'assets/image/estadistica.png',
+                title: 'Como se Utiliza mi donación',
+                subtitle: 'Conoce hacerca del uso de tu ayuda',
+                titleb: 'Aprende mas',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BuySecurity(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
                 child: SizedBox(
                   height: 180.0,
                   child: ArrowPageIndicator(
@@ -237,8 +280,8 @@ class _HomeScreanState extends State<HomeScrean> {
                     ),
                     rightIcon: Image.asset(
                       "assets/image/right-arrow.png",
-                      width:25.0,
-                      height:25.0,
+                      width: 25.0,
+                      height: 25.0,
                     ),
                     pageController: _pageController2,
                     currentPageNotifier: _currentPageNotifier2,
@@ -247,15 +290,14 @@ class _HomeScreanState extends State<HomeScrean> {
                   ),
                 ),
               ),
-          ],
-        ),
-      )
-    );
+            ],
+          ),
+        ));
   }
+
    _buildPageView(
           PageController pageController, ValueNotifier currentPageNotifier,List datofinal) =>
       PageView.builder(
-          
           itemCount: datofinal.length,
           controller: pageController,
           itemBuilder: (BuildContext context, int index) {
@@ -344,7 +386,3 @@ class _HomeScreanState extends State<HomeScrean> {
             currentPageNotifier.value = index;
           });
 }
-
-
-
-  

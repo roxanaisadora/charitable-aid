@@ -1,10 +1,7 @@
-
-
 import 'package:ac/pages/category/social_aid/page_form/card.dart';
 import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class HelpSocial extends StatefulWidget {
   const HelpSocial({super.key});
@@ -28,13 +25,13 @@ class _HelpSocialState extends State<HelpSocial> {
     }
     return Scaffold(
       body: Container(
-        color: Colors.greenAccent,
+        color: Color.fromARGB(126, 105, 240, 175),
         child: ListView.builder(
           itemCount: HelpService.helpes.length,
           itemBuilder: (BuildContext context, int index) {
             final dato = HelpService.helpes[index];
             return CardCustom(
-              onPressed:(){
+              onPressed: () {
                 HelpService.borrarHelp(dato);
               },
               onTap: () {
@@ -49,7 +46,6 @@ class _HelpSocialState extends State<HelpSocial> {
           },
         ),
       ),
-      
     );
   }
 }
