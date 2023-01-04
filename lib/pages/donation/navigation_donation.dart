@@ -9,6 +9,7 @@ class NavigationDonatio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:Color.fromARGB(126, 105, 240, 175),
         title: Text('Mi lista de ayuda'),
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -16,7 +17,7 @@ class NavigationDonatio extends StatelessWidget {
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          color: Color.fromARGB(126, 105, 240, 175),
+          color:Color.fromARGB(126, 105, 240, 175),
           child: ContainedTabBarView(
             tabs: const [
               Text('Donaciones'),

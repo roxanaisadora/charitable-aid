@@ -45,10 +45,10 @@ class _HomeScreanState extends State<HomeScrean> {
         title: const Text('Hola agente de cambio',style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Color.fromARGB(255, 21, 103, 99),
+        backgroundColor:Color.fromARGB(126, 105, 240, 175),
         leading: Icon(
             Icons.group,
-            color: Colors.white,
+            color: Colors.black,
           ),
       ),
       body: Container(
@@ -116,32 +116,7 @@ class _HomeScreanState extends State<HomeScrean> {
                   );
                 },
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Padding(
-                padding:
-                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
-                child: Text(
-                  '¿No estas seguro de como ayudar?',
-                  style: TextStyle(fontSize: 16),
-                ),
-
-            ),
-             const SizedBox(height: 20,),
-            Card2(
-              image: 'assets/image/regalo_1.png',
-              title: 'Envia regalo a de la comida',
-              subtitle: 'En nombre de tus seres queridos',
-              titleb: 'Enviar regalo',
-              onTap:(){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=> const Secreen2(
-                  ),
-                  ),
-                );
-              },
-            ),
+             
             const SizedBox(height: 20,),
             const Padding(
               padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
@@ -199,9 +174,6 @@ class _HomeScreanState extends State<HomeScrean> {
                         });
                   },
                 ),
-              ),
-              const SizedBox(
-                height: 30,
               ),
 
             const SizedBox(height: 30,),
@@ -265,12 +237,12 @@ class _HomeScreanState extends State<HomeScrean> {
                 },
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: SizedBox(
-                  height: 180.0,
+                  height: 200.0,
                   child: ArrowPageIndicator(
                     isJump: true,
                     leftIcon: Image.asset(

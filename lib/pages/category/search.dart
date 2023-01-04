@@ -276,7 +276,7 @@ class _SearchListState extends State<SearchList> {
             ),
           ]),
       body: Container(
-        color: Colors.white,
+        color: Color.fromARGB(126, 105, 240, 175),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: GridView.builder(
@@ -402,7 +402,6 @@ class CardSearch extends StatelessWidget {
 
                 ),
               ),
-            ),
             Container(
               width: double.infinity,
               height: 45,
