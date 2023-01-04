@@ -3,15 +3,21 @@ import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HelpSocial extends StatelessWidget {
+class HelpSocial extends StatefulWidget {
   const HelpSocial({super.key});
 
+  @override
+  State<HelpSocial> createState() => _HelpSocialState();
+}
+
+class _HelpSocialState extends State<HelpSocial> {
   @override
   Widget build(BuildContext context) {
     final HelpService = Provider.of<HelpSeresvice>(context);
 
     if (HelpService.isLoading) {
       return const Material(
+        color: Colors.transparent,
         child: Center(
           child: CircularProgressIndicator(),
         ),

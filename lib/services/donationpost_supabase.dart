@@ -1,26 +1,27 @@
 import 'dart:convert';
-import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/models/donation_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-class DonationesService extends ChangeNotifier {
-  final String baseUrl = 'https://qpjuuyyvbqljmoeojwag.supabase.co/rest/v1/prototipo';
-  final List<Donation> donationes = [];
-  late Donation seleccionarLugar;
+class DonationPostSeresvice extends ChangeNotifier {
+  final String baseUrl = 'https://qpjuuyyvbqljmoeojwag.supabase.co/rest/v1/info';
+  final List<DonationPost> donationposts = [];
+  late DonationPost seleccionarLugar2;
   String apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
   String autorizacion = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
 
   bool isLoading = true;
   bool isSaving = false;
 
-  DonationesService() {
-    listarDonationes();
+  DonationPostSeresvice() {
+    listarDonationPost();
   }
 
   //LISTAR donaciones
-  Future<List<Donation>> listarDonationes() async {
+  Future<List<DonationPost>> listarDonationPost() async {
     isLoading = true;
     notifyListeners();
+    print('entro');
     final url = Uri.parse('$baseUrl?select=*');
     Map<String,String> header = {
         'apikey':apikey,
@@ -30,23 +31,23 @@ class DonationesService extends ChangeNotifier {
     dynamic parsedJson = json.decode(response.body);
 
    for (var i = 0; i < parsedJson.length; i++){
-    donationes.add(Donation.fromMap2(parsedJson[i]));
+    donationposts.add(DonationPost.fromMap(parsedJson[i]));
    }
 
     isLoading = false;
     notifyListeners();
-    return donationes;
+    return donationposts;
   }
 
   //VALIDAR
-  Future crearOactualizar(Donation donation) async {
+  Future crearOactualizar(DonationPost donationpost) async {
     isSaving = true;
     notifyListeners();
 
-    if (donation.id == null) {
-      await crearDonation(donation);
+    if (donationpost.id == null) {
+      await crearDonationPost(donationpost);
     } else {
-      await actualizarDonation(donation);
+      await actualizarDonationPost(donationpost);
     }
 
     isSaving = false;
@@ -54,24 +55,24 @@ class DonationesService extends ChangeNotifier {
   }
 
   //ACTUALIZAR donaciones
-  Future actualizarDonation(Donation donation) async {
-    print(donation.id);
-    final url = Uri.parse('$baseUrl?id=eq.${donation.id}');
+  Future actualizarDonationPost(DonationPost donationpost) async {
+    print(donationpost.id);
+    final url = Uri.parse('$baseUrl?id=eq.${donationpost.id}');
     Map<String,String> header = {
         'apikey':apikey,
         'Authorization':autorizacion,
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       };
-    final response = await http.put(url, body: donation.toJson2(), headers: header);
+    final response = await http.put(url, body: donationpost.toJson(), headers: header);
     final decodedData = response.body;
-    final index = donationes.indexWhere((element) => element.id == donation.id);
-    donationes[index] = donation;
-    return donation.id;
+    final index = donationposts.indexWhere((element) => element.id == donationpost.id);
+    donationposts[index] = donationpost;
+    return donationpost.id;
   }
 
   //CREAR donaciones
-  Future<String> crearDonation(Donation donation) async {
+  Future<String> crearDonationPost(DonationPost donationpost) async {
     final url = Uri.parse(baseUrl);
     final String msg;
     Map<String,String> header = {
@@ -80,28 +81,28 @@ class DonationesService extends ChangeNotifier {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       };
-    final response = await http.post(url, body: donation.toJson(), headers: header);
+    final response = await http.post(url, body: donationpost.toJson(), headers: header);
 
     if(response.statusCode !=201){
       msg = 'no se creo';
     }else{
       msg = 'se creo';
-      donationes.add(donation);
+      donationposts.add(donationpost);
     }
       return msg;
   }
 
   //BORRAR donaciones
-  Future<String> borrarDonation(Donation donation) async {
-    print(donation.id);
-    final url = Uri.parse('$baseUrl?id=eq.${donation.id}');
+  Future<String> borrarHelp(DonationPost donationpost) async {
+    print(donationpost.id);
+    final url = Uri.parse('$baseUrl?id=eq.${donationpost.id}');
     Map<String,String> header = {
         'apikey':apikey,
         'Authorization':autorizacion,
       };
     final response = await http.delete(url,headers: header );
-    donationes.remove(donation);
+    donationposts.remove(donationpost);
     notifyListeners();
-    return '${donation.id}';
+    return '${donationpost.id}';
   }
 }

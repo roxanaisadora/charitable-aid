@@ -37,15 +37,20 @@ class _Card5State extends State<Card5> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(flex:3,
-              child: Container(
-                width:double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(widget.image!),
-                    fit: BoxFit.cover,
+              child: Stack(
+                children: [
+                  const Center(child: CircularProgressIndicator()),
+                  Container(
+                    width:double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: NetworkImage(widget.image!),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               )
             ),
           ],

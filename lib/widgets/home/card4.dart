@@ -32,19 +32,24 @@ class _Card4State extends State<Card4> {
           width: 340,
           child:Column(
             children: [
-              Container(
-                height: 350,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15),
-                  ),
-                  image: DecorationImage(
-                    image: NetworkImage(widget.image!),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                ),
+              Stack(
+                children: [
+                  Container(height: 350,child: const Center(child: CircularProgressIndicator())),
+                  Container(
+                    height: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+                      image: DecorationImage(
+                        image: NetworkImage(widget.image!),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    ),
+                ],
+              ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
                   child: Column(
