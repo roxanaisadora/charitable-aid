@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:ac/pages/category/social_aid/widgets/social_aid_post.dart';
+import 'package:ac/services/donation_7_supabase.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialAidScreen extends StatefulWidget {
@@ -13,34 +12,20 @@ class SocialAidScreen extends StatefulWidget {
 }
 
 class _SocialAidScreenState extends State<SocialAidScreen> {
-  List<dynamic> _data = [];
-  Future<void> readJson() async {
-  final String response = await rootBundle.loadString('assets/json/listhome.json');
-  final data = await json.decode(response);
-    setState(() {
-      _data = data["item_7"];
-    });
-  }
   
-
-
-  @override
-  void initState() {
-    super.initState();
-    readJson();
-    // loadData().then((value) => catalogdata=value);
-  }
   @override
   Widget build(BuildContext context) {
+    final DonationPostService7 = Provider.of<DonationPostSeresvice7>(context);
+    print(DonationPostService7.donationpost7s.length);
     return Scaffold(
       body: Stack(
         children: [
           PageView.builder(
             scrollDirection: Axis.vertical,
-            itemCount: _data.length,
+            itemCount: DonationPostService7.donationpost7s.length,
             itemBuilder: (BuildContext context, int index) {
-              final dato = _data[index];
-              final Uri _url = Uri.parse('${dato['url']}');
+              final dato = DonationPostService7.donationpost7s[index];
+              final Uri _url = Uri.parse('${dato.url}');
 
               Future<void> _launchUrl() async {
               if (!await launchUrl(_url)) {
@@ -48,15 +33,15 @@ class _SocialAidScreenState extends State<SocialAidScreen> {
               }
             }
               return SocialAidPost(
-                postAsset:dato['image'],
-                postTitle: dato['title'],
-                postDescript:dato['description'],
-                donationAmount:dato['donation'],
-                donorsNumber:dato['colaboradores'].toInt(),
-                category:dato['sub_title'],
-                img1: dato['img_1'],
-                img2: dato['img_2'],
-                img3: dato['img_3'],
+                postAsset:dato.image,
+                postTitle: dato.title,
+                postDescript:dato.description,
+                donationAmount:dato.donation,
+                donorsNumber:dato.colaboradores.toInt(),
+                category:dato.subTitle,
+                img1: dato.img1,
+                img2: dato.img2,
+                img3: dato.img3,
                 shareTap:_launchUrl,
               );
             },

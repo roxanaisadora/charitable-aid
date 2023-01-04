@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 class DonationPostFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   
-  DonationPost donationpost;
-  DonationPostFormProvider(this.donationpost);
+  DonationPost donationpost55;
+  DonationPostFormProvider(this.donationpost55);
 
   bool isValidForm() {
     return formkey.currentState?.validate() ?? false;

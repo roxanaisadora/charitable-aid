@@ -1,12 +1,12 @@
-import 'package:ac/models/donation_post.dart';
+import 'package:ac/models/donation_post_7.dart';
 import 'package:flutter/cupertino.dart';
 
 
-class DonationPost2FormProvider extends ChangeNotifier {
+class DonationPost7FormProvider extends ChangeNotifier {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   
-  DonationPost donationpost2;
-  DonationPost2FormProvider(this.donationpost2);
+  DonationPost7 donationpost7;
+  DonationPost7FormProvider(this.donationpost7);
 
   bool isValidForm() {
     return formkey.currentState?.validate() ?? false;

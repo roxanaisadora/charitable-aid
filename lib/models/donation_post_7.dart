@@ -1,52 +1,48 @@
 import 'dart:convert';
 
 class DonationPost7 {
-  DonationPost7({
-    required this.id,
-    required this.createdAt,
-    required this.image,
-    required this.title,
-    required this.colaboradores,
-    required this.meta,
-    required this.personas,
-    required this.donadores,
-    required this.donation,
-    required this.description,
-    required this.subTitle,
-    required this.img1,
-    required this.img2,
-    required this.img3,
-    required this.url,
-  });
+    DonationPost7({
+      required  this.id,
+      required  this.image,
+      required  this.title,
+      required  this.colaboradores,
+      required  this.meta,
+      required  this.personas,
+      required  this.donadores,
+      required  this.donation,
+      required  this.description,
+      required  this.subTitle,
+      required  this.img1,
+      required  this.img2,
+      required  this.img3,
+      required  this.url,
+    });
 
-  final int id;
-  final DateTime createdAt;
-  final String image;
-  final String title;
-  final int colaboradores;
-  final int meta;
-  final int personas;
-  final int donadores;
-  final double donation;
-  final String description;
-  final String subTitle;
-  final String img1;
-  final String img2;
-  final String img3;
-  final String url;
+    int id;
+    String image;
+    String title;
+    double colaboradores;
+    double meta;
+    int personas;
+    int donadores;
+    double donation;
+    String description;
+    String subTitle;
+    String img1;
+    String img2;
+    String img3;
+    String url;
 
-  factory DonationPost7.fromJson(String str) =>
-      DonationPost7.fromMap(json.decode(str));
+    factory DonationPost7.fromJson(String str) => DonationPost7.fromMap(json.decode(str));
 
-  String toJson() => json.encode(toMap());
+    String toJson() => json.encode(toMap());
 
-  factory DonationPost7.fromMap(Map<String, dynamic> json) => DonationPost7(
+    factory DonationPost7.fromMap(Map<String, dynamic> json) => DonationPost7(
         id: json["id"],
-        createdAt: DateTime.parse(json["created_at"]),
         image: json["image"],
         title: json["title"],
-        colaboradores: json["colaboradores"],
-        meta: json["meta"],
+        colaboradores: json["colaboradores"].toDouble(),
+        meta: json["meta"].toDouble(),
         personas: json["personas"],
         donadores: json["donadores"],
         donation: json["donation"].toDouble(),
@@ -56,11 +52,10 @@ class DonationPost7 {
         img2: json["img_2"],
         img3: json["img_3"],
         url: json["url"],
-      );
+    );
 
-  Map<String, dynamic> toMap() => {
+    Map<String, dynamic> toMap() => {
         "id": id,
-        "created_at": createdAt.toIso8601String(),
         "image": image,
         "title": title,
         "colaboradores": colaboradores,
@@ -74,5 +69,5 @@ class DonationPost7 {
         "img_2": img2,
         "img_3": img3,
         "url": url,
-      };
+    };
 }

@@ -22,7 +22,6 @@ class CardBuy extends StatelessWidget {
               Expanded(
                 child: Stack(
                   children: [
-                    const Center(child: CircularProgressIndicator()),
                     SizedBox(height: 80,
                       child: image!
                     ),

@@ -55,7 +55,7 @@ class SecreenMore2 extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {  
                         final dato = data[index];
                           return Card5(
-                            image: dato['image'],
+                            image: dato.image,
                           );
                       },
                   )
