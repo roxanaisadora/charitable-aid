@@ -53,16 +53,22 @@ class _HomeScreanState extends State<HomeScrean> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 21, 103, 99),
           elevation: 0,
           title: const Text(
             'Hola agente de cambio',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           centerTitle: true,
           automaticallyImplyLeading: false,
+          leading: Icon(
+            Icons.group,
+            color: Colors.white,
+          ),
         ),
         body: Container(
-          color: Colors.greenAccent,
+          color: Color.fromARGB(126, 105, 240, 175),
           child: ListView(
             padding: const EdgeInsets.all(8),
             children: <Widget>[
@@ -72,7 +78,7 @@ class _HomeScreanState extends State<HomeScrean> {
                 child: Center(
                     child: Text(
                   'Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 )),
               ),
               Padding(
@@ -92,20 +98,21 @@ class _HomeScreanState extends State<HomeScrean> {
                           meta: dato['meta'],
                           personas: dato['personas'],
                           donadores: dato['donadores'],
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context)=> SocialScreenHome(
-                                postAsset:dato['image'],
-                                postTitle:dato['title'],
-                                postDescript:dato['description'],
-                                donationAmount:dato['donation'],
-                                donorsNumber:dato['colaboradores'].toInt(),
-                                category:dato['sub_title'],
-                                img1: dato['img_1'],
-                                img2: dato['img_2'],
-                                img3: dato['img_3'],
-                                url_share:dato['url']
-                              ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SocialScreenHome(
+                                    postAsset: dato['image'],
+                                    postTitle: dato['title'],
+                                    postDescript: dato['description'],
+                                    donationAmount: dato['donation'],
+                                    donorsNumber: dato['colaboradores'].toInt(),
+                                    category: dato['sub_title'],
+                                    img1: dato['img_1'],
+                                    img2: dato['img_2'],
+                                    img3: dato['img_3'],
+                                    url_share: dato['url']),
                               ),
                             );
                           },

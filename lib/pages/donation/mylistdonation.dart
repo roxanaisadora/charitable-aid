@@ -1,9 +1,7 @@
-
 import 'package:ac/pages/category/social_aid/page_form/card2.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class PrductoHome extends StatelessWidget {
   const PrductoHome({super.key});
@@ -21,7 +19,7 @@ class PrductoHome extends StatelessWidget {
     }
     return Scaffold(
       body: Container(
-        color: Colors.greenAccent,
+        color: Color.fromARGB(126, 105, 240, 175),
         child: ListView.builder(
           itemCount: DonationService.donationes.length,
           itemBuilder: (BuildContext context, int index) {

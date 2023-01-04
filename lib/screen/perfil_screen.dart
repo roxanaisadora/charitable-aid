@@ -32,7 +32,7 @@ class PerfilScreen extends StatelessWidget {
               storageprovider.activecamera();
               Navigator.pop(context);
             },
-            color: Color.fromRGBO(0, 179, 134, 1.0),
+            color: Color.fromARGB(126, 105, 240, 175),
           ),
           DialogButton(
             child: Text(
@@ -54,7 +54,7 @@ class PerfilScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Color.fromARGB(126, 105, 240, 175),
         title: const Text(
           'Mi Perfil',
         ),
@@ -69,7 +69,7 @@ class PerfilScreen extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    color: Colors.greenAccent,
+                    color: Color.fromARGB(126, 105, 240, 175),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
