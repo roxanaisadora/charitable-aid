@@ -1,12 +1,10 @@
 import 'package:ac/pages/category/social_aid/markers.dart';
 import 'package:ac/providers/geo_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'dart:ui' as ui;
 
 class HelpPointsScreen extends StatefulWidget {
   const HelpPointsScreen({super.key});
@@ -52,17 +50,21 @@ class _HelpPointsScreenState extends State<HelpPointsScreen> {
     super.initState();
   }
 
-  void customMarker() {
-    BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(
-        devicePixelRatio: 2,
-        size: Size(2, 2),
-      ),
+  void customMarker() async {
+    final Uint8List icon =
+        await getBytesFromAsset('assets/icon/marker.png', 175);
+
+    /* BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(),
       "assets/icon/marker.png",
     ).then((icon) {
       setState(() {
         markerIcon = icon;
       });
+    }); */
+    final myMarker = BitmapDescriptor.fromBytes(icon);
+    setState(() {
+      markerIcon = myMarker;
     });
   }
 
@@ -71,14 +73,16 @@ class _HelpPointsScreenState extends State<HelpPointsScreen> {
     final geoProvider = Provider.of<GeoProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            geoProvider.activeMenu();
-          },
-          icon: const Icon(Icons.menu),
-        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              geoProvider.activeMenu();
+            },
+            icon: const Icon(Icons.menu),
+          ),
+        ],
         title: const Text('Puntos de Acopio'),
-        //backgroundColor: Colors.greenAccent,
+        backgroundColor: const Color.fromARGB(126, 105, 240, 175),
       ),
       body: Stack(
         children: [
@@ -99,14 +103,21 @@ class _HelpPointsScreenState extends State<HelpPointsScreen> {
               },
             ),
           ),
-          Visibility(
-            visible: geoProvider.isVisible,
-            child: FloatingActionButton(
-              onPressed: () {
-                geoProvider.getLocationUser();
-              },
-              backgroundColor: Colors.green,
-              child: const Icon(Icons.location_searching),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: Visibility(
+              visible: geoProvider.isVisible,
+              child: FloatingActionButton(
+                onPressed: () {
+                  geoProvider.getLocationUser();
+                },
+                backgroundColor: const Color.fromARGB(126, 105, 240, 175),
+                child: const Icon(
+                  Icons.location_searching,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
           Positioned(
@@ -213,4 +224,14 @@ class HelpLocationCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<Uint8List> getBytesFromAsset(String path, int width) async {
+  ByteData data = await rootBundle.load(path);
+  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+      targetWidth: width);
+  ui.FrameInfo fi = await codec.getNextFrame();
+  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+      .buffer
+      .asUint8List();
 }

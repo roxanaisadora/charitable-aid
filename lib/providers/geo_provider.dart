@@ -20,7 +20,7 @@ class GeoProvider extends ChangeNotifier {
   GoogleMapController? googleMapController;
 
   CameraPosition initialPosition = const CameraPosition(
-    target: LatLng(-12.83, -76.98),
+    target: LatLng(-11.9962282, -77.0100778),
     zoom: 14.475,
   );
 
