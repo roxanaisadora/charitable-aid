@@ -95,9 +95,19 @@ class Screen_2 extends StatelessWidget {
                     VolunteeringInfoChip(
                       label: 'Voluntariado',
                     ),
-                    FavoriteButton(
-                      onPressed: () {},
-                      number: '544',
+                    IconButton(
+                      onPressed: (){
+                          ()async{
+                            //final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
+                            await Share.share('Ven y unete al cambio por el Perú\n\n$image');
+                            //await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
+                          };
+                        },
+                      icon: Icon(
+                        Icons.share,
+                        color: Colors.grey,
+                        size: 30,
+                      ),
                     ),
                   ],
                 ),
@@ -134,13 +144,7 @@ class Screen_2 extends StatelessWidget {
                 VolunteersPostDetails(
                   date: 'dia:${dia}',
                   journey: 'hora:${hora}',
-                  sharePressed:(){
-                    ()async{
-                      //final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
-                      await Share.shareFiles(['${image}'], text: 'Ven y unete al cambio por el Perú');
-                      //await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
-                    };
-                  }
+                  
                 ),
                 const SizedBox(
                   height: 10,
@@ -184,13 +188,10 @@ class VolunteersPostDetails extends StatelessWidget {
     Key? key,
     required this.date,
     required this.journey,
-    this.sharePressed,
-    this.favouritePressed,
   }) : super(key: key);
   final String date;
   final String journey;
-  final Function? sharePressed;
-  final VoidCallback? favouritePressed;
+
 
   @override
   Widget build(BuildContext context) {
@@ -202,14 +203,6 @@ class VolunteersPostDetails extends StatelessWidget {
         ),
         VolunteeringInfoChip(
           label: journey,
-        ),
-        IconButton(
-          onPressed: ()=>sharePressed!,
-          icon: Icon(
-            Icons.share,
-            color: Colors.grey,
-            size: 30,
-          ),
         ),
       ],
     );

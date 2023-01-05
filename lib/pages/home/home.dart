@@ -36,7 +36,7 @@ class _HomeScreanState extends State<HomeScrean> {
     final datofinal =DonationPostService1.donationpost1s;
     final DonationPostService4 = Provider.of<DonationPostSeresvice4>(context);
     final DonationPostService5 = Provider.of<DonationPostSeresvice5>(context);
-    print(DonationPostService4.donationpost4s.length);
+    print(DonationPostService4.donationpost4s);
     
     return Scaffold(
 

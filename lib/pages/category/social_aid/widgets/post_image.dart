@@ -54,7 +54,7 @@ class PostImage extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
-                      Icons.share,
+                      Icons.redo,
                       color: Colors.black,
                       size: 20,
                     ),
