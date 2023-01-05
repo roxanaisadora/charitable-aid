@@ -3,7 +3,6 @@ import 'dart:convert';
 class DonationPost3 {
   DonationPost3({
     required this.id,
-    required this.createdAt,
     required this.image,
     required this.num1,
     required this.num2,
@@ -14,7 +13,6 @@ class DonationPost3 {
   });
 
   final int id;
-  final DateTime createdAt;
   final String image;
   final int num1;
   final int num2;
@@ -30,7 +28,6 @@ class DonationPost3 {
 
   factory DonationPost3.fromMap(Map<String, dynamic> json) => DonationPost3(
         id: json["id"],
-        createdAt: DateTime.parse(json["created_at"]),
         image: json["image"],
         num1: json["num1"],
         num2: json["num2"],
@@ -42,7 +39,6 @@ class DonationPost3 {
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "created_at": createdAt.toIso8601String(),
         "image": image,
         "num1": num1,
         "num2": num2,
@@ -51,4 +47,15 @@ class DonationPost3 {
         "num5": num5,
         "num6": num6,
       };
+  
+  DonationPost3 copyWith() => DonationPost3(
+        id: id,
+        image: image,
+        num1: num1,
+        num2: num2,
+        num3: num3,
+        num4: num4,
+        num5: num5,
+        num6: num6,
+      );
 }

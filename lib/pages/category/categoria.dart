@@ -13,6 +13,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(126, 105, 240, 175),
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
@@ -30,13 +31,10 @@ class CategoryScreen extends StatelessWidget {
         ).copyWith(
           bottom: 0,
         ),
-        color: Colors.greenAccent,
+        color: Color.fromARGB(126, 105, 240, 175),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const SizedBox(
-              height: 20,
-            ),
             CategoryCard(
               asset:
                   'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
@@ -47,9 +45,6 @@ class CategoryScreen extends StatelessWidget {
                 );
                 Navigator.push(context, route);
               },
-            ),
-            const SizedBox(
-              height: 20,
             ),
             CategoryCard(
               asset:
@@ -90,6 +85,9 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
+            SizedBox(
+              height: 30,
+            )
           ],
         ),
       ),

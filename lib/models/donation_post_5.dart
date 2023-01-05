@@ -1,30 +1,65 @@
 import 'dart:convert';
 
 class DonationPost5 {
-  DonationPost5({
-    required this.id,
-    required this.createdAt,
-    required this.image,
-  });
+    DonationPost5({
+      required  this.id,
+      required  this.image,
+      required  this.title,
+      required  this.yotube,
+      required  this.title2,
+      required  this.description,
+      required  this.imagenes,
+    });
 
-  final int id;
-  final DateTime createdAt;
-  final String image;
+    int id;
+    String image;
+    String title;
+    String yotube;
+    String title2;
+    String description;
+    List<Imagene> imagenes;
 
-  factory DonationPost5.fromJson(String str) =>
-      DonationPost5.fromMap(json.decode(str));
+    factory DonationPost5.fromJson(String str) => DonationPost5.fromMap(json.decode(str));
 
-  String toJson() => json.encode(toMap());
+    String toJson() => json.encode(toMap());
 
-  factory DonationPost5.fromMap(Map<String, dynamic> json) => DonationPost5(
+    factory DonationPost5.fromMap(Map<String, dynamic> json) => DonationPost5(
         id: json["id"],
-        createdAt: DateTime.parse(json["created_at"]),
         image: json["image"],
-      );
+        title: json["title"],
+        yotube: json["yotube"],
+        title2: json["title2"],
+        description: json["description"],
+        imagenes: List<Imagene>.from(json["imagenes"].map((x) => Imagene.fromMap(x))),
+    );
 
-  Map<String, dynamic> toMap() => {
+    Map<String, dynamic> toMap() => {
         "id": id,
-        "created_at": createdAt.toIso8601String(),
         "image": image,
-      };
+        "title": title,
+        "yotube": yotube,
+        "title2": title2,
+        "description": description,
+        "imagenes": List<dynamic>.from(imagenes.map((x) => x.toMap())),
+    };
+}
+
+class Imagene {
+    Imagene({
+      required  this.image,
+    });
+
+    String image;
+
+    factory Imagene.fromJson(String str) => Imagene.fromMap(json.decode(str));
+
+    String toJson() => json.encode(toMap());
+
+    factory Imagene.fromMap(Map<String, dynamic> json) => Imagene(
+        image: json["image"],
+    );
+
+    Map<String, dynamic> toMap() => {
+        "image": image,
+    };
 }

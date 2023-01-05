@@ -1,4 +1,3 @@
-
 import 'package:ac/route/index_page.dart';
 import 'package:flutter/material.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
@@ -10,6 +9,7 @@ class NavigationDonatio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:Color.fromARGB(126, 105, 240, 175),
         title: Text('Mi lista de ayuda'),
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -17,20 +17,19 @@ class NavigationDonatio extends StatelessWidget {
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          color: Colors.greenAccent,
-
+          color:Color.fromARGB(126, 105, 240, 175),
           child: ContainedTabBarView(
             tabs: const [
               Text('Donaciones'),
               Text('Ayuda social'),
             ],
             tabBarProperties: TabBarProperties(
-            height: 32.0,
-            indicatorColor: Colors.blue,
-            indicatorWeight: 4.0,
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.white,
-          ),
+              height: 32.0,
+              indicatorColor: Colors.blue,
+              indicatorWeight: 4.0,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.white,
+            ),
             views: const [
               PrductoHome(),
               HelpSocial(),

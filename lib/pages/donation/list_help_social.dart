@@ -1,14 +1,16 @@
-
-
 import 'package:ac/pages/category/social_aid/page_form/card.dart';
 import 'package:ac/services/dato_supabase_help.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-class HelpSocial extends StatelessWidget {
+class HelpSocial extends StatefulWidget {
   const HelpSocial({super.key});
 
+  @override
+  State<HelpSocial> createState() => _HelpSocialState();
+}
+
+class _HelpSocialState extends State<HelpSocial> {
   @override
   Widget build(BuildContext context) {
     final HelpService = Provider.of<HelpSeresvice>(context);
@@ -23,13 +25,13 @@ class HelpSocial extends StatelessWidget {
     }
     return Scaffold(
       body: Container(
-        color: Colors.greenAccent,
+        color: Color.fromARGB(126, 105, 240, 175),
         child: ListView.builder(
           itemCount: HelpService.helpes.length,
           itemBuilder: (BuildContext context, int index) {
             final dato = HelpService.helpes[index];
             return CardCustom(
-              onPressed:(){
+              onPressed: () {
                 HelpService.borrarHelp(dato);
               },
               onTap: () {
@@ -44,7 +46,6 @@ class HelpSocial extends StatelessWidget {
           },
         ),
       ),
-      
     );
   }
 }

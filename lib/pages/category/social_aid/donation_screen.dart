@@ -53,6 +53,7 @@ class DonationScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Confirmar Donacion'),
+          centerTitle: true,
         ),
         body: Form(
           key: donationForm.formkey,
@@ -60,8 +61,8 @@ class DonationScreen extends StatelessWidget {
             child: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
+                  horizontal: 10,
+                  vertical: 20,
                 ).copyWith(
                   bottom: 0,
                 ),
