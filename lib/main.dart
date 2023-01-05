@@ -1,5 +1,7 @@
 
 
+import 'package:ac/providers/donation_verification_provider.dart';
+import 'package:ac/providers/geo_provider.dart';
 import 'package:ac/route/index_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProductoProvider()),
       ChangeNotifierProvider(create: (_) => StorageHomeProvider()),
       ChangeNotifierProvider(create: (_) => DonationVerificationProvider()),
+      ChangeNotifierProvider(create: (_) => GeoProvider()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice1()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice3()),

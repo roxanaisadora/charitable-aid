@@ -1,4 +1,5 @@
 import 'package:ac/pages/category/search.dart';
+import 'package:ac/pages/category/social_aid/help_points_screen.dart';
 import 'package:ac/pages/category/social_aid/payment_screen.dart';
 import 'package:ac/pages/category/social_aid/social_aid_screen.dart';
 import 'package:ac/pages/category/social_aid/volunteer_screen.dart';
@@ -33,7 +34,6 @@ class CategoryScreen extends StatelessWidget {
         color: Color.fromARGB(126, 105, 240, 175),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-
           children: [
             CategoryCard(
               asset:
@@ -57,6 +57,9 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
+            const SizedBox(
+              height: 20,
+            ),
             CategoryCard(
               asset:
                   'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
@@ -68,7 +71,23 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
-            SizedBox(height: 30,)
+            const SizedBox(
+              height: 20,
+            ),
+            CategoryCard(
+              asset:
+                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+              label: 'Puntos de Acopio',
+              onPressed: () {
+                final route = MaterialPageRoute(
+                  builder: (context) => const HelpPointsScreen(),
+                );
+                Navigator.push(context, route);
+              },
+            ),
+            SizedBox(
+              height: 30,
+            )
           ],
         ),
       ),
