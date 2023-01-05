@@ -29,12 +29,9 @@ class CategoryScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           vertical: 25,
           horizontal: 20,
-        ).copyWith(
-          bottom: 0,
         ),
         color: const Color.fromARGB(126, 105, 240, 175),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CategoryCard(
               asset:
@@ -46,6 +43,9 @@ class CategoryScreen extends StatelessWidget {
                 );
                 Navigator.push(context, route);
               },
+            ),
+            const SizedBox(
+              height: 20,
             ),
             CategoryCard(
               asset:
@@ -86,9 +86,6 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
-            SizedBox(
-              height: 30,
-            )
           ],
         ),
       ),
