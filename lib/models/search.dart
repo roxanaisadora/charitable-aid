@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 class Building {
     Building({
@@ -37,11 +37,8 @@ class Building {
     String img2;
     String img3;
 
-    factory Building.fromJson(String str) => Building.fromMap(json.decode(str));
 
-    String toJson() => json.encode(toMap());
-
-    factory Building.fromMap(Map<String, dynamic> json) => Building(
+    factory Building.fromJson(Map<String, dynamic> json) => Building(
         id: json["id"],
         name: json["name"],
         place: json["place"],
@@ -60,22 +57,5 @@ class Building {
         img3: json["img3"],
     );
 
-    Map<String, dynamic> toMap() => {
-        "id": id,
-        "name": name,
-        "place": place,
-        "image": image,
-        "fecha": fecha,
-        "hora": hora,
-        "asistiran": asistiran,
-        "favoritos": favoritos,
-        "longitud": longitud,
-        "latitud": latitud,
-        "description": description,
-        "ong": ong,
-        "place2": place2,
-        "img1": img1,
-        "img2": img2,
-        "img3": img3,
-    };
+
 }

@@ -1,4 +1,5 @@
 import 'package:ac/pages/category/search.dart';
+import 'package:ac/pages/category/search_2.dart';
 import 'package:ac/pages/category/social_aid/help_points_screen.dart';
 import 'package:ac/pages/category/social_aid/payment_screen.dart';
 import 'package:ac/pages/category/social_aid/social_aid_screen.dart';
@@ -13,7 +14,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(126, 105, 240, 175),
+        backgroundColor: const Color.fromARGB(126, 105, 240, 175),
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
@@ -31,7 +32,7 @@ class CategoryScreen extends StatelessWidget {
         ).copyWith(
           bottom: 0,
         ),
-        color: Color.fromARGB(126, 105, 240, 175),
+        color: const Color.fromARGB(126, 105, 240, 175),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -41,7 +42,7 @@ class CategoryScreen extends StatelessWidget {
               label: 'Voluntariado',
               onPressed: () {
                 final route = MaterialPageRoute(
-                  builder: (context) => SearchList(),
+                  builder: (context) => const Search2List(),
                 );
                 Navigator.push(context, route);
               },

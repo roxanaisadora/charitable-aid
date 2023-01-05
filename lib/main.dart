@@ -1,6 +1,4 @@
 
-
-import 'package:ac/providers/donation_verification_provider.dart';
 import 'package:ac/providers/geo_provider.dart';
 import 'package:ac/route/index_page.dart';
 import 'package:provider/provider.dart';
