@@ -30,13 +30,18 @@ class _HomeScreanState extends State<HomeScrean> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final DonationPostService = Provider.of<DonationPostSeresvice>(context);
+    // ignore: non_constant_identifier_names
     final DonationPostService3 = Provider.of<DonationPostSeresvice3>(context);
+    // ignore: non_constant_identifier_names
     final DonationPostService1 = Provider.of<DonationPostSeresvice1>(context);
     final datofinal =DonationPostService1.donationpost1s;
+    // ignore: non_constant_identifier_names
     final DonationPostService4 = Provider.of<DonationPostSeresvice4>(context);
+    // ignore: non_constant_identifier_names
     final DonationPostService5 = Provider.of<DonationPostSeresvice5>(context);
-    print(DonationPostService4.donationpost4s);
+    //print(DonationPostService4.donationpost4s);
     
     return Scaffold(
 
@@ -45,14 +50,14 @@ class _HomeScreanState extends State<HomeScrean> {
         title: const Text('Hola agente de cambio',style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor:Color.fromARGB(126, 105, 240, 175),
-        leading: Icon(
+        backgroundColor:const Color.fromARGB(126, 105, 240, 175),
+        leading: const Icon(
             Icons.group,
             color: Colors.black,
           ),
       ),
       body: Container(
-        color: Color.fromARGB(126, 105, 240, 175),
+        color: const Color.fromARGB(126, 105, 240, 175),
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[

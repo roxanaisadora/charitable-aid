@@ -24,7 +24,8 @@ class PerfilScreen extends StatelessWidget {
         desc: "Como quieres cambiar tu foto?",
         buttons: [
           DialogButton(
-            child: Text(
+            // ignore: sort_child_properties_last
+            child: const Text(
               "Camera",
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
@@ -32,10 +33,11 @@ class PerfilScreen extends StatelessWidget {
               storageprovider.activecamera();
               Navigator.pop(context);
             },
-            color: Color.fromARGB(126, 105, 240, 175),
+            color: const Color.fromARGB(126, 105, 240, 175),
           ),
           DialogButton(
-            child: Text(
+            // ignore: sort_child_properties_last
+            child: const Text(
               "Gallery",
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
@@ -43,7 +45,7 @@ class PerfilScreen extends StatelessWidget {
               storageprovider.activegallery();
               Navigator.pop(context);
             },
-            gradient: LinearGradient(colors: [
+            gradient: const LinearGradient(colors: [
               Color.fromRGBO(116, 116, 191, 1.0),
               Color.fromRGBO(52, 138, 199, 1.0),
             ]),
@@ -54,7 +56,7 @@ class PerfilScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(126, 105, 240, 175),
+        backgroundColor: const Color.fromARGB(126, 105, 240, 175),
         title: const Text(
           'Mi Perfil',
         ),
@@ -100,7 +102,7 @@ class PerfilScreen extends StatelessWidget {
                                         child: IconButton(
                                           onPressed: () =>
                                               _onAlertButtonsPressed(context),
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.camera_alt,
                                             size: 36,
                                             color: Colors.white,
@@ -128,7 +130,7 @@ class PerfilScreen extends StatelessWidget {
                                         child: IconButton(
                                           onPressed: () =>
                                               _onAlertButtonsPressed(context),
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.camera_alt,
                                             size: 36,
                                             color: Colors.white,
@@ -232,18 +234,18 @@ class PerfilScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 height: 30,
                                 width: 60,
                                 child: Icon(Icons.mail),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Container(
+                                padding: EdgeInsets.only(top: 3),
+                                child: SizedBox(
                                   height: 25,
                                   width: 200,
-                                  child: const Text(
+                                  child: Text(
                                     'E-mail',
                                     style: TextStyle(fontSize: 15),
                                   ),
@@ -285,18 +287,18 @@ class PerfilScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 height: 30,
                                 width: 60,
                                 child: Icon(Icons.phone_android),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Container(
+                                padding: EdgeInsets.only(top: 3),
+                                child: SizedBox(
                                   height: 25,
                                   width: 200,
-                                  child: const Text(
+                                  child: Text(
                                     'Phone',
                                     style: TextStyle(
                                       fontSize: 15,
@@ -337,11 +339,12 @@ class PerfilScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Text('Estadisticas'),
+              const SizedBox(height: 30,),
+              const Text('Estadisticas'),
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(70),
+                    padding: const EdgeInsets.only(top:70, bottom: 60, right: 70, left: 70),
                     child: SizedBox(
                       height: 60,
                       width: 60,
@@ -360,7 +363,7 @@ class PerfilScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                         child: IndicatorsWidget(),
                       )
                     ],
@@ -387,6 +390,7 @@ class PerfilScreen extends StatelessWidget {
                   },
                 ),
               ),
+             const SizedBox(height: 50,) 
             ],
           ),
         ),

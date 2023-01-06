@@ -5,11 +5,13 @@ class Donation {
   String nombre;
   int? id;
   String precio;
+  String image;
 
   Donation({
     required this.categoria,
     required this.nombre,
     required this.precio,
+    required this.image,
     this.id,
   });
 
@@ -22,18 +24,21 @@ class Donation {
         categoria: json["categoria"],
         nombre: json["nombre"],
         precio: json["precio"],
+        image: json["image"],
       );
 
   Map<String, dynamic> toMap() => {
         "categoria": categoria,
         "nombre": nombre,
         "precio": precio,
+        "image": image,
       };
   Map<String, dynamic> toMap2() => {
         "categoria": categoria,
         "nombre": nombre,
         "id":id,
         "precio": precio,
+        "image": image,
       };
 
   Donation copyWith() => Donation(
@@ -41,6 +46,7 @@ class Donation {
         nombre: nombre,
         id: id,
         precio: precio,
+        image: image,
       );
 
   factory Donation.fromMap2(Map<String, dynamic> json) => Donation(
@@ -48,6 +54,7 @@ class Donation {
         categoria: json["categoria"],
         nombre: json["nombre"], 
         precio: json["precio"],
+        image: json["image"],
       );
 
 

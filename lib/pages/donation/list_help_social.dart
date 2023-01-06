@@ -13,6 +13,7 @@ class HelpSocial extends StatefulWidget {
 class _HelpSocialState extends State<HelpSocial> {
   @override
   Widget build(BuildContext context) {
+
     final HelpService = Provider.of<HelpSeresvice>(context);
 
     if (HelpService.isLoading) {
@@ -25,25 +26,28 @@ class _HelpSocialState extends State<HelpSocial> {
     }
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(126, 105, 240, 175),
-        child: ListView.builder(
-          itemCount: HelpService.helpes.length,
-          itemBuilder: (BuildContext context, int index) {
-            final dato = HelpService.helpes[index];
-            return CardCustom(
-              onPressed: () {
-                HelpService.borrarHelp(dato);
-              },
-              onTap: () {
-                HelpService.seleccionarLugar2 =
-                    HelpService.helpes[index].copyWith();
+        color: const Color.fromARGB(126, 105, 240, 175),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 60),
+          child: ListView.builder(
+            itemCount: HelpService.helpes.length,
+            itemBuilder: (BuildContext context, int index) {
+              final dato = HelpService.helpes[index];
+              return CardCustom(
+                onPressed: () {
+                  HelpService.borrarHelp(dato);
+                },
+                onTap: () {
+                  HelpService.seleccionarLugar2 =
+                      HelpService.helpes[index].copyWith();
 
-                Navigator.pushNamed(context, 'page_update');
-              },
-              title: Text('${dato.nombre} | ${dato.fecha} '),
-              subtitle: Text('${dato.hora}'),
-            );
-          },
+                  Navigator.pushNamed(context, 'page_update');
+                },
+                title: Text('${dato.nombre} '),
+                subtitle: Text('${dato.hora} | ${dato.fecha}'),
+              );
+            },
+          ),
         ),
       ),
     );

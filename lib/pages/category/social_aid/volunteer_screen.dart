@@ -10,9 +10,18 @@ class VolunteerScreen extends StatelessWidget {
   final String? title;
   final String? image;
   final String? place;
-  final String? dia;
   final String? hora;
-  const VolunteerScreen({super.key, this.title, this.image, this.place, this.dia, this.hora});
+  final String? place2;
+  final String? description;
+  final String? img1;
+  final String? img2;
+  final String? img3;
+  final String? ong;
+  final String? fecha;
+  final double? latitud;
+  final double? longitud;
+  final int? asistiran;
+  const VolunteerScreen({super.key, this.title, this.image, this.place, this.hora, this.description, this.img1, this.img2, this.img3, this.ong, this.latitud, this.longitud, this.asistiran, this.fecha, this.place2});
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +61,17 @@ class VolunteerScreen extends StatelessWidget {
               title:title!,
               lugar:place!,
               image:image!,
-              dia:dia!,
-              hora:hora!
+              hora:hora!,
+              description:description!,
+              img1:img1!,
+              img2:img2!,
+              img3:img3!,
+              ong:ong!,
+              latitud:latitud!,
+              longitud:longitud!,
+              asistiran:asistiran!,
+              fecha:fecha!,
+              place2:place2!
             ),
           ),
         ),
@@ -61,9 +79,10 @@ class VolunteerScreen extends StatelessWidget {
       bottomSheet: JoinButton(
         img:image!,
         lugar:place!,
-        dia:dia!,
+        dia:fecha!,
         hora:hora!,
         title:title!,
+        
       ),
     );
   }
@@ -73,10 +92,19 @@ class Screen_2 extends StatelessWidget {
   final String? title;
   final String? lugar;
   final String? image;
-  final String? dia;
   final String? hora;
-
-  const Screen_2({super.key, this.title, this.lugar, this.image, this.dia, this.hora});
+  final String? description;
+  final String? img1;
+  final String? img2;
+  final String? img3;
+  final String? ong;
+  final int? asistiran;
+  final double latitud;
+  final double longitud;
+  final String? fecha;
+  final String? place2;
+  
+  const Screen_2({super.key, this.title, this.lugar, this.image, this.hora, this.description, this.img1, this.img2, this.img3, this.ong, required this.latitud, required this.longitud, this.asistiran, this.fecha, this.place2});
 
   @override
   Widget build(BuildContext context) {
@@ -93,17 +121,17 @@ class Screen_2 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     VolunteeringInfoChip(
-                      label: 'Voluntariado',
+                      label: '$ong',
                     ),
                     IconButton(
                       onPressed: (){
                           ()async{
-                            //final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
-                            await Share.share('Ven y unete al cambio por el Perú\n\n$image');
+                            final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
+                            await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
                             //await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
                           };
                         },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.share,
                         color: Colors.grey,
                         size: 30,
@@ -116,7 +144,7 @@ class Screen_2 extends StatelessWidget {
                 ),
                 Text(
                   title!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -125,8 +153,8 @@ class Screen_2 extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'Lugar: ${lugar}',
-                  style: TextStyle(
+                  'Lugar: $lugar',
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
                   ),
@@ -142,28 +170,24 @@ class Screen_2 extends StatelessWidget {
                   height: 15,
                 ),
                 VolunteersPostDetails(
-                  date: 'dia:${dia}',
-                  journey: 'hora:${hora}',
+                  date: 'dia:$fecha',
+                  journey: 'hora:$hora',
                   
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 VolunteerAvatars(
-                  firstAvatar:
-                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                  secondAvatar:
-                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-                  thirdAvatar:
-                      'https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                  volunteersNumber: '50',
+                  firstAvatar:'$img1',
+                  secondAvatar:'$img2',
+                  thirdAvatar:'$img3',
+                  volunteersNumber: asistiran,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                Text(
-                  'En la Playa Las orillas se necesita ayuda para limpiar las playas esperamos su colaboracion con esta causa, los interesados unirse a este evento y no se olviden de compartir.Gracias agentes del cambio.',
-                  style: TextStyle(
+                Text('$description',
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
                   ),
@@ -172,8 +196,8 @@ class Screen_2 extends StatelessWidget {
                   height: 15,
                 ),
                 LocationMap(
-                  latitude: -11.445,
-                  longitude: -77.1,
+                  latitude:latitud,
+                  longitude: longitud,
                 ),
                 const SizedBox(
                   height: 80,
@@ -226,9 +250,9 @@ class LocationMap extends StatelessWidget {
         aspectRatio: 16 / 10,
         child: GoogleMap(
           initialCameraPosition: CameraPosition(
-            target: LatLng(-11.445, -77.1),
+            target: LatLng(latitude, longitude),
           ),
-          minMaxZoomPreference: MinMaxZoomPreference(13, 18),
+          minMaxZoomPreference:const MinMaxZoomPreference(13, 18),
           markers: <Marker>{
             Marker(
               markerId: const MarkerId('marcador'),
@@ -284,7 +308,7 @@ class FavoriteButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         decoration: BoxDecoration(
           color: Colors.green,
           borderRadius: BorderRadius.circular(30),
@@ -292,17 +316,17 @@ class FavoriteButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.star,
               color: Colors.amber,
               size: 20,
             ),
-            SizedBox(
+            const SizedBox(
               width: 6,
             ),
             Text(
               number ?? '0',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: Colors.white,
@@ -326,7 +350,7 @@ class VolunteerAvatars extends StatelessWidget {
   final String firstAvatar;
   final String secondAvatar;
   final String thirdAvatar;
-  final String? volunteersNumber;
+  final int? volunteersNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -433,7 +457,7 @@ class VolunteeringInfoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      padding:const  EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(12),
@@ -441,7 +465,7 @@ class VolunteeringInfoChip extends StatelessWidget {
       child: Text(
         //'Voluntariado',
         label,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 16,
         ),

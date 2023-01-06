@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:ac/pages/category/social_aid/page_form/card2.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
@@ -20,16 +22,22 @@ class PrductoHome extends StatelessWidget {
     }
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(126, 105, 240, 175),
-        child: ListView.builder(
-          itemCount: DonationService.donationes.length,
-          itemBuilder: (BuildContext context, int index) {
-            final dato = DonationService.donationes[index];
-            return CardCustom2(
-              title: Text('${dato.nombre} | ${dato.categoria} '),
-              subtitle: Text('s/. ${dato.precio}'),
-            );
-          },
+        color: const Color.fromARGB(126, 105, 240, 175),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 60),
+          child: ListView.builder(
+            itemCount: DonationService.donationes.length,
+            itemBuilder: (BuildContext context, int index) {
+              final dato = DonationService.donationes[index];
+              return CardCustom2(
+                title: Text('${dato.nombre} '),
+                subtitle: Text('Donacion: s/. ${dato.precio}'),
+                leading: SizedBox(height: 60,width: 60,child: Image.network('${dato.image}',
+                  fit: BoxFit.cover,
+                ),),
+              );
+            },
+          ),
         ),
       ),
     );

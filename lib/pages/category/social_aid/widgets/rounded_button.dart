@@ -33,7 +33,7 @@ class RoundedButton extends StatelessWidget {
       ),
       color: Colors.greenAccent.shade700,
       onPressed: (){
-         donationService.seleccionarLugar = Donation(categoria: '$category', nombre: '$postTitle', precio:'$donationAmount');
+         donationService.seleccionarLugar = Donation(categoria: '$category', nombre: '$postTitle', precio:'$donationAmount', image:'$img');
           Navigator.push(
           context,
           MaterialPageRoute(
