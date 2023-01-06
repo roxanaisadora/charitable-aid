@@ -11,14 +11,19 @@ final myController = TextEditingController();
 
 class DonationPage extends StatelessWidget {
   final String? img;
-  const DonationPage({super.key, this.img});
+  final String? qr1;
+  final String? qr2;
+  final String? qr3;
+  final String socio;
+  final int numero;
+  const DonationPage({super.key, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
 
   @override
   Widget build(BuildContext context) {
     final donationService = Provider.of<DonationesService>(context);
     return ChangeNotifierProvider(
       create: (_) => DonationFormProvider(donationService.seleccionarLugar),
-      child: DonationScreen(donationService: donationService, img: img),
+      child: DonationScreen(donationService: donationService, img: img, qr1: qr1,qr2: qr2,qr3: qr3, socio:socio, numero:numero),
     );
   }
 }
@@ -26,9 +31,12 @@ class DonationPage extends StatelessWidget {
 class DonationScreen extends StatelessWidget {
   final DonationesService donationService;
   final String? img;
-  const DonationScreen({super.key, required this.donationService, this.img});
-
-  
+  final String? qr1;
+  final String? qr2;
+  final String? qr3;
+  final String socio;
+  final int numero;
+  const DonationScreen({super.key, required this.donationService, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +174,13 @@ class DonationScreen extends StatelessWidget {
                           Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PaymentScreenn(),
+                            builder: (context) => PaymentScreenn(
+                              qr1:qr1,
+                              qr2:qr2,
+                              qr3:qr3,
+                              socio:socio,
+                              numero:numero,
+                            ),
                           ),
                         );
                       },
@@ -241,13 +255,21 @@ class DonationPostCard extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: AspectRatio(
-              aspectRatio: 2.5,
-              child: Image.network(
-                asset,
-                fit: BoxFit.cover,
-              ),
+            borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+            child: Stack(
+              children: [
+                const Center(child: CircularProgressIndicator()),
+                AspectRatio(
+                  aspectRatio: 2.5,
+                  child: Image.network(
+                    asset,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(

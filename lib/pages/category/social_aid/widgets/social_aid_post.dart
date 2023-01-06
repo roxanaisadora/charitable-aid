@@ -13,6 +13,11 @@ class SocialAidPost extends StatelessWidget {
   final String? img1;
   final String? img2;
   final String? img3;
+  final String? qr1;
+  final String? qr2;
+  final String? qr3;
+  final String? socio;
+  final int numero;
   final Function? shareTap;
   const SocialAidPost({
     Key? key,
@@ -25,7 +30,7 @@ class SocialAidPost extends StatelessWidget {
     this.img1,
     this.img2,
     this.img3,
-    this.shareTap,
+    this.shareTap, this.qr1, this.qr2, this.qr3, this.socio, required this.numero,
   }) : super(key: key);
 
   @override
@@ -103,6 +108,11 @@ class SocialAidPost extends StatelessWidget {
                 donationAmount: donationAmount!,
                 postTitle: postTitle!,
                 img: postAsset!,
+                qr1: qr1!,
+                qr2:qr2!,
+                qr3:qr3!,
+                socio:socio!,
+                numero:numero
               )
             ],
           ),

@@ -47,7 +47,6 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: MyRoutes.generateRoute,
       initialRoute: MyRoutes.rSplash,
       routes: {
-        'page_pago': (_) => const DonationPage(),
         'page_update': (_) => const LugarPage(),
       },
     );

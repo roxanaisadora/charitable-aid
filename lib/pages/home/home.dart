@@ -95,7 +95,12 @@ class _HomeScreanState extends State<HomeScrean> {
                                 img1: dato.img1,
                                 img2: dato.img2,
                                 img3: dato.img3,
-                                url_share:dato.url
+                                url_share:dato.url,
+                                qr1:dato.qr1,
+                                qr2:dato.qr2,
+                                qr3:dato.qr3,
+                                socio:dato.socio,
+                                numero:dato.numero
                               ),
                               ),
                             );

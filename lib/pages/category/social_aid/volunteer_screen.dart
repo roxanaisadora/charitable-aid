@@ -153,7 +153,7 @@ class Screen_2 extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'Lugar: $lugar',
+                  'Lugar: $place2, $lugar',
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,

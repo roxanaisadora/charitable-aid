@@ -9,12 +9,17 @@ class RoundedButton extends StatelessWidget {
   final String ? img;
   final String ? category;
   final double ? donationAmount;
+  final String? qr1;
+  final String? qr2;
+  final String? qr3;
+  final String socio;
+  final int numero;
   const RoundedButton({
     Key? key,
     required this.onPressed, 
     this.postTitle, 
     this.category, 
-    this.donationAmount, this.img,
+    this.donationAmount, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero,
   }) : super(key: key);
   
   final VoidCallback onPressed;
@@ -39,6 +44,11 @@ class RoundedButton extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => DonationPage(
               img:img,
+              qr1:qr1,
+              qr2:qr2,
+              qr3:qr3,
+              socio:socio,
+              numero:numero
             ),
           ),
         );

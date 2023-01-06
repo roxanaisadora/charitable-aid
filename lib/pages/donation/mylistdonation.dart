@@ -4,6 +4,7 @@ import 'package:ac/pages/category/social_aid/page_form/card2.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class PrductoHome extends StatelessWidget {
   const PrductoHome({super.key});
@@ -32,10 +33,30 @@ class PrductoHome extends StatelessWidget {
               return CardCustom2(
                 title: Text('${dato.nombre} '),
                 subtitle: Text('Donacion: s/. ${dato.precio}'),
-                leading: SizedBox(height: 60,width: 60,child: Image.network('${dato.image}',
-                  fit: BoxFit.cover,
-                ),),
+                leading: SizedBox(
+                height: 55,
+                width: 60,
+                child: Stack(
+                    children: [
+                      const Center(child: CircularProgressIndicator()),
+                      PhysicalModel(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: Colors.transparent,
+                        shape: BoxShape.rectangle,
+                        child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: dato.image,
+                              fit: BoxFit.cover,
+                              height: 55,
+                              width: 60,
+                            ),
+                      ),
+                    ],
+                  ),
+
+                ),
               );
+              
             },
           ),
         ),

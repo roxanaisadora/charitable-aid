@@ -4,26 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ac/providers/provider_supabase.dart';
 import 'package:ac/services/dato_supabase.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 class PaymentScreenn extends StatelessWidget {
-  final String? img;
-  const PaymentScreenn({super.key, this.img});
+  final String? qr1;
+  final String? qr2;
+  final String? qr3;
+  final String socio;
+  final int numero;
+  const PaymentScreenn({super.key, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
 
   @override
   Widget build(BuildContext context) {
     final donationService = Provider.of<DonationesService>(context);
     return ChangeNotifierProvider(
       create: (_) => DonationFormProvider(donationService.seleccionarLugar),
-      child: PaymentScreen(donationService: donationService),
+      child: PaymentScreen(donationService: donationService, qr1: qr1,qr2: qr2,qr3: qr3,socio:socio, numero:numero ),
     );
   }
 }
 class PaymentScreen extends StatefulWidget {
   final DonationesService donationService;
-  const PaymentScreen({super.key, required this.donationService});
+  final String? qr1;
+  final String? qr2;
+  final String? qr3;
+  final String socio;
+  final int numero;
+  const PaymentScreen({super.key, required this.donationService, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -118,21 +124,24 @@ class _PaymentScreenState extends State<PaymentScreen>
                     child: TabBarView(
                       controller: _tabController,
                       physics: const NeverScrollableScrollPhysics(),
-                      children: const [
+                      children: [
                         PaymentMethodInfo(
-                          accountHolder: 'James Bond',
-                          phoneNumber: 962230583,
+                          accountHolder: widget.socio,
+                          phoneNumber: widget.numero,
                           payMethodName: 'Yape',
+                          qr:widget.qr1!
                         ),
                         PaymentMethodInfo(
-                          accountHolder: 'James Bond 2',
-                          phoneNumber: 967278223,
+                          accountHolder: widget.socio,
+                          phoneNumber: widget.numero,
                           payMethodName: 'Plin',
+                          qr:widget.qr2!
                         ),
                         PaymentMethodInfo(
-                          accountHolder: 'James Bond 3',
-                          phoneNumber: 936715353,
+                          accountHolder: widget.socio,
+                          phoneNumber: widget.numero,
                           payMethodName: 'Tunki',
+                          qr:widget.qr3!
                         ),
                       ],
                     ),
@@ -321,11 +330,12 @@ class PaymentMethodInfo extends StatelessWidget {
     Key? key,
     required this.phoneNumber,
     required this.accountHolder,
-    required this.payMethodName,
+    required this.payMethodName, required this.qr,
   }) : super(key: key);
   final int phoneNumber;
   final String accountHolder;
   final String payMethodName;
+  final String qr;
 
   @override
   Widget build(BuildContext context) {
@@ -359,7 +369,7 @@ class PaymentMethodInfo extends StatelessWidget {
           ),
           Center(
             child: Image.network(
-              'https://cdn-icons-png.flaticon.com/512/754/754637.png',
+              qr,
               height: 85,
               width: 85,
               loadingBuilder: (context, child, loadingProgress) {

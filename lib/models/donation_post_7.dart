@@ -16,6 +16,11 @@ class DonationPost7 {
       required  this.img2,
       required  this.img3,
       required  this.url,
+      required this.qr1,
+      required this.qr2,
+      required this.qr3,
+      required this.socio,
+      required this.numero,
     });
 
     int id;
@@ -32,6 +37,11 @@ class DonationPost7 {
     String img2;
     String img3;
     String url;
+    String qr1;
+    String qr2;
+    String qr3;
+    String socio;
+    int numero;
 
     factory DonationPost7.fromJson(String str) => DonationPost7.fromMap(json.decode(str));
 
@@ -52,6 +62,11 @@ class DonationPost7 {
         img2: json["img_2"],
         img3: json["img_3"],
         url: json["url"],
+        qr1: json["qr1"],
+        qr2: json["qr2"],
+        qr3: json["qr3"],
+        socio: json["socio"],
+        numero: json["numero"],
     );
 
     Map<String, dynamic> toMap() => {
@@ -69,5 +84,10 @@ class DonationPost7 {
         "img_2": img2,
         "img_3": img3,
         "url": url,
+        "qr1": qr1,
+        "qr2": qr2,
+        "qr3": qr3,
+        "socio": socio,
+        "numero": numero,
     };
 }

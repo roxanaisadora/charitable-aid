@@ -46,7 +46,7 @@ class CategoryScreen extends StatelessWidget {
             ),
 
             CategoryCard(
-              asset:'https://www.infocapitalhumano.pe/wp-content/uploads/2020/06/empresas4.jpg',
+              asset:'https://www.agrorural.gob.pe/wp-content/uploads/2017/03/WhatsApp-Image-2017-03-26-at-9.35.30-AM.jpeg',
               label: 'Donaciones',
               onPressed: () {
                 final route = MaterialPageRoute(

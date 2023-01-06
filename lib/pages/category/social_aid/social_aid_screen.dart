@@ -43,6 +43,11 @@ class _SocialAidScreenState extends State<SocialAidScreen> {
                 img2: dato.img2,
                 img3: dato.img3,
                 shareTap:_launchUrl,
+                qr1:dato.qr1,
+                qr2:dato.qr2,
+                qr3:dato.qr3,
+                socio:dato.socio,
+                numero:dato.numero,
               );
             },
           ),

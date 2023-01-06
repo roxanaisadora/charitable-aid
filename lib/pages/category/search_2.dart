@@ -104,8 +104,11 @@ class Search2List extends StatelessWidget {
           } else if (snapshot.hasData) {
             return PhotosList(photos: snapshot.data!);
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const  Material(
+              color: Colors.transparent,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           }
         },
@@ -213,8 +216,8 @@ class _PhotosListState extends State<PhotosList> {
             ),
           ]),
          body: Container(
-        color: const Color.fromARGB(126, 105, 240, 175),
-        child: Padding(
+          color: const Color.fromARGB(126, 105, 240, 175),
+          child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: GridView.builder(
               itemCount: _searchList.length,
