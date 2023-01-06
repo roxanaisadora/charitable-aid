@@ -56,7 +56,7 @@ class _PaymentScreenState extends State<PaymentScreen>
     TabController _tabController = TabController(length: 3, vsync: this);
     final donationProvider = Provider.of<DonationVerificationProvider>(context);
     final donationForm = Provider.of<DonationFormProvider>(context);
-
+    final dato = donationForm.donation;
     return Scaffold(
       appBar: AppBar(),
       body: Form(
@@ -246,7 +246,7 @@ class _PaymentScreenState extends State<PaymentScreen>
                   ),
                   Center(
                     child: Text(
-                      'S/. 200',
+                      'S/. ${dato.precio}',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
