@@ -1,3 +1,5 @@
+import 'package:ac/models/modelo_supabase.dart';
+import 'package:ac/pages/category/social_aid/payment_screen.dart';
 import 'package:ac/providers/provider_supabase.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,29 +28,13 @@ class DonationScreen extends StatelessWidget {
   final String? img;
   const DonationScreen({super.key, required this.donationService, this.img});
 
-  _onBasicAlertPressed(context) {
-    Alert(
-      context: context,
-      title: "Muchas Gracias",
-      desc: "Con tu aporte estas ayudando a quien mas lo necesita",
-      image: Image.asset("assets/image/amigos.jpg"),
-      buttons: [
-        DialogButton(
-          child: Text(
-            "Cerrar",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () => Navigator.pop(context),
-          width: 120,
-        )
-      ],
-    ).show();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     final donationForm = Provider.of<DonationFormProvider>(context);
     final dato = donationForm.donation;
+    final donationService = Provider.of<DonationesService>(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -175,9 +161,14 @@ class DonationScreen extends StatelessWidget {
                     MyRoundedButton(
                       label: 'Donar',
                       onPressed: () {
-                        donationService.crearOactualizar(donationForm.donation);
-                        Navigator.pushNamed(context, '/home');
-                        _onBasicAlertPressed(context);
+                        // ignore: unnecessary_string_interpolations
+                        donationService.seleccionarLugar = Donation(categoria: '${dato.categoria}', nombre: '${dato.nombre}', precio:'${dato.precio}', image:'$img');
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PaymentScreenn(),
+                          ),
+                        );
                       },
                     ),
                   ],

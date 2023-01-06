@@ -31,10 +31,11 @@ class CategoryScreen extends StatelessWidget {
         ),
         color: const Color.fromARGB(126, 105, 240, 175),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CategoryCard(
               asset:
-                  'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+                  'https://blog.oxfamintermon.org/wp-content/uploads/2018/07/voluntariado-onu.jpg',
               label: 'Voluntariado',
               onPressed: () {
                 final route = MaterialPageRoute(
@@ -43,12 +44,9 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
-            const SizedBox(
-              height: 20,
-            ),
+
             CategoryCard(
-              asset:
-                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+              asset:'https://www.infocapitalhumano.pe/wp-content/uploads/2020/06/empresas4.jpg',
               label: 'Donaciones',
               onPressed: () {
                 final route = MaterialPageRoute(
@@ -57,26 +55,9 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
-            const SizedBox(
-              height: 20,
-            ),
+
             CategoryCard(
-              asset:
-                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-              label: 'pagos',
-              onPressed: () {
-                final route = MaterialPageRoute(
-                  builder: (context) => const PaymentScreen(),
-                );
-                Navigator.push(context, route);
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            CategoryCard(
-              asset:
-                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+              asset:'https://play-lh.googleusercontent.com/2MbiK1SICz2OX5OfHwIp_S-YydIEHsH4IujPBAr7tV5SeF56hZ1mSxhg_1ZIvEGdiQQ',
               label: 'Puntos de Acopio',
               onPressed: () {
                 final route = MaterialPageRoute(
@@ -85,6 +66,7 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
+            const SizedBox(height: 30,)
           ],
         ),
       ),
