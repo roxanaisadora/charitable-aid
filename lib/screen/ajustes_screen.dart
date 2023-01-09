@@ -1,10 +1,11 @@
-import 'package:ac/providers/provider_theme.dart';
 import 'package:ac/screen/perfil_screen.dart';
 import 'package:ac/share_preferences/preferences.dart';
-import 'package:ac/widget/custom_drawer.dart';
+
 import 'package:ac/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class AjusteScreen extends StatefulWidget {
   const AjusteScreen({super.key});
@@ -35,9 +36,9 @@ class _AjusteScreenState extends State<AjusteScreen> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.lightGreen,
+      backgroundColor: Colors.greenAccent,
       appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.greenAccent,
         title: const Text('Registrar'),
         centerTitle: true,
         actions: [
@@ -60,38 +61,17 @@ class _AjusteScreenState extends State<AjusteScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                // CustomTextFieldWidget(
-                //   controller: imgController,
-                //   // initialValue: Preferences.img,
-                //   keyboardType: TextInputType.text,
-                //   hintText: 'Imagen',
-                //   prefixIcon: const Icon(
-                //     Icons.photo,
-                //     color: Colors.grey,
-                //   ),
-                //   // onChanged: (value) {
-                //   //   Preferences.img = value;
-                //   //   setState(() {});
-                //   // },
-                // ),
-
                 CustomTextFieldWidget(
                   controller: nombreController,
-                  // initialValue: Preferences.nombre,
                   keyboardType: TextInputType.name,
                   hintText: 'Nombre',
                   prefixIcon: const Icon(
                     Icons.person,
                     color: Colors.grey,
                   ),
-                  // onChanged: (value) {
-                  //   Preferences.nombre = value;
-                  //   setState(() {});
-                  // },
                 ),
                 CustomTextFieldWidget(
                   controller: apellidoController,
-                  // initialValue: Preferences.apellido,
                   keyboardType: TextInputType.name,
                   hintText: 'Apellido',
                   prefixIcon: const Icon(
@@ -99,10 +79,8 @@ class _AjusteScreenState extends State<AjusteScreen> {
                     color: Colors.grey,
                   ),
                 ),
-
                 CustomTextFieldWidget(
                     controller: emailController,
-                    // initialValue: Preferences.img,
                     keyboardType: TextInputType.emailAddress,
                     hintText: 'Email',
                     prefixIcon: const Icon(
@@ -111,40 +89,13 @@ class _AjusteScreenState extends State<AjusteScreen> {
                     )),
                 CustomTextFieldWidget(
                   controller: mobileController,
-                  // initialValue: Preferences.cargo,
                   keyboardType: TextInputType.number,
                   hintText: 'Cellphone',
                   prefixIcon: const Icon(
                     Icons.phone_android_rounded,
                     color: Colors.grey,
                   ),
-                  // onChanged: (value) {
-                  //   Preferences.cargo = value;
-                  //   setState(() {});
-                  // },
                 ),
-                // const Divider(),
-                // RadioListTile<int>(
-                //   activeColor: Colors.green,
-                //   value: 1,
-                //   groupValue: Preferences.genero,
-                //   title: const Text('Masculino'),
-                //   onChanged: (value) {
-                //     Preferences.genero = value ?? 1;
-                //     setState(() {});
-                //   },
-                // ),
-                // RadioListTile<int>(
-                //   activeColor: Colors.green,
-                //   value: 2,
-                //   groupValue: Preferences.genero,
-                //   title: const Text('Femenino'),
-                //   onChanged: (value) {
-                //     Preferences.genero = value ?? 2;
-                //     setState(() {});
-                //   },
-                // ),
-
                 SizedBox(
                   height: 50,
                   width: 150,
@@ -158,6 +109,13 @@ class _AjusteScreenState extends State<AjusteScreen> {
                       style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                     onPressed: () {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.success,
+                        title: 'PERFIL',
+                        text: 'Se guardo correctamente',
+                        autoCloseDuration: const Duration(seconds: 2),
+                      );
                       save();
                       setState(() {});
                     },

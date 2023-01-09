@@ -7,6 +7,7 @@ import 'package:ac/share_preferences/preferences.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PerfilScreen extends StatelessWidget {
