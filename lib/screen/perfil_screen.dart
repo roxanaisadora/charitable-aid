@@ -429,17 +429,10 @@ _onAlertButton(context) {
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
         onPressed: () {
-          Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (BuildContext context) {
-                return const PerfilScreen();
-              },
-            ),
-            (route) => false,
-          );
+          Navigator.of(context).pop();
         },
         gradient: const LinearGradient(colors: [
-          Color.fromARGB(255, 116, 126, 191),
+          Color.fromARGB(255, 105, 123, 243),
           Color.fromRGBO(52, 138, 199, 1.0),
         ]),
       )
