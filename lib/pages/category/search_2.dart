@@ -128,7 +128,7 @@ class PhotosList extends StatefulWidget {
 
 class _PhotosListState extends State<PhotosList> {
   Widget appBarTitle = const Text(
-    "Search...",
+    "Busca el lugar de ayuda",
     style: TextStyle(color: Colors.black),
   );
   Icon actionIcon =const Icon(
