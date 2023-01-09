@@ -339,12 +339,15 @@ class PerfilScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               const Text('Estadisticas'),
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top:70, bottom: 60, right: 70, left: 70),
+                    padding: const EdgeInsets.only(
+                        top: 70, bottom: 60, right: 70, left: 70),
                     child: SizedBox(
                       height: 60,
                       width: 60,
@@ -370,31 +373,76 @@ class PerfilScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Center(
-                child: ListTile(
-                  title: const Text(
-                    'cerrar sesion',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.redAccent),
-                  ),
-                  onTap: () {
-                    Navigator.of(context, rootNavigator: true)
-                        .pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return const LoginScreen();
-                        },
-                      ),
-                      (route) => false,
-                    );
-                  },
-                ),
+              SizedBox(
+                height: 40,
+                width: 130,
+                child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: Colors.red,
+                    child: const Text(
+                      'Cerrar Sesion',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                    onPressed: () => _onAlertButton(context)),
               ),
-             const SizedBox(height: 50,) 
+              const SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+_onAlertButton(context) {
+  Alert(
+    context: context,
+    type: AlertType.warning,
+    title: "¿Desea Cerrar Sesion?",
+    buttons: [
+      DialogButton(
+        // ignore: sort_child_properties_last
+        child: const Text(
+          "Si",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const LoginScreen();
+              },
+            ),
+            (route) => false,
+          );
+        },
+        color: Color.fromARGB(124, 186, 56, 173),
+      ),
+      DialogButton(
+        // ignore: sort_child_properties_last
+        child: const Text(
+          "No",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const PerfilScreen();
+              },
+            ),
+            (route) => false,
+          );
+        },
+        gradient: const LinearGradient(colors: [
+          Color.fromARGB(255, 116, 126, 191),
+          Color.fromRGBO(52, 138, 199, 1.0),
+        ]),
+      )
+    ],
+  ).show();
 }
