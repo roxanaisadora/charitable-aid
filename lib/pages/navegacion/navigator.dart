@@ -1,5 +1,6 @@
 import 'package:ac/route/index_page.dart';
 import 'package:ac/screen/perfil_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
@@ -88,7 +89,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         slogan = const NavigationDonatio();
         break;
       case 3:
-        slogan = PerfilScreen();
+        slogan = const PerfilScreen();
         break;
       default:
         slogan = const HomeScrean();

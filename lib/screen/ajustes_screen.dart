@@ -1,4 +1,3 @@
-import 'package:ac/screen/perfil_screen.dart';
 import 'package:ac/share_preferences/preferences.dart';
 
 import 'package:ac/widget/custom_textfield.dart';
@@ -16,7 +15,9 @@ class AjusteScreen extends StatefulWidget {
 
 class _AjusteScreenState extends State<AjusteScreen> {
   final imgController = TextEditingController(text: Preferences.img);
-  final nombreController = TextEditingController(text: Preferences.nombre);
+  final nombreController = TextEditingController(
+    text: Preferences.nombre,
+  );
   final apellidoController = TextEditingController(text: Preferences.apellido);
 
   final emailController = TextEditingController(text: Preferences.email);
@@ -41,17 +42,6 @@ class _AjusteScreenState extends State<AjusteScreen> {
         backgroundColor: Colors.greenAccent,
         title: const Text('Registrar'),
         centerTitle: true,
-        actions: [
-          // Switch.adaptive(
-          //   value: Preferences.theme,
-          //   onChanged: (value) {
-          //     Preferences.theme = value;
-          //     final themeP = Provider.of<ProviderTheme>(context, listen: false);
-          //     value ? themeP.setOscuro() : themeP.setClaro();
-          //     setState(() {});
-          //   },
-          // )
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

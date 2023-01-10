@@ -7,7 +7,7 @@ import 'package:ac/share_preferences/preferences.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quickalert/quickalert.dart';
+
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PerfilScreen extends StatelessWidget {
@@ -154,9 +154,9 @@ class PerfilScreen extends StatelessWidget {
                             children: [
                               (Preferences.nombre == '')
                                   ? const Text(
-                                      'Ingrese su nombre',
+                                      'Registre su nombre',
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(88, 0, 0, 0),
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold),
                                     )
@@ -421,7 +421,7 @@ _onAlertButton(context) {
             (route) => false,
           );
         },
-        color: Color.fromARGB(124, 186, 56, 173),
+        color: const Color.fromARGB(124, 186, 56, 173),
       ),
       DialogButton(
         // ignore: sort_child_properties_last
