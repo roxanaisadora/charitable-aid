@@ -71,6 +71,55 @@ class _HomeScreanState extends State<HomeScrean> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
+              child: Center(child: Text('Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',style: TextStyle(fontSize: 16),)),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 500.0,
+                  child: ListView.builder(
+                    itemCount: donationPostService.donationposts.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {  
+                      final dato = donationPostService.donationposts[index];
+                        return Card1(
+                          image: dato.image,
+                          title: dato.title,
+                          colaboradores: dato.colaboradores,
+                          meta: dato.meta,
+                          personas: dato.personas,
+                          donadores: dato.donadores,
+                          onTap: (){
+                             Navigator.push(context, MaterialPageRoute(
+                              builder: (context)=> SocialScreenHome(
+                                postAsset:dato.image,
+                                postTitle:dato.title,
+                                postDescript:dato.description,
+                                donationAmount:dato.meta,
+                                donorsNumber:dato.donadores,
+                                category:dato.subTitle,
+                                img1: dato.img1,
+                                img2: dato.img2,
+                                img3: dato.img3,
+                                url_share:dato.url,
+                                qr1:dato.qr1,
+                                qr2:dato.qr2,
+                                qr3:dato.qr3,
+                                socio:dato.socio,
+                                numero:dato.numero,
+                                id:dato.id,
+                                personas:dato.personas
+                              ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    )),
+              ),
             const SizedBox(
               height: 20,
             ),
