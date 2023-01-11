@@ -14,12 +14,14 @@ class RoundedButton extends StatelessWidget {
   final String? qr3;
   final String socio;
   final int numero;
+  final int? id;
+  final int? personas;
   const RoundedButton({
     Key? key,
     required this.onPressed, 
     this.postTitle, 
     this.category, 
-    this.donationAmount, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero,
+    this.donationAmount, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero, this.id, this.personas,
   }) : super(key: key);
   
   final VoidCallback onPressed;
@@ -48,7 +50,10 @@ class RoundedButton extends StatelessWidget {
               qr2:qr2,
               qr3:qr3,
               socio:socio,
-              numero:numero
+              numero:numero,
+              id:id!,
+              personas:personas!,
+              donationAmount:donationAmount!
             ),
           ),
         );

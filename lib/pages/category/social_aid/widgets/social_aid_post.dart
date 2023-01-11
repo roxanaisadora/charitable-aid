@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 import 'package:ac/pages/category/social_aid/widgets/post_image.dart';
 import 'package:ac/pages/category/social_aid/widgets/rounded_button.dart';
 import 'package:ac/pages/category/social_aid/widgets/social_aid_information_item.dart';
@@ -18,6 +20,8 @@ class SocialAidPost extends StatelessWidget {
   final String? qr3;
   final String? socio;
   final int numero;
+  final int personas;
+  final int id;
   final Function? shareTap;
   const SocialAidPost({
     Key? key,
@@ -30,7 +34,7 @@ class SocialAidPost extends StatelessWidget {
     this.img1,
     this.img2,
     this.img3,
-    this.shareTap, this.qr1, this.qr2, this.qr3, this.socio, required this.numero,
+    this.shareTap, this.qr1, this.qr2, this.qr3, this.socio, required this.numero, required this.id, required this.personas,
   }) : super(key: key);
 
   @override
@@ -50,7 +54,7 @@ class SocialAidPost extends StatelessWidget {
             children: [
               PostImage(
                 asset: postAsset!,
-                sharetap: () => shareTap!(),
+                //sharetap: () => shareTap!(),
               ),
               const SizedBox(
                 height: 10,
@@ -69,14 +73,36 @@ class SocialAidPost extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Text(
-                // 'Ayuda Puno',
-                'ONG: ${category}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 18,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    // 'Ayuda Puno',
+                    'ONG: ${category}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  InkWell(
+                  onTap: () => shareTap!(),
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.redo,
+                      color: Colors.black,
+                      size: 20,
+                    ),
+                  ),
                 ),
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -93,7 +119,6 @@ class SocialAidPost extends StatelessWidget {
                 height: 20,
               ),
               SocialAidInformation(
-                donationAmount: donationAmount!,
                 donorsNumber: donorsNumber!,
                 img1: img1!,
                 img2: img2!,
@@ -112,7 +137,9 @@ class SocialAidPost extends StatelessWidget {
                 qr2:qr2!,
                 qr3:qr3!,
                 socio:socio!,
-                numero:numero
+                numero:numero,
+                id:id,
+                personas:personas
               )
             ],
           ),

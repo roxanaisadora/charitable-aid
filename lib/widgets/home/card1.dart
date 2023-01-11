@@ -89,7 +89,7 @@ class _Card1State extends State<Card1> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text('${widget.colaboradores} de ${widget.meta} ', style: const TextStyle(fontSize: 15),),
+                        child: Text('${widget.colaboradores} soles de ${widget.meta} soles', style: const TextStyle(fontSize: 15),),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),

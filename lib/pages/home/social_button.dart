@@ -17,8 +17,10 @@ class SocialScreenHome extends StatelessWidget {
   final String? qr3; 
   final String socio; 
   final int numero; 
+  final int id; 
+  final int personas;
   final String? url_share; 
-  const SocialScreenHome({super.key, this.postAsset, this.postTitle, this.postDescript, this.donationAmount, this.donorsNumber, this.category, this.img1, this.img2, this.img3, this.url_share, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
+  const SocialScreenHome({super.key, this.postAsset, this.postTitle, this.postDescript, this.donationAmount, this.donorsNumber, this.category, this.img1, this.img2, this.img3, this.url_share, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero, required this.id, required this.personas});
 
   
 
@@ -53,7 +55,9 @@ class SocialScreenHome extends StatelessWidget {
                 qr3:qr3,
                 shareTap: _launchUrl,
                 socio:socio,
-                numero:numero
+                numero:numero,
+                id:id,
+                personas:personas
               );
             },
           ),

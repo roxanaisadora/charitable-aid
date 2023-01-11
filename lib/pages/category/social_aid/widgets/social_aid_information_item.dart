@@ -5,10 +5,10 @@ class SocialAidInformation extends StatelessWidget {
   const SocialAidInformation({
     Key? key,
     this.donorsNumber,
-    this.donationAmount, this.img1, this.img2, this.img3,
+ this.img1, this.img2, this.img3,
   }) : super(key: key);
   final int? donorsNumber;
-  final double? donationAmount;
+
   final String? img1; 
   final String? img2; 
   final String? img3; 

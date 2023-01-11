@@ -39,20 +39,7 @@ class DonationPostSeresvice extends ChangeNotifier {
     return donationposts;
   }
 
-  //VALIDAR
-  Future crearOactualizar(DonationPost donationpost) async {
-    isSaving = true;
-    notifyListeners();
 
-    if (donationpost.id == null) {
-      await crearDonationPost(donationpost);
-    } else {
-      await actualizarDonationPost(donationpost);
-    }
-
-    isSaving = false;
-    notifyListeners();
-  }
 
   //ACTUALIZAR donaciones
   Future actualizarDonationPost(DonationPost donationpost) async {
@@ -71,38 +58,4 @@ class DonationPostSeresvice extends ChangeNotifier {
     return donationpost.id;
   }
 
-  //CREAR donaciones
-  Future<String> crearDonationPost(DonationPost donationpost) async {
-    final url = Uri.parse(baseUrl);
-    final String msg;
-    Map<String,String> header = {
-        'apikey':apikey,
-        'Authorization':autorizacion,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      };
-    final response = await http.post(url, body: donationpost.toJson(), headers: header);
-
-    if(response.statusCode !=201){
-      msg = 'no se creo';
-    }else{
-      msg = 'se creo';
-      donationposts.add(donationpost);
-    }
-      return msg;
-  }
-
-  //BORRAR donaciones
-  Future<String> borrarHelp(DonationPost donationpost) async {
-    print(donationpost.id);
-    final url = Uri.parse('$baseUrl?id=eq.${donationpost.id}');
-    Map<String,String> header = {
-        'apikey':apikey,
-        'Authorization':autorizacion,
-      };
-    final response = await http.delete(url,headers: header );
-    donationposts.remove(donationpost);
-    notifyListeners();
-    return '${donationpost.id}';
-  }
 }

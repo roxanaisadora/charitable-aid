@@ -31,7 +31,7 @@ class _HomeScreanState extends State<HomeScrean> {
   @override
   Widget build(BuildContext context) {
     // ignore: non_constant_identifier_names
-    final DonationPostService = Provider.of<DonationPostSeresvice>(context);
+    final donationPostService = Provider.of<DonationPostSeresvice>(context);
     // ignore: non_constant_identifier_names
     final DonationPostService3 = Provider.of<DonationPostSeresvice3>(context);
     // ignore: non_constant_identifier_names
@@ -42,6 +42,8 @@ class _HomeScreanState extends State<HomeScrean> {
     // ignore: non_constant_identifier_names
     final DonationPostService5 = Provider.of<DonationPostSeresvice5>(context);
     //print(DonationPostService4.donationpost4s);
+
+    //donationPostService.listarDonationPost();
     
     return Scaffold(
 
@@ -55,6 +57,13 @@ class _HomeScreanState extends State<HomeScrean> {
             Icons.group,
             color: Colors.black,
           ),
+        actions: [
+          IconButton(onPressed: (){
+            donationPostService.listarDonationPost();
+          }, 
+          icon: const Icon(Icons.refresh))
+
+          ],
       ),
       body: Container(
         color: const Color.fromARGB(126, 105, 240, 175),
@@ -62,53 +71,7 @@ class _HomeScreanState extends State<HomeScrean> {
           padding: const EdgeInsets.all(8),
           children: <Widget>[
            
-            const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
-              child: Center(child: Text('Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',style: TextStyle(fontSize: 16),)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10.0),
-                  height: 500.0,
-                  child: ListView.builder(
-                    itemCount: DonationPostService.donationposts.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) {  
-                      final dato = DonationPostService.donationposts[index];
-                        return Card1(
-                          image: dato.image,
-                          title: dato.title,
-                          colaboradores: dato.colaboradores,
-                          meta: dato.meta,
-                          personas: dato.personas,
-                          donadores: dato.donadores,
-                          onTap: (){
-                             Navigator.push(context, MaterialPageRoute(
-                              builder: (context)=> SocialScreenHome(
-                                postAsset:dato.image,
-                                postTitle:dato.title,
-                                postDescript:dato.description,
-                                donationAmount:dato.meta,
-                                donorsNumber:dato.donadores,
-                                category:dato.subTitle,
-                                img1: dato.img1,
-                                img2: dato.img2,
-                                img3: dato.img3,
-                                url_share:dato.url,
-                                qr1:dato.qr1,
-                                qr2:dato.qr2,
-                                qr3:dato.qr3,
-                                socio:dato.socio,
-                                numero:dato.numero
-                              ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    )),
-              ),
+            
               const SizedBox(
                 height: 20,
               ),
@@ -368,3 +331,5 @@ class _HomeScreanState extends State<HomeScrean> {
             currentPageNotifier.value = index;
           });
 }
+
+

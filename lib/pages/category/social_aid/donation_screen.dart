@@ -5,7 +5,6 @@ import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 final myController = TextEditingController();
 
@@ -16,14 +15,17 @@ class DonationPage extends StatelessWidget {
   final String? qr3;
   final String socio;
   final int numero;
-  const DonationPage({super.key, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
+  final int? id;
+  final double? donationAmount;
+  final int personas;
+  const DonationPage({super.key, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero, this.id, this.donationAmount, required this.personas});
 
   @override
   Widget build(BuildContext context) {
     final donationService = Provider.of<DonationesService>(context);
     return ChangeNotifierProvider(
       create: (_) => DonationFormProvider(donationService.seleccionarLugar),
-      child: DonationScreen(donationService: donationService, img: img, qr1: qr1,qr2: qr2,qr3: qr3, socio:socio, numero:numero),
+      child: DonationScreen(donationService: donationService, img: img, qr1: qr1,qr2: qr2,qr3: qr3, socio:socio, numero:numero, id:id!, donationAmount:donationAmount, personas:personas),
     );
   }
 }
@@ -36,7 +38,10 @@ class DonationScreen extends StatelessWidget {
   final String? qr3;
   final String socio;
   final int numero;
-  const DonationScreen({super.key, required this.donationService, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero});
+  final int? id;
+  final double? donationAmount;
+  final int personas;
+  const DonationScreen({super.key, required this.donationService, this.img, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero, this.id, this.donationAmount, required this.personas});
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +95,9 @@ class DonationScreen extends StatelessWidget {
                       height: 20,
                     ),
                     PredefinedDonationButton(
-                      donationAmount: Text(
+                      donationAmount: const Text(
                         'S/. 50',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Color(0XFF707089),
                           fontWeight: FontWeight.bold,
@@ -117,9 +122,9 @@ class DonationScreen extends StatelessWidget {
                       height: 20,
                     ),
                     PredefinedDonationButton(
-                      donationAmount: Text(
+                      donationAmount: const Text(
                         'S/. 20',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Color(0XFF707089),
                           fontWeight: FontWeight.bold,
@@ -145,9 +150,9 @@ class DonationScreen extends StatelessWidget {
                       colores: (donationForm.dato3 == false)
                           ? Colors.white
                           : Colors.amber,
-                      donationAmount: Text(
+                      donationAmount: const Text(
                         'S/. 10',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Color(0XFF707089),
                           fontWeight: FontWeight.bold,
@@ -180,6 +185,9 @@ class DonationScreen extends StatelessWidget {
                               qr3:qr3,
                               socio:socio,
                               numero:numero,
+                              id:id!,
+                              personas:personas,
+                              donationAmount:donationAmount
                             ),
                           ),
                         );
@@ -220,7 +228,7 @@ class MyRoundedButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         label,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 16,
           fontWeight: FontWeight.w600,
