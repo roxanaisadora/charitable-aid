@@ -43,6 +43,8 @@ class _HomeScreanState extends State<HomeScrean> {
     //print(DonationPostService4.donationpost4s);
 
     //donationPostService.listarDonationPost();
+    final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -61,14 +63,16 @@ class _HomeScreanState extends State<HomeScrean> {
         actions: [
           IconButton(
               onPressed: () {
-                donationPostService.listarDonationPost();
+                donationPostService.listarDonationPost2();
               },
               icon: const Icon(Icons.refresh))
         ],
       ),
       body: RefreshIndicator(
+        key: _refreshIndicatorKey,
         onRefresh: () {
-          return donationPostService.listarDonationPost();
+          donationPostService.listarDonationPost2();
+          return Future<void>.delayed(const Duration(seconds: 3));
         },
         child: Container(
           color: const Color.fromARGB(126, 105, 240, 175),
@@ -109,7 +113,7 @@ class _HomeScreanState extends State<HomeScrean> {
                                     postAsset: dato.image,
                                     postTitle: dato.title,
                                     postDescript: dato.description,
-                                    donationAmount: dato.meta,
+                                    donationAmount: dato.colaboradores,
                                     donorsNumber: dato.donadores,
                                     category: dato.subTitle,
                                     img1: dato.img1,
@@ -122,7 +126,8 @@ class _HomeScreanState extends State<HomeScrean> {
                                     socio: dato.socio,
                                     numero: dato.numero,
                                     id: dato.id,
-                                    personas: dato.personas),
+                                    personas: dato.donadores
+                                    ),
                               ),
                             );
                           },

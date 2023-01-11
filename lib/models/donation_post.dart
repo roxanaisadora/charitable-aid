@@ -95,26 +95,5 @@ class DonationPost {
         "socio": socio,
         "numero": numero,
       };
-  DonationPost copyWith() => DonationPost(
-        id: id,
-        image: image,
-        title: title,
-        colaboradores: colaboradores,
-        meta: meta,
-        personas: personas,
-        donadores: donadores,
-        description: description,
-        donation: donation,
-        category: category,
-        subTitle: subTitle,
-        img1: img1,
-        img2: img2,
-        img3: img3,
-        url: url,
-        qr1: qr1,
-        qr2: qr2,
-        qr3: qr3,
-        socio: socio,
-        numero: numero,
-      );
+  
 }

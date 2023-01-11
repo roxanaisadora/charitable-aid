@@ -5,27 +5,26 @@ import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 
 class BottomNavBar extends StatefulWidget {
-  BottomNavBar({
+    BottomNavBar({
     Key? key,
-    this.title,
   }) : super(key: key);
-  final String? title;
+
 
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int selectedPos = 0;
 
+  int selectedPos = 0;
   double bottomNavBarHeight = 45;
 
   List<TabItem> tabItems = List.of([
     TabItem(
       Icons.home,
       "",
-      Color.fromARGB(255, 21, 103, 99),
-      labelStyle: TextStyle(
+      const Color.fromARGB(255, 21, 103, 99),
+      labelStyle: const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
@@ -33,8 +32,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
     TabItem(
       Icons.search,
       "",
-      Color.fromARGB(255, 21, 103, 99),
-      labelStyle: TextStyle(
+      const Color.fromARGB(255, 21, 103, 99),
+      labelStyle: const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
@@ -42,12 +41,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
     TabItem(
       Icons.layers,
       "",
-      Color.fromARGB(255, 21, 103, 99),
+      const Color.fromARGB(255, 21, 103, 99),
     ),
     TabItem(
       Icons.perm_identity,
       "",
-      Color.fromARGB(255, 21, 103, 99),
+      const Color.fromARGB(255, 21, 103, 99),
     ),
   ]);
 

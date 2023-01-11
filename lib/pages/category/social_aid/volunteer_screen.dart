@@ -21,7 +21,8 @@ class VolunteerScreen extends StatelessWidget {
   final double? latitud;
   final double? longitud;
   final int? asistiran;
-  const VolunteerScreen({super.key, this.title, this.image, this.place, this.hora, this.description, this.img1, this.img2, this.img3, this.ong, this.latitud, this.longitud, this.asistiran, this.fecha, this.place2});
+  final int? id;
+  const VolunteerScreen({super.key, this.title, this.image, this.place, this.hora, this.description, this.img1, this.img2, this.img3, this.ong, this.latitud, this.longitud, this.asistiran, this.fecha, this.place2, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +72,8 @@ class VolunteerScreen extends StatelessWidget {
               longitud:longitud!,
               asistiran:asistiran!,
               fecha:fecha!,
-              place2:place2!
+              place2:place2!,
+              
             ),
           ),
         ),
@@ -82,7 +84,8 @@ class VolunteerScreen extends StatelessWidget {
         dia:fecha!,
         hora:hora!,
         title:title!,
-        
+        id:id,
+        asistiran:asistiran
       ),
     );
   }
@@ -103,6 +106,7 @@ class Screen_2 extends StatelessWidget {
   final double longitud;
   final String? fecha;
   final String? place2;
+  
   
   const Screen_2({super.key, this.title, this.lugar, this.image, this.hora, this.description, this.img1, this.img2, this.img3, this.ong, required this.latitud, required this.longitud, this.asistiran, this.fecha, this.place2});
 
@@ -400,8 +404,10 @@ class JoinButton extends StatelessWidget {
   final String? dia;
   final String? hora;
   final String? title;
+  final int? id;
+  final int? asistiran;
   const JoinButton({
-    Key? key, this.img, this.lugar, this.dia, this.hora, this.title,
+    Key? key, this.img, this.lugar, this.dia, this.hora, this.title, this.id, this.asistiran,
   }) : super(key: key);
 
   @override
@@ -424,6 +430,8 @@ class JoinButton extends StatelessWidget {
             builder: (context) => TimePage(
               img:img,
               lugar:lugar,
+              id:id!,
+              asistiran:asistiran!
             ),
           ),
         );

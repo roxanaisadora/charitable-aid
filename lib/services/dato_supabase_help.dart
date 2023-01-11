@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class HelpSeresvice extends ChangeNotifier {
   final String baseUrl = 'https://qpjuuyyvbqljmoeojwag.supabase.co/rest/v1/ayuda';
-  final List<Help> helpes = [];
+   List<Help> helpes = [];
   late Help seleccionarLugar2;
   String apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
   String autorizacion = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
@@ -20,6 +20,29 @@ class HelpSeresvice extends ChangeNotifier {
   //LISTAR donaciones
   Future<List<Help>> listarHelp() async {
     isLoading = true;
+    notifyListeners();
+    print('entro');
+    final url = Uri.parse('$baseUrl?select=*');
+    Map<String,String> header = {
+        'apikey':apikey,
+        'Authorization':autorizacion,
+      };
+    final response = await http.get(url,headers: header );
+    dynamic parsedJson = json.decode(response.body);
+
+   for (var i = 0; i < parsedJson.length; i++){
+    helpes.add(Help.fromMap2(parsedJson[i]));
+   }
+
+    isLoading = false;
+    notifyListeners();
+    return helpes;
+  }
+
+  //LISTAR2 donaciones
+  Future<List<Help>> listarHelp2() async {
+    isLoading = true;
+    helpes = [];
     notifyListeners();
     print('entro');
     final url = Uri.parse('$baseUrl?select=*');

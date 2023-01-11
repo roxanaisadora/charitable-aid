@@ -185,7 +185,7 @@ class _PhotosListState extends State<PhotosList> {
           backgroundColor: Colors.white,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.pushNamed(context, '/home'),
           ),
           actions: <Widget>[
             IconButton(
@@ -302,6 +302,7 @@ class Uiitem extends StatelessWidget {
             asistiran:building.asistiran,
             fecha:building.fecha,
             place2:building.place2,
+            id:building.id
           ),
         );
         Navigator.push(context, route);
