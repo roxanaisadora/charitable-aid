@@ -66,25 +66,34 @@ class _HomeScreanState extends State<HomeScrean> {
               icon: const Icon(Icons.refresh))
         ],
       ),
-      body: Container(
-        color: const Color.fromARGB(126, 105, 240, 175),
-        child: ListView(
-          padding: const EdgeInsets.all(8),
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
-              child: Center(child: Text('Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',style: TextStyle(fontSize: 16),)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10.0),
-                  height: 500.0,
-                  child: ListView.builder(
-                    itemCount: donationPostService.donationposts.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) {  
-                      final dato = donationPostService.donationposts[index];
+      body: RefreshIndicator(
+        onRefresh: () {
+          return donationPostService.listarDonationPost();
+        },
+        child: Container(
+          color: const Color.fromARGB(126, 105, 240, 175),
+          child: ListView(
+            padding: const EdgeInsets.all(8),
+            children: <Widget>[
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
+                child: Center(
+                    child: Text(
+                  'Con solo 1.00 sol, puedes ayudar a muchas instituciones beneficas',
+                  style: TextStyle(fontSize: 16),
+                )),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10.0),
+                    height: 500.0,
+                    child: ListView.builder(
+                      itemCount: donationPostService.donationposts.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        final dato = donationPostService.donationposts[index];
                         return Card1(
                           image: dato.image,
                           title: dato.title,
@@ -92,27 +101,28 @@ class _HomeScreanState extends State<HomeScrean> {
                           meta: dato.meta,
                           personas: dato.personas,
                           donadores: dato.donadores,
-                          onTap: (){
-                             Navigator.push(context, MaterialPageRoute(
-                              builder: (context)=> SocialScreenHome(
-                                postAsset:dato.image,
-                                postTitle:dato.title,
-                                postDescript:dato.description,
-                                donationAmount:dato.meta,
-                                donorsNumber:dato.donadores,
-                                category:dato.subTitle,
-                                img1: dato.img1,
-                                img2: dato.img2,
-                                img3: dato.img3,
-                                url_share:dato.url,
-                                qr1:dato.qr1,
-                                qr2:dato.qr2,
-                                qr3:dato.qr3,
-                                socio:dato.socio,
-                                numero:dato.numero,
-                                id:dato.id,
-                                personas:dato.personas
-                              ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SocialScreenHome(
+                                    postAsset: dato.image,
+                                    postTitle: dato.title,
+                                    postDescript: dato.description,
+                                    donationAmount: dato.meta,
+                                    donorsNumber: dato.donadores,
+                                    category: dato.subTitle,
+                                    img1: dato.img1,
+                                    img2: dato.img2,
+                                    img3: dato.img3,
+                                    url_share: dato.url,
+                                    qr1: dato.qr1,
+                                    qr2: dato.qr2,
+                                    qr3: dato.qr3,
+                                    socio: dato.socio,
+                                    numero: dato.numero,
+                                    id: dato.id,
+                                    personas: dato.personas),
                               ),
                             );
                           },
@@ -120,188 +130,190 @@ class _HomeScreanState extends State<HomeScrean> {
                       },
                     )),
               ),
-            const SizedBox(
-              height: 20,
-            ),
-            Card2(
-              image: 'assets/image/regalo_1.png',
-              title: 'Envia regalo a de la comida',
-              subtitle: 'En nombre de tus seres queridos',
-              titleb: 'Enviar regalo',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Secreen2(),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding:
-                  EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
-              child: Text(
-                '¿No estas seguro de como ayudar?',
-                style: TextStyle(fontSize: 16),
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-                height: 530,
-                child: ListView.builder(
-                  itemCount: DonationPostService4.donationpost4s.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    final dato = DonationPostService4.donationpost4s[index];
-                    return Card3(
-                        image: dato.image,
-                        title: dato.title,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SecreenHelp2(
-                                  youtubetext: dato.yotube,
-                                  postTitle: dato.title2,
-                                  description: dato.description,
-                                  datoimage: dato.imagenes),
-                            ),
-                          );
-                        });
-                  },
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding:
-                  EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
-              child: Text('Juntos podemos ayudar a mas familias en necesidad',
-                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
-            ),
-            SizedBox(
-              height: 560,
-              child: ListView.builder(
-                itemCount: DonationPostService3.donationpost3s.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  final dato = DonationPostService3.donationpost3s[index];
-                  return Card4(
-                      image: dato.image,
-                      num1: dato.num1,
-                      num2: dato.num2,
-                      num3: dato.num3,
-                      num4: dato.num4,
-                      num5: dato.num5,
-                      num6: dato.num6,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SecreenMore(),
-                          ),
-                        );
-                      });
+              Card2(
+                image: 'assets/image/regalo_1.png',
+                title: 'Envia regalo a de la comida',
+                subtitle: 'En nombre de tus seres queridos',
+                titleb: 'Enviar regalo',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Secreen2(),
+                    ),
+                  );
                 },
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Card2(
-              image: 'assets/image/amigos.jpg',
-              title: 'Invita a tus amigos',
-              subtitle: 'Y luchen juntos contra el hambre',
-              titleb: 'Invita a amigos',
-              onTap: () async {
-                final urlPreview =
-                    'https://www.youtube.com/watch?v=tLJaHH5MAfg';
-                await Share.share(
-                    'Ven y unete al cambio por el Perú\n\n$urlPreview');
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-                height: 530,
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+                child: Text(
+                  '¿No estas seguro de como ayudar?',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+              SizedBox(
+                  height: 530,
+                  child: ListView.builder(
+                    itemCount: DonationPostService4.donationpost4s.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      final dato = DonationPostService4.donationpost4s[index];
+                      return Card3(
+                          image: dato.image,
+                          title: dato.title,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SecreenHelp2(
+                                    youtubetext: dato.yotube,
+                                    postTitle: dato.title2,
+                                    description: dato.description,
+                                    datoimage: dato.imagenes),
+                              ),
+                            );
+                          });
+                    },
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+                child: Text('Juntos podemos ayudar a mas familias en necesidad',
+                    style:
+                        TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
+              ),
+              SizedBox(
+                height: 560,
                 child: ListView.builder(
-                  itemCount: DonationPostService5.donationpost5s.length,
+                  itemCount: DonationPostService3.donationpost3s.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
-                    final dato = DonationPostService5.donationpost5s[index];
-                    return Card3(
+                    final dato = DonationPostService3.donationpost3s[index];
+                    return Card4(
                         image: dato.image,
-                        title: dato.title,
+                        num1: dato.num1,
+                        num2: dato.num2,
+                        num3: dato.num3,
+                        num4: dato.num4,
+                        num5: dato.num5,
+                        num6: dato.num6,
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SecreenHelp2(
-                                  youtubetext: dato.yotube,
-                                  postTitle: dato.title2,
-                                  description: dato.description,
-                                  datoimage: dato.imagenes),
+                              builder: (context) => const SecreenMore(),
                             ),
                           );
                         });
                   },
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding:
-                  EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
-              child: Text(
-                'Desglose de la ayuda',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            Card2(
-              image: 'assets/image/estadistica.png',
-              title: 'Como se Utiliza mi donación',
-              subtitle: 'Conoce hacerca del uso de tu ayuda',
-              titleb: 'Aprende mas',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BuySecurity(),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: SizedBox(
-                height: 200.0,
-                child: ArrowPageIndicator(
-                  isJump: true,
-                  leftIcon: Image.asset(
-                    "assets/image/left-arrow.png",
-                    width: 25.0,
-                    height: 25.0,
-                  ),
-                  rightIcon: Image.asset(
-                    "assets/image/right-arrow.png",
-                    width: 25.0,
-                    height: 25.0,
-                  ),
-                  pageController: _pageController2,
-                  currentPageNotifier: _currentPageNotifier2,
-                  itemCount: datofinal.length,
-                  child: _buildPageView(
-                      _pageController2, _currentPageNotifier2, datofinal),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 30,
+              ),
+              Card2(
+                image: 'assets/image/amigos.jpg',
+                title: 'Invita a tus amigos',
+                subtitle: 'Y luchen juntos contra el hambre',
+                titleb: 'Invita a amigos',
+                onTap: () async {
+                  final urlPreview =
+                      'https://www.youtube.com/watch?v=tLJaHH5MAfg';
+                  await Share.share(
+                      'Ven y unete al cambio por el Perú\n\n$urlPreview');
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                  height: 530,
+                  child: ListView.builder(
+                    itemCount: DonationPostService5.donationpost5s.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      final dato = DonationPostService5.donationpost5s[index];
+                      return Card3(
+                          image: dato.image,
+                          title: dato.title,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SecreenHelp2(
+                                    youtubetext: dato.yotube,
+                                    postTitle: dato.title2,
+                                    description: dato.description,
+                                    datoimage: dato.imagenes),
+                              ),
+                            );
+                          });
+                    },
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 20),
+                child: Text(
+                  'Desglose de la ayuda',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+              Card2(
+                image: 'assets/image/estadistica.png',
+                title: 'Como se Utiliza mi donación',
+                subtitle: 'Conoce hacerca del uso de tu ayuda',
+                titleb: 'Aprende mas',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BuySecurity(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: SizedBox(
+                  height: 200.0,
+                  child: ArrowPageIndicator(
+                    isJump: true,
+                    leftIcon: Image.asset(
+                      "assets/image/left-arrow.png",
+                      width: 25.0,
+                      height: 25.0,
+                    ),
+                    rightIcon: Image.asset(
+                      "assets/image/right-arrow.png",
+                      width: 25.0,
+                      height: 25.0,
+                    ),
+                    pageController: _pageController2,
+                    currentPageNotifier: _currentPageNotifier2,
+                    itemCount: datofinal.length,
+                    child: _buildPageView(
+                        _pageController2, _currentPageNotifier2, datofinal),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
