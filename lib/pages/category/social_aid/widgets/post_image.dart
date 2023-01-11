@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+
 class PostImage extends StatelessWidget {
   const PostImage({
     Key? key,
@@ -19,50 +20,21 @@ class PostImage extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              AspectRatio(
+              const AspectRatio(
                 aspectRatio: 16 / 12,
-                child: const Center(child: CircularProgressIndicator()),
+                child: Center(child: CircularProgressIndicator()),
               ),
               AspectRatio(
                 aspectRatio: 16 / 12,
                 child: FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage,
-                  image:asset!,
+                  image: asset!,
                   fit: BoxFit.cover,
                 ),
               ),
             ],
           ),
         ),
-        Positioned(
-          top: 20,
-          right: 15,
-          left: 15,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                child: InkWell(
-                  onTap:()=>sharetap!(),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.share,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
       ],
     );
   }

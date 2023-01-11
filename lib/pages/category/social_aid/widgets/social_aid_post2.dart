@@ -1,11 +1,11 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
+import 'package:ac/pages/category/social_aid/widgets/button2.dart';
 import 'package:ac/pages/category/social_aid/widgets/post_image.dart';
-import 'package:ac/pages/category/social_aid/widgets/rounded_button.dart';
 import 'package:ac/pages/category/social_aid/widgets/social_aid_information_item.dart';
 import 'package:flutter/material.dart';
 
-class SocialAidPost extends StatelessWidget {
+class SocialAidPost2 extends StatelessWidget {
   final String? postAsset;
   final String? postTitle;
   final String? postDescript;
@@ -23,7 +23,7 @@ class SocialAidPost extends StatelessWidget {
   final int personas;
   final int id;
   final Function? shareTap;
-  const SocialAidPost({
+  const SocialAidPost2({
     Key? key,
     this.postAsset,
     this.postTitle,
@@ -91,7 +91,7 @@ class SocialAidPost extends StatelessWidget {
                     alignment: Alignment.center,
                     height: 30,
                     width: 30,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
                     ),
@@ -127,7 +127,7 @@ class SocialAidPost extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              RoundedButton(
+              RoundedButton2(
                 onPressed: () {},
                 category: category!,
                 donationAmount: donationAmount!,

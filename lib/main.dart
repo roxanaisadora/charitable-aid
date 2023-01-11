@@ -1,15 +1,10 @@
 
-import 'package:ac/providers/donation_verification_provider.dart';
+import 'package:ac/providers/geo_provider.dart';
+import 'package:ac/providers/provider_supabase.dart';
 import 'package:ac/route/index_page.dart';
-import 'package:ac/services/donation_1_supabase.dart';
-import 'package:ac/services/donation_3_supabase.dart';
-import 'package:ac/services/donation_4_supabase.dart';
-import 'package:ac/services/donation_5_supabase.dart';
-import 'package:ac/services/donation_7_supabase.dart';
-import 'package:ac/services/donationpost_supabase.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'providers/provider_login.dart';
+import 'package:flutter/material.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +17,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProductoProvider()),
       ChangeNotifierProvider(create: (_) => StorageHomeProvider()),
       ChangeNotifierProvider(create: (_) => DonationVerificationProvider()),
+      ChangeNotifierProvider(create: (_) => GeoProvider()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice1()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice3()),
@@ -29,6 +25,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice5()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice7()),
       ChangeNotifierProvider(create: (_) => DonationesService()),
+      ChangeNotifierProvider(create: (_) => SearchSeresvice()),
       ChangeNotifierProvider(create: (_) => HelpSeresvice())
     ], child: const MyApp()),
   );
@@ -51,7 +48,6 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: MyRoutes.generateRoute,
       initialRoute: MyRoutes.rSplash,
       routes: {
-        'page_pago': (_) => const DonationPage(),
         'page_update': (_) => const LugarPage(),
       },
     );

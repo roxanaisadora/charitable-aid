@@ -1,4 +1,5 @@
 import 'package:ac/pages/category/social_aid/widgets/social_aid_post.dart';
+import 'package:ac/pages/category/social_aid/widgets/social_aid_post2.dart';
 import 'package:ac/services/donation_7_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class _SocialAidScreenState extends State<SocialAidScreen> {
                 throw 'Could not launch $_url';
               }
             }
-              return SocialAidPost(
+              return SocialAidPost2(
                 postAsset:dato.image,
                 postTitle: dato.title,
                 postDescript:dato.description,
@@ -43,6 +44,13 @@ class _SocialAidScreenState extends State<SocialAidScreen> {
                 img2: dato.img2,
                 img3: dato.img3,
                 shareTap:_launchUrl,
+                qr1:dato.qr1,
+                qr2:dato.qr2,
+                qr3:dato.qr3,
+                socio:dato.socio,
+                numero:dato.numero,
+                id:dato.id,
+                personas:dato.personas
               );
             },
           ),
@@ -56,7 +64,7 @@ class _SocialAidScreenState extends State<SocialAidScreen> {
                   alignment: Alignment.center,
                   height: 30,
                   width: 30,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
                   ),

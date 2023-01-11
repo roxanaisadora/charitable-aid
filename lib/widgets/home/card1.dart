@@ -88,11 +88,11 @@ class _Card1State extends State<Card1> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text('${widget.colaboradores} de ${widget.meta} ', style: const TextStyle(fontSize: 15),),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text('${widget.colaboradores} soles de ${widget.meta} soles', style: const TextStyle(fontSize: 15),),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text('$percent %', style: const TextStyle(fontSize: 15),),
                       ),
                     ],

@@ -1,3 +1,4 @@
+import 'package:ac/pages/category/search_2.dart';
 import 'package:flutter/material.dart';
 import '../pages/home/index_home.dart';
 import 'index_page.dart';
@@ -8,6 +9,7 @@ class MyRoutes {
   static const String rRegister = '/register';
   static const String rVerifyT = '/verify';
   static const String rSplash = '/splash';
+  static const String rSearch = '/search';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -19,6 +21,8 @@ class MyRoutes {
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case ('/verify'):
         return MaterialPageRoute(builder: (_) => const VerifyAuthScreen());
+      case ('/search'):
+        return MaterialPageRoute(builder: (_) => const Search2List());
       case ('/Home'):
         return MaterialPageRoute(builder: (_) => BottomNavBar());
       default:

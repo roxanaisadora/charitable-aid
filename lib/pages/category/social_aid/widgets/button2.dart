@@ -1,10 +1,10 @@
 import 'package:ac/models/modelo_supabase.dart';
-import 'package:ac/pages/category/social_aid/donation_screen.dart';
+import 'package:ac/pages/category/social_aid/donation2_screen.dart';
 import 'package:ac/services/dato_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class RoundedButton extends StatelessWidget {
+class RoundedButton2 extends StatelessWidget {
   final String ? postTitle;
   final String ? img;
   final String ? category;
@@ -16,7 +16,7 @@ class RoundedButton extends StatelessWidget {
   final int numero;
   final int? id;
   final int? personas;
-  const RoundedButton({
+  const RoundedButton2({
     Key? key,
     required this.onPressed, 
     this.postTitle, 
@@ -44,7 +44,7 @@ class RoundedButton extends StatelessWidget {
           Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DonationPage(
+            builder: (context) => DonationPage2(
               img:img,
               qr1:qr1,
               qr2:qr2,

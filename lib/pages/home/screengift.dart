@@ -17,6 +17,12 @@ class _Secreen2State extends State<Secreen2> {
   static const donationAmount = 3.00;
   static const postTitle = 'Ayuda Lima';
   static const postAsset = 'https://i.ibb.co/z8HzMmd/Captura.png';
+  static const qr1 = 'https://w7.pngwing.com/pngs/619/184/png-transparent-qr-code-barcode-scanners-scanner-q-text-rectangle-logo.png';
+  static const qr2 = 'https://w7.pngwing.com/pngs/223/1014/png-transparent-qr-code-qr-code-barcode-itf-14-number-rain-barcode-miscellaneous-text-rectangle.png';
+  static const qr3 = 'https://w7.pngwing.com/pngs/619/184/png-transparent-qr-code-barcode-scanners-scanner-q-text-rectangle-logo.png';
+  static const socio = 'Maria Pardo';
+  static const numero = 93658965;
+  
   @override
   void initState() {
     super.initState();
@@ -68,6 +74,11 @@ class _Secreen2State extends State<Secreen2> {
                     donationAmount:donationAmount,
                     postTitle:postTitle,
                     img:postAsset,
+                    qr1: qr1,
+                    qr2:qr2,
+                    qr3:qr3,
+                    socio:socio,
+                    numero:numero,
                   ),
                 )
               ],

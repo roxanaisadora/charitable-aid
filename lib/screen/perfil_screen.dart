@@ -1,9 +1,12 @@
-import 'package:ac/pages/login/register.dart';
 import 'package:ac/pages/login/screenlogin.dart';
 import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/screen/ajustes_screen.dart';
+import 'package:ac/screen/indicator_chart.dart';
+import 'package:ac/screen/pie_chart.dart';
+import 'package:ac/services/dato_supabase.dart';
+import 'package:ac/services/dato_supabase_help.dart';
 import 'package:ac/share_preferences/preferences.dart';
-import 'package:ac/widget/custom_drawer.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -14,6 +17,10 @@ class PerfilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storageprovider = Provider.of<StorageHomeProvider>(context);
+    final HelpService = Provider.of<HelpSeresvice>(context);
+    final DonationService = Provider.of<DonationesService>(context);
+
+    
 
     _onAlertButtonsPressed(context) {
       Alert(
@@ -23,7 +30,8 @@ class PerfilScreen extends StatelessWidget {
         desc: "Como quieres cambiar tu foto?",
         buttons: [
           DialogButton(
-            child: Text(
+            // ignore: sort_child_properties_last
+            child: const Text(
               "Camera",
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
@@ -31,10 +39,11 @@ class PerfilScreen extends StatelessWidget {
               storageprovider.activecamera();
               Navigator.pop(context);
             },
-            color: Color.fromRGBO(0, 179, 134, 1.0),
+            color: const Color.fromARGB(126, 105, 240, 175),
           ),
           DialogButton(
-            child: Text(
+            // ignore: sort_child_properties_last
+            child: const Text(
               "Gallery",
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
@@ -42,7 +51,7 @@ class PerfilScreen extends StatelessWidget {
               storageprovider.activegallery();
               Navigator.pop(context);
             },
-            gradient: LinearGradient(colors: [
+            gradient: const LinearGradient(colors: [
               Color.fromRGBO(116, 116, 191, 1.0),
               Color.fromRGBO(52, 138, 199, 1.0),
             ]),
@@ -53,7 +62,7 @@ class PerfilScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: const Color.fromARGB(126, 105, 240, 175),
         title: const Text(
           'Mi Perfil',
         ),
@@ -68,7 +77,7 @@ class PerfilScreen extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    color: Colors.greenAccent,
+                    color: Color.fromARGB(126, 105, 240, 175),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -99,7 +108,7 @@ class PerfilScreen extends StatelessWidget {
                                         child: IconButton(
                                           onPressed: () =>
                                               _onAlertButtonsPressed(context),
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.camera_alt,
                                             size: 36,
                                             color: Colors.white,
@@ -127,7 +136,7 @@ class PerfilScreen extends StatelessWidget {
                                         child: IconButton(
                                           onPressed: () =>
                                               _onAlertButtonsPressed(context),
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.camera_alt,
                                             size: 36,
                                             color: Colors.white,
@@ -231,20 +240,20 @@ class PerfilScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 height: 30,
                                 width: 60,
                                 child: Icon(Icons.mail),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Container(
+                                padding: EdgeInsets.only(top: 3),
+                                child: SizedBox(
                                   height: 25,
                                   width: 200,
-                                  child: const Text(
+                                  child: Text(
                                     'E-mail',
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 15),
                                   ),
                                 ),
                               ),
@@ -264,7 +273,10 @@ class PerfilScreen extends StatelessWidget {
                                         ),
                                       )
                                     : Text(Preferences.email,
-                                        style: const TextStyle(fontSize: 15))),
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue))),
                           ),
                         ],
                       ),
@@ -281,20 +293,22 @@ class PerfilScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            children: [
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 height: 30,
                                 width: 60,
                                 child: Icon(Icons.phone_android),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Container(
+                                padding: EdgeInsets.only(top: 3),
+                                child: SizedBox(
                                   height: 25,
                                   width: 200,
-                                  child: const Text(
+                                  child: Text(
                                     'Phone',
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -310,49 +324,124 @@ class PerfilScreen extends StatelessWidget {
                                         padding: EdgeInsets.only(left: 10),
                                         child: Text(
                                           '-----',
-                                          style: TextStyle(fontSize: 17),
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                          ),
                                         ),
                                       )
                                     : Text(Preferences.mobile,
-                                        style: const TextStyle(fontSize: 15))),
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue))),
                           ),
                         ],
                       ),
                     ),
                     const Divider(
-                        height: 5,
+                        height: 0,
                         thickness: 3,
                         color: Color.fromARGB(255, 224, 217, 217)),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 200,
+              const SizedBox(
+                height: 30,
               ),
-              Center(
-                child: ListTile(
-                  title: const Text(
-                    'cerrar sesion',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.redAccent),
+              const Text('Estadisticas'),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 70, bottom: 60, right: 70, left: 70),
+                    child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: Expanded(
+                          child: PieChart(
+                        PieChartData(
+                          borderData: FlBorderData(show: false),
+                          sectionsSpace: 2,
+                          centerSpaceRadius: 30,
+                          sections: getSections(),
+                        ),
+                      )),
+                    ),
                   ),
-                  onTap: () {
-                    Navigator.of(context, rootNavigator: true)
-                        .pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return const LoginScreen();
-                        },
-                      ),
-                      (route) => false,
-                    );
-                  },
-                ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: IndicatorsWidget(),
+                      )
+                    ],
+                  ),
+                ],
               ),
+              SizedBox(
+                height: 40,
+                width: 130,
+                child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: Colors.red,
+                    child: const Text(
+                      'Cerrar Sesion',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                    onPressed: () => _onAlertButton(context)),
+              ),
+              const SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+_onAlertButton(context) {
+  Alert(
+    context: context,
+    type: AlertType.warning,
+    title: "¿Desea Cerrar Sesion?",
+    buttons: [
+      DialogButton(
+        // ignore: sort_child_properties_last
+        child: const Text(
+          "Si",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const LoginScreen();
+              },
+            ),
+            (route) => false,
+          );
+        },
+        color: Color.fromARGB(124, 186, 56, 173),
+      ),
+      DialogButton(
+        // ignore: sort_child_properties_last
+        child: const Text(
+          "No",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        gradient: const LinearGradient(colors: [
+          Color.fromARGB(255, 105, 123, 243),
+          Color.fromRGBO(52, 138, 199, 1.0),
+        ]),
+      )
+    ],
+  ).show();
 }

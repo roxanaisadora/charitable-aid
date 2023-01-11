@@ -1,11 +1,7 @@
 
 import 'package:ac/pages/category/social_aid/donation_screen.dart';
 import 'package:ac/providers/donation_verification_provider.dart';
-import 'package:ac/services/donationpost_supabase.dart';
-import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:ac/providers/provider_supabase.dart';
 import 'package:ac/services/dato_supabase.dart';
@@ -13,7 +9,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 
 
-class PaymentScreenn extends StatelessWidget {
+class PaymentScreenn2 extends StatelessWidget {
   final String? qr1;
   final String? qr2;
   final String? qr3;
@@ -22,7 +18,7 @@ class PaymentScreenn extends StatelessWidget {
   final int? id;
   final double? donationAmount;
   final int personas;
-  const PaymentScreenn({super.key, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero, this.id, this.donationAmount, required this.personas});
+  const PaymentScreenn2({super.key, this.qr1, this.qr2, this.qr3, required this.socio, required this.numero, this.id, this.donationAmount, required this.personas});
 
   @override
   Widget build(BuildContext context) {
@@ -57,45 +53,7 @@ class _PaymentScreenState extends State<PaymentScreen>
     TabController _tabController = TabController(length: 3, vsync: this);
     final donationProvider = Provider.of<DonationVerificationProvider>(context);
     final donationForm = Provider.of<DonationFormProvider>(context);
-    final donationPostService = Provider.of<DonationPostSeresvice>(context);
-
     final dato = donationForm.donation;
-    int donadoresfinal = 1;
-    double colaboradoresfinal = 1.0;
-
-  Future<String> updateDonation() async {
-    final String msg;
-    String apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
-    String autorizacion = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwanV1eXl2YnFsam1vZW9qd2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEwNTM4MDIsImV4cCI6MTk4NjYyOTgwMn0.6lULs4mfwr7jw4nBNFCmGjEPxD90rsL5ZPAq4rJVP2o';
-    Map<String,String> header = {
-          'apikey':apikey,
-          'Authorization':autorizacion,
-          'Content-Type': 'application/json; charset=UTF-8'
-        };
-     print('entro');
-    final response = await http.put(
-      Uri.parse('https://qpjuuyyvbqljmoeojwag.supabase.co/rest/v1/info?id=eq.${widget.id}'),
-      headers:header,
-      body: jsonEncode(<String, dynamic>{
-        'id': widget.id,
-        'colaboradores':colaboradoresfinal,
-        'donadores':donadoresfinal
-      }),
-    );
-    print(response.statusCode);
-    
-    if (response.statusCode == 204) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      print('se actualizo');
-      msg = 'Se actualizo';
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      msg = 'no se actualizo';
-    }
-    return msg;
-  }
 
   _onBasicAlertPressed(context) {
     Alert(
@@ -335,15 +293,7 @@ class _PaymentScreenState extends State<PaymentScreen>
         child: MyRoundedButton(
           label: 'Donar',
           onPressed: () {
-            var onePointOne = double.parse(dato.precio);
-            colaboradoresfinal = (widget.donationAmount!) + onePointOne;
-            donadoresfinal = widget.personas;
-            print(donadoresfinal);
-            donadoresfinal= donadoresfinal+1;
-            print(donadoresfinal);
             widget.donationService.crearOactualizar(donationForm.donation);
-            updateDonation();
-            donationPostService.listarDonationPost2();
             Navigator.pushNamed(context, '/home');
             _onBasicAlertPressed(context);
           },

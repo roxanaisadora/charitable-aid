@@ -1,7 +1,8 @@
-import 'package:ac/pages/category/search.dart';
+
+import 'package:ac/pages/category/search_2.dart';
+import 'package:ac/pages/category/social_aid/help_points_screen.dart';
 import 'package:ac/pages/category/social_aid/payment_screen.dart';
 import 'package:ac/pages/category/social_aid/social_aid_screen.dart';
-import 'package:ac/pages/category/social_aid/volunteer_screen.dart';
 import 'package:ac/pages/category/social_aid/widgets/card.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(126, 105, 240, 175),
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
@@ -26,33 +28,25 @@ class CategoryScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           vertical: 25,
           horizontal: 20,
-        ).copyWith(
-          bottom: 0,
         ),
-        color: Colors.greenAccent,
+        color: const Color.fromARGB(126, 105, 240, 175),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const SizedBox(
-              height: 20,
-            ),
             CategoryCard(
               asset:
-                  'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+                  'https://blog.oxfamintermon.org/wp-content/uploads/2018/07/voluntariado-onu.jpg',
               label: 'Voluntariado',
               onPressed: () {
                 final route = MaterialPageRoute(
-                  builder: (context) => SearchList(),
+                  builder: (context) => const Search2List(),
                 );
                 Navigator.push(context, route);
               },
             ),
-            const SizedBox(
-              height: 20,
-            ),
+
             CategoryCard(
-              asset:
-                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+              asset:'https://www.agrorural.gob.pe/wp-content/uploads/2017/03/WhatsApp-Image-2017-03-26-at-9.35.30-AM.jpeg',
               label: 'Donaciones',
               onPressed: () {
                 final route = MaterialPageRoute(
@@ -61,17 +55,18 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(context, route);
               },
             ),
+
             CategoryCard(
-              asset:
-                  'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-              label: 'pagos',
+              asset:'https://play-lh.googleusercontent.com/2MbiK1SICz2OX5OfHwIp_S-YydIEHsH4IujPBAr7tV5SeF56hZ1mSxhg_1ZIvEGdiQQ',
+              label: 'Puntos de Acopio',
               onPressed: () {
                 final route = MaterialPageRoute(
-                  builder: (context) => const PaymentScreen(),
+                  builder: (context) => const HelpPointsScreen(),
                 );
                 Navigator.push(context, route);
               },
             ),
+            const SizedBox(height: 30,)
           ],
         ),
       ),
