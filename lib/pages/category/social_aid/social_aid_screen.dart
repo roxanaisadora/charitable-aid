@@ -48,6 +48,8 @@ class _SocialAidScreenState extends State<SocialAidScreen> {
                 qr3:dato.qr3,
                 socio:dato.socio,
                 numero:dato.numero,
+                id:dato.id,
+                personas:dato.personas
               );
             },
           ),

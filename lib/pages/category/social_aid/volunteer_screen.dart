@@ -124,13 +124,10 @@ class Screen_2 extends StatelessWidget {
                       label: '$ong',
                     ),
                     IconButton(
-                      onPressed: (){
-                          ()async{
-                            final urlPreview = 'https://www.youtube.com/watch?v=tLJaHH5MAfg';
-                            await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
-                            //await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview');
-                          };
-                        },
+                      onPressed: ()async{
+                        final urlPreview = '$image';
+                        await Share.share('Ven y unete al cambio por el Perú\n\n$urlPreview \n\n necesitamos tu apoyo para la siguiente ayuda $title \nlugar: $lugar, $place2 \nhora: $hora \nfecha $fecha');
+                      },
                       icon: const Icon(
                         Icons.share,
                         color: Colors.grey,

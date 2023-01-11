@@ -1,5 +1,6 @@
 
 import 'package:ac/providers/geo_provider.dart';
+import 'package:ac/providers/provider_supabase.dart';
 import 'package:ac/route/index_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,8 @@ void main() async {
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice4()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice5()),
       ChangeNotifierProvider(create: (_) => DonationPostSeresvice7()),
-      ChangeNotifierProvider(create: (_) => SearchSeresvice()),
       ChangeNotifierProvider(create: (_) => DonationesService()),
+      ChangeNotifierProvider(create: (_) => SearchSeresvice()),
       ChangeNotifierProvider(create: (_) => HelpSeresvice())
     ], child: const MyApp()),
   );

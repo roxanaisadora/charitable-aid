@@ -34,7 +34,8 @@ class lugarFormPage extends StatelessWidget {
       image: Image.asset("assets/image/amigos.jpg"),
       buttons: [
         DialogButton(
-          child: Text(
+          // ignore: sort_child_properties_last
+          child: const Text(
             "Cerrar",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
@@ -84,9 +85,9 @@ class lugarFormPage extends StatelessWidget {
                 height: 10,
               ),
               PredefinedDonationButton(
-                      donationAmount: Text(
+                      donationAmount: const Text(
                         '07:00',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Color(0XFF707089),
                           fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class lugarFormPage extends StatelessWidget {
                           lugarForm.dato3 = false;
                           myController.text = '';
                         }
-                        ;
+                        
                         print(myController.text);
                       },
                     ),
@@ -111,9 +112,9 @@ class lugarFormPage extends StatelessWidget {
                       height: 20,
                     ),
                     PredefinedDonationButton(
-                      donationAmount: Text(
+                      donationAmount: const Text(
                         '09:00',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Color(0XFF707089),
                           fontWeight: FontWeight.bold,
@@ -139,9 +140,9 @@ class lugarFormPage extends StatelessWidget {
                       colores: (lugarForm.dato3 == false)
                           ? Colors.white
                           : Colors.amber,
-                      donationAmount: Text(
+                      donationAmount: const Text(
                         '11:00',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Color(0XFF707089),
                           fontWeight: FontWeight.bold,

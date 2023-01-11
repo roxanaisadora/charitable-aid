@@ -3,6 +3,8 @@ import 'package:ac/providers/storage-provider.dart';
 import 'package:ac/screen/ajustes_screen.dart';
 import 'package:ac/screen/indicator_chart.dart';
 import 'package:ac/screen/pie_chart.dart';
+import 'package:ac/services/dato_supabase.dart';
+import 'package:ac/services/dato_supabase_help.dart';
 import 'package:ac/share_preferences/preferences.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,10 @@ class PerfilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storageprovider = Provider.of<StorageHomeProvider>(context);
+    final HelpService = Provider.of<HelpSeresvice>(context);
+    final DonationService = Provider.of<DonationesService>(context);
+
+    
 
     _onAlertButtonsPressed(context) {
       Alert(

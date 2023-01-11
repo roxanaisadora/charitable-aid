@@ -20,9 +20,9 @@ class PostImage extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              AspectRatio(
+              const AspectRatio(
                 aspectRatio: 16 / 12,
-                child: const Center(child: CircularProgressIndicator()),
+                child: Center(child: CircularProgressIndicator()),
               ),
               AspectRatio(
                 aspectRatio: 16 / 12,
@@ -35,35 +35,6 @@ class PostImage extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          top: 20,
-          right: 15,
-          left: 15,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                child: InkWell(
-                  onTap: () => sharetap!(),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.redo,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
       ],
     );
   }
