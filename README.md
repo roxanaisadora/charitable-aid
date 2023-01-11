@@ -4,5 +4,5 @@ App para diseñada para ONG's con la finalidad de extender la ayuda humanitaria 
 
 ## APP
 
+![Recording 2023-01-11 at 13 35 54 (1)](https://user-images.githubusercontent.com/58452664/211890890-30d1f785-2f32-424c-8cfb-d4736305092e.gif)
 
-![GIF 12-12-2022 09-10-38](https://user-images.githubusercontent.com/58452664/207067184-db37fc0e-129e-4376-ae70-259a9516280e.gif)
